@@ -1,0 +1,402 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		866C10BA2A12081400AE1D47 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 866C10B92A12081400AE1D47 /* AppDelegate.swift */; };
+		866C10BC2A12081400AE1D47 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 866C10BB2A12081400AE1D47 /* SceneDelegate.swift */; };
+		866C10C42A12081400AE1D47 /* vegegrowth_ios.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 866C10C22A12081400AE1D47 /* vegegrowth_ios.xcdatamodeld */; };
+		866C10C62A12081500AE1D47 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 866C10C52A12081500AE1D47 /* Assets.xcassets */; };
+		866C10C92A12081500AE1D47 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 866C10C72A12081500AE1D47 /* LaunchScreen.storyboard */; };
+		866C10D22A12087100AE1D47 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 866C10D02A12087100AE1D47 /* Main.storyboard */; };
+		866C10E22A120B1100AE1D47 /* vege_manager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 866C10DD2A120B1100AE1D47 /* vege_manager.swift */; };
+		866C10E32A120B1100AE1D47 /* AddController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 866C10DE2A120B1100AE1D47 /* AddController.swift */; };
+		866C10E42A120B1100AE1D47 /* SlideController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 866C10DF2A120B1100AE1D47 /* SlideController.swift */; };
+		866C10E52A120B1100AE1D47 /* slideshowclass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 866C10E02A120B1100AE1D47 /* slideshowclass.swift */; };
+		866C10E62A120B1100AE1D47 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 866C10E12A120B1100AE1D47 /* ViewController.swift */; };
+		86E523FA2A120FC80012D10C /* GrowthController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86E523F92A120FC80012D10C /* GrowthController.swift */; };
+		86E523FC2A1212630012D10C /* imgclass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86E523FB2A1212630012D10C /* imgclass.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		866C10B62A12081400AE1D47 /* vegegrowth_ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = vegegrowth_ios.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		866C10B92A12081400AE1D47 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		866C10BB2A12081400AE1D47 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		866C10C32A12081400AE1D47 /* vegegrowth_ios.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = vegegrowth_ios.xcdatamodel; sourceTree = "<group>"; };
+		866C10C52A12081500AE1D47 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		866C10C82A12081500AE1D47 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		866C10CA2A12081500AE1D47 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		866C10D12A12087100AE1D47 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = ../../vegegrowth_ios1/vegegrouth_ios/Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		866C10DD2A120B1100AE1D47 /* vege_manager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = vege_manager.swift; path = ../../vegegrowth_ios1/vegegrouth_ios/vege_manager.swift; sourceTree = "<group>"; };
+		866C10DE2A120B1100AE1D47 /* AddController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AddController.swift; path = ../../vegegrowth_ios1/vegegrouth_ios/AddController.swift; sourceTree = "<group>"; };
+		866C10DF2A120B1100AE1D47 /* SlideController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SlideController.swift; path = ../../vegegrowth_ios1/vegegrouth_ios/SlideController.swift; sourceTree = "<group>"; };
+		866C10E02A120B1100AE1D47 /* slideshowclass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = slideshowclass.swift; path = ../../vegegrowth_ios1/vegegrouth_ios/slideshowclass.swift; sourceTree = "<group>"; };
+		866C10E12A120B1100AE1D47 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ViewController.swift; path = ../../vegegrowth_ios1/vegegrouth_ios/ViewController.swift; sourceTree = "<group>"; };
+		86E523F92A120FC80012D10C /* GrowthController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrowthController.swift; sourceTree = "<group>"; };
+		86E523FB2A1212630012D10C /* imgclass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = imgclass.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		866C10B32A12081400AE1D47 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		866C10AD2A12081400AE1D47 = {
+			isa = PBXGroup;
+			children = (
+				866C10B82A12081400AE1D47 /* vegegrowth_ios */,
+				866C10B72A12081400AE1D47 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		866C10B72A12081400AE1D47 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				866C10B62A12081400AE1D47 /* vegegrowth_ios.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		866C10B82A12081400AE1D47 /* vegegrowth_ios */ = {
+			isa = PBXGroup;
+			children = (
+				866C10B92A12081400AE1D47 /* AppDelegate.swift */,
+				866C10BB2A12081400AE1D47 /* SceneDelegate.swift */,
+				866C10C52A12081500AE1D47 /* Assets.xcassets */,
+				866C10C72A12081500AE1D47 /* LaunchScreen.storyboard */,
+				866C10CA2A12081500AE1D47 /* Info.plist */,
+				866C10C22A12081400AE1D47 /* vegegrowth_ios.xcdatamodeld */,
+				866C10D02A12087100AE1D47 /* Main.storyboard */,
+				866C10DE2A120B1100AE1D47 /* AddController.swift */,
+				866C10DF2A120B1100AE1D47 /* SlideController.swift */,
+				866C10E02A120B1100AE1D47 /* slideshowclass.swift */,
+				86E523F92A120FC80012D10C /* GrowthController.swift */,
+				866C10DD2A120B1100AE1D47 /* vege_manager.swift */,
+				866C10E12A120B1100AE1D47 /* ViewController.swift */,
+				86E523FB2A1212630012D10C /* imgclass.swift */,
+			);
+			path = vegegrowth_ios;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		866C10B52A12081400AE1D47 /* vegegrowth_ios */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 866C10CD2A12081500AE1D47 /* Build configuration list for PBXNativeTarget "vegegrowth_ios" */;
+			buildPhases = (
+				866C10B22A12081400AE1D47 /* Sources */,
+				866C10B32A12081400AE1D47 /* Frameworks */,
+				866C10B42A12081400AE1D47 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = vegegrowth_ios;
+			productName = vegegrowth_ios;
+			productReference = 866C10B62A12081400AE1D47 /* vegegrowth_ios.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		866C10AE2A12081400AE1D47 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1430;
+				LastUpgradeCheck = 1430;
+				TargetAttributes = {
+					866C10B52A12081400AE1D47 = {
+						CreatedOnToolsVersion = 14.3;
+					};
+				};
+			};
+			buildConfigurationList = 866C10B12A12081400AE1D47 /* Build configuration list for PBXProject "vegegrowth_ios" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 866C10AD2A12081400AE1D47;
+			productRefGroup = 866C10B72A12081400AE1D47 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				866C10B52A12081400AE1D47 /* vegegrowth_ios */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		866C10B42A12081400AE1D47 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				866C10C92A12081500AE1D47 /* LaunchScreen.storyboard in Resources */,
+				866C10C62A12081500AE1D47 /* Assets.xcassets in Resources */,
+				866C10D22A12087100AE1D47 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		866C10B22A12081400AE1D47 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				866C10BA2A12081400AE1D47 /* AppDelegate.swift in Sources */,
+				866C10E42A120B1100AE1D47 /* SlideController.swift in Sources */,
+				86E523FC2A1212630012D10C /* imgclass.swift in Sources */,
+				866C10E32A120B1100AE1D47 /* AddController.swift in Sources */,
+				866C10BC2A12081400AE1D47 /* SceneDelegate.swift in Sources */,
+				86E523FA2A120FC80012D10C /* GrowthController.swift in Sources */,
+				866C10E22A120B1100AE1D47 /* vege_manager.swift in Sources */,
+				866C10E52A120B1100AE1D47 /* slideshowclass.swift in Sources */,
+				866C10E62A120B1100AE1D47 /* ViewController.swift in Sources */,
+				866C10C42A12081400AE1D47 /* vegegrowth_ios.xcdatamodeld in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		866C10C72A12081500AE1D47 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				866C10C82A12081500AE1D47 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		866C10D02A12087100AE1D47 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				866C10D12A12087100AE1D47 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		866C10CB2A12081500AE1D47 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		866C10CC2A12081500AE1D47 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		866C10CE2A12081500AE1D47 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = vegegrowth_ios/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "moto-vege.vegegrowth-ios";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		866C10CF2A12081500AE1D47 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = vegegrowth_ios/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "moto-vege.vegegrowth-ios";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		866C10B12A12081400AE1D47 /* Build configuration list for PBXProject "vegegrowth_ios" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				866C10CB2A12081500AE1D47 /* Debug */,
+				866C10CC2A12081500AE1D47 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		866C10CD2A12081500AE1D47 /* Build configuration list for PBXNativeTarget "vegegrowth_ios" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				866C10CE2A12081500AE1D47 /* Debug */,
+				866C10CF2A12081500AE1D47 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		866C10C22A12081400AE1D47 /* vegegrowth_ios.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				866C10C32A12081400AE1D47 /* vegegrowth_ios.xcdatamodel */,
+			);
+			currentVersion = 866C10C32A12081400AE1D47 /* vegegrowth_ios.xcdatamodel */;
+			path = vegegrowth_ios.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 866C10AE2A12081400AE1D47 /* Project object */;
+}
