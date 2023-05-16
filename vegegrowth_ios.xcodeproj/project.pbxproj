@@ -15,7 +15,6 @@
 		866C10D22A12087100AE1D47 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 866C10D02A12087100AE1D47 /* Main.storyboard */; };
 		866C10E22A120B1100AE1D47 /* vege_manager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 866C10DD2A120B1100AE1D47 /* vege_manager.swift */; };
 		866C10E32A120B1100AE1D47 /* AddController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 866C10DE2A120B1100AE1D47 /* AddController.swift */; };
-		866C10E42A120B1100AE1D47 /* SlideController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 866C10DF2A120B1100AE1D47 /* SlideController.swift */; };
 		866C10E52A120B1100AE1D47 /* slideshowclass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 866C10E02A120B1100AE1D47 /* slideshowclass.swift */; };
 		866C10E62A120B1100AE1D47 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 866C10E12A120B1100AE1D47 /* ViewController.swift */; };
 		86E523FA2A120FC80012D10C /* GrowthController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86E523F92A120FC80012D10C /* GrowthController.swift */; };
@@ -33,7 +32,6 @@
 		866C10D12A12087100AE1D47 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = ../../vegegrowth_ios1/vegegrouth_ios/Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		866C10DD2A120B1100AE1D47 /* vege_manager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = vege_manager.swift; path = ../../vegegrowth_ios1/vegegrouth_ios/vege_manager.swift; sourceTree = "<group>"; };
 		866C10DE2A120B1100AE1D47 /* AddController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AddController.swift; path = ../../vegegrowth_ios1/vegegrouth_ios/AddController.swift; sourceTree = "<group>"; };
-		866C10DF2A120B1100AE1D47 /* SlideController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SlideController.swift; path = ../../vegegrowth_ios1/vegegrouth_ios/SlideController.swift; sourceTree = "<group>"; };
 		866C10E02A120B1100AE1D47 /* slideshowclass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = slideshowclass.swift; path = ../../vegegrowth_ios1/vegegrouth_ios/slideshowclass.swift; sourceTree = "<group>"; };
 		866C10E12A120B1100AE1D47 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ViewController.swift; path = ../../vegegrowth_ios1/vegegrouth_ios/ViewController.swift; sourceTree = "<group>"; };
 		86E523F92A120FC80012D10C /* GrowthController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrowthController.swift; sourceTree = "<group>"; };
@@ -78,7 +76,6 @@
 				866C10C22A12081400AE1D47 /* vegegrowth_ios.xcdatamodeld */,
 				866C10D02A12087100AE1D47 /* Main.storyboard */,
 				866C10DE2A120B1100AE1D47 /* AddController.swift */,
-				866C10DF2A120B1100AE1D47 /* SlideController.swift */,
 				866C10E02A120B1100AE1D47 /* slideshowclass.swift */,
 				86E523F92A120FC80012D10C /* GrowthController.swift */,
 				866C10DD2A120B1100AE1D47 /* vege_manager.swift */,
@@ -160,7 +157,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				866C10BA2A12081400AE1D47 /* AppDelegate.swift in Sources */,
-				866C10E42A120B1100AE1D47 /* SlideController.swift in Sources */,
 				86E523FC2A1212630012D10C /* imgclass.swift in Sources */,
 				866C10E32A120B1100AE1D47 /* AddController.swift in Sources */,
 				866C10BC2A12081400AE1D47 /* SceneDelegate.swift in Sources */,
@@ -315,6 +311,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = KYYQD4R3RH;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = vegegrowth_ios/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -342,6 +339,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = KYYQD4R3RH;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = vegegrowth_ios/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;

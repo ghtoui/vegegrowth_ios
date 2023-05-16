@@ -8,6 +8,8 @@
 import Foundation
 import UIKit
 
+var vege_text_list: [String] = []
+
 class ImgClass {
     private var vege_id: String = ""
     
@@ -25,14 +27,24 @@ class ImgClass {
             return nil
         }
         // 撮った写真を保存する
+        vege_text_list = get_vege_text_list(vege_id: vege_id)
         let num = vege_text_list.count
         let file_name = self.vege_id + "_" + String(num)
         print(file_name)
         save_img(file_name: file_name, img: img)
         vege_text_list.append(file_name)
         UserDefaults.standard.set(vege_text_list, forKey: vege_id)
+        vege_text_list = get_vege_text_list(vege_id: vege_id)
+        print(vege_text_list)
         
         return img
+    }
+    
+    func get_vege_text_list(vege_id: String) -> [String]{
+        if UserDefaults.standard.object(forKey: vege_id) != nil {
+            vege_text_list = UserDefaults.standard.object(forKey: vege_id) as! [String]
+        }
+        return vege_text_list
     }
     
     func get_url(file_name: String) -> URL {
