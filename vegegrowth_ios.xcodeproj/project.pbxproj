@@ -11,12 +11,11 @@
 		866C10BC2A12081400AE1D47 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 866C10BB2A12081400AE1D47 /* SceneDelegate.swift */; };
 		866C10C42A12081400AE1D47 /* vegegrowth_ios.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 866C10C22A12081400AE1D47 /* vegegrowth_ios.xcdatamodeld */; };
 		866C10C62A12081500AE1D47 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 866C10C52A12081500AE1D47 /* Assets.xcassets */; };
-		866C10C92A12081500AE1D47 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 866C10C72A12081500AE1D47 /* LaunchScreen.storyboard */; };
-		866C10D22A12087100AE1D47 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 866C10D02A12087100AE1D47 /* Main.storyboard */; };
-		866C10E22A120B1100AE1D47 /* vege_manager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 866C10DD2A120B1100AE1D47 /* vege_manager.swift */; };
-		866C10E32A120B1100AE1D47 /* AddController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 866C10DE2A120B1100AE1D47 /* AddController.swift */; };
-		866C10E52A120B1100AE1D47 /* slideshowclass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 866C10E02A120B1100AE1D47 /* slideshowclass.swift */; };
-		866C10E62A120B1100AE1D47 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 866C10E12A120B1100AE1D47 /* ViewController.swift */; };
+		86E2A6D22A15DC6C00D3D64C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 86E2A6D12A15DC6C00D3D64C /* Main.storyboard */; };
+		86E2A6D42A15DCF300D3D64C /* vegemanager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86E2A6D32A15DCF300D3D64C /* vegemanager.swift */; };
+		86E2A6D62A15DD0600D3D64C /* slideshow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86E2A6D52A15DD0600D3D64C /* slideshow.swift */; };
+		86E2A6D82A15E26D00D3D64C /* tablemanager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86E2A6D72A15E26D00D3D64C /* tablemanager.swift */; };
+		86E2A6DC2A15E65300D3D64C /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86E2A6DB2A15E65300D3D64C /* MainViewController.swift */; };
 		86E523FA2A120FC80012D10C /* GrowthController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86E523F92A120FC80012D10C /* GrowthController.swift */; };
 		86E523FC2A1212630012D10C /* imgclass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86E523FB2A1212630012D10C /* imgclass.swift */; };
 /* End PBXBuildFile section */
@@ -27,13 +26,12 @@
 		866C10BB2A12081400AE1D47 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		866C10C32A12081400AE1D47 /* vegegrowth_ios.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = vegegrowth_ios.xcdatamodel; sourceTree = "<group>"; };
 		866C10C52A12081500AE1D47 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		866C10C82A12081500AE1D47 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		866C10CA2A12081500AE1D47 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		866C10D12A12087100AE1D47 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = ../../vegegrowth_ios1/vegegrouth_ios/Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		866C10DD2A120B1100AE1D47 /* vege_manager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = vege_manager.swift; path = ../../vegegrowth_ios1/vegegrouth_ios/vege_manager.swift; sourceTree = "<group>"; };
-		866C10DE2A120B1100AE1D47 /* AddController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AddController.swift; path = ../../vegegrowth_ios1/vegegrouth_ios/AddController.swift; sourceTree = "<group>"; };
-		866C10E02A120B1100AE1D47 /* slideshowclass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = slideshowclass.swift; path = ../../vegegrowth_ios1/vegegrouth_ios/slideshowclass.swift; sourceTree = "<group>"; };
-		866C10E12A120B1100AE1D47 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ViewController.swift; path = ../../vegegrowth_ios1/vegegrouth_ios/ViewController.swift; sourceTree = "<group>"; };
+		86E2A6D12A15DC6C00D3D64C /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		86E2A6D32A15DCF300D3D64C /* vegemanager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = vegemanager.swift; sourceTree = "<group>"; };
+		86E2A6D52A15DD0600D3D64C /* slideshow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = slideshow.swift; sourceTree = SOURCE_ROOT; };
+		86E2A6D72A15E26D00D3D64C /* tablemanager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tablemanager.swift; sourceTree = "<group>"; };
+		86E2A6DB2A15E65300D3D64C /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MainViewController.swift; path = ../MainViewController.swift; sourceTree = "<group>"; };
 		86E523F92A120FC80012D10C /* GrowthController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrowthController.swift; sourceTree = "<group>"; };
 		86E523FB2A1212630012D10C /* imgclass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = imgclass.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -68,18 +66,17 @@
 		866C10B82A12081400AE1D47 /* vegegrowth_ios */ = {
 			isa = PBXGroup;
 			children = (
+				86E2A6DB2A15E65300D3D64C /* MainViewController.swift */,
+				86E2A6D32A15DCF300D3D64C /* vegemanager.swift */,
+				86E2A6D52A15DD0600D3D64C /* slideshow.swift */,
 				866C10B92A12081400AE1D47 /* AppDelegate.swift */,
+				86E2A6D72A15E26D00D3D64C /* tablemanager.swift */,
+				86E2A6D12A15DC6C00D3D64C /* Main.storyboard */,
 				866C10BB2A12081400AE1D47 /* SceneDelegate.swift */,
 				866C10C52A12081500AE1D47 /* Assets.xcassets */,
-				866C10C72A12081500AE1D47 /* LaunchScreen.storyboard */,
 				866C10CA2A12081500AE1D47 /* Info.plist */,
 				866C10C22A12081400AE1D47 /* vegegrowth_ios.xcdatamodeld */,
-				866C10D02A12087100AE1D47 /* Main.storyboard */,
-				866C10DE2A120B1100AE1D47 /* AddController.swift */,
-				866C10E02A120B1100AE1D47 /* slideshowclass.swift */,
 				86E523F92A120FC80012D10C /* GrowthController.swift */,
-				866C10DD2A120B1100AE1D47 /* vege_manager.swift */,
-				866C10E12A120B1100AE1D47 /* ViewController.swift */,
 				86E523FB2A1212630012D10C /* imgclass.swift */,
 			);
 			path = vegegrowth_ios;
@@ -143,9 +140,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				866C10C92A12081500AE1D47 /* LaunchScreen.storyboard in Resources */,
+				86E2A6D22A15DC6C00D3D64C /* Main.storyboard in Resources */,
 				866C10C62A12081500AE1D47 /* Assets.xcassets in Resources */,
-				866C10D22A12087100AE1D47 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -158,36 +154,17 @@
 			files = (
 				866C10BA2A12081400AE1D47 /* AppDelegate.swift in Sources */,
 				86E523FC2A1212630012D10C /* imgclass.swift in Sources */,
-				866C10E32A120B1100AE1D47 /* AddController.swift in Sources */,
+				86E2A6D42A15DCF300D3D64C /* vegemanager.swift in Sources */,
 				866C10BC2A12081400AE1D47 /* SceneDelegate.swift in Sources */,
+				86E2A6D62A15DD0600D3D64C /* slideshow.swift in Sources */,
 				86E523FA2A120FC80012D10C /* GrowthController.swift in Sources */,
-				866C10E22A120B1100AE1D47 /* vege_manager.swift in Sources */,
-				866C10E52A120B1100AE1D47 /* slideshowclass.swift in Sources */,
-				866C10E62A120B1100AE1D47 /* ViewController.swift in Sources */,
+				86E2A6DC2A15E65300D3D64C /* MainViewController.swift in Sources */,
+				86E2A6D82A15E26D00D3D64C /* tablemanager.swift in Sources */,
 				866C10C42A12081400AE1D47 /* vegegrowth_ios.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXVariantGroup section */
-		866C10C72A12081500AE1D47 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				866C10C82A12081500AE1D47 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-		866C10D02A12087100AE1D47 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				866C10D12A12087100AE1D47 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		866C10CB2A12081500AE1D47 /* Debug */ = {

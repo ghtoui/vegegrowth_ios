@@ -15,26 +15,27 @@ class GrowthController: UIViewController,
     @IBOutlet weak var imgview: UIImageView!
     @IBOutlet weak var slideimg: UIImageView!
     
-    var vege_text = ""
-    var index = 0
+    var vege_text :String = ""
+    private var index :Int = 0
     private var vege_id = ""
     private var img_class: ImgClass = ImgClass(vege_id: "")
     private var slide_show: SlideshowClass = SlideshowClass(vege_id: "")
-    private var vege_manager = VegeManagerClass()
+    private var vege_manager = VegemanagerClass()
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
         
-        // クラス生成
-        vege_id = vege_manager.get_unique_id(index: index, vege_text: vege_text)
+        // クラスの生成
+        // 野菜の名前に紐づけられたユニークIDを取得する
+        vege_id = vege_id_dict[vege_text]!
         
         img_class = ImgClass(vege_id: vege_id)
         slide_show = SlideshowClass(vege_id: vege_id)
         
-        if slide_show.get_imageurl_list() != [] {
-            slideimg.image = slide_show.setcurrentimg()
+        if slide_show.get_imgurl_list() != [] {
+            slideimg.image = slide_show.get_showimg()
         }
         // vege_text_listの取得
         if UserDefaults.standard.object(forKey: vege_id) != nil {
@@ -70,17 +71,10 @@ class GrowthController: UIViewController,
     }
     
     // 写真撮影処理
-    // takebutton_clickが押されたら発火
+    // takebutton_clickが押されたら処理する
     func imagePickerController(_ picker: UIImagePickerController,
                              didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
         let img_data = img_class.take_img(picker, didFinishPickingMediaWithInfo: info)
-        imgview.image = img_data
-    }
-    
-    // ロードボタンが押された時の処理
-    @IBAction func loadbutton_click(_ sender: Any) {
-        let file_name = vege_id + "_" + String(vege_text_list.count - 1)
-        let img_data = img_class.load_img(file_name: file_name)
         imgview.image = img_data
     }
     
@@ -91,11 +85,11 @@ class GrowthController: UIViewController,
         if (direction == .left) {
             // 左方向
             slide_show.show_next_img()
-            slideimg.image = slide_show.setcurrentimg()
+            slideimg.image = slide_show.get_showimg()
         } else if (direction == .right) {
             // 右方向
             slide_show.show_prev_img()
-            slideimg.image = slide_show.setcurrentimg()
+            slideimg.image = slide_show.get_showimg()
         }
     }
 
