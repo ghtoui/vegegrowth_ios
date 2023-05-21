@@ -11,23 +11,34 @@ import UIKit
 // スライドショーを行うクラス
 class SlideshowClass {
     private var vege_id: String
-    private var imgfileurl_list: [URL] = []
     private var current_index : Int = 0
+    private var img_class : ImgClass
+    private var imgfileurl_list : [URL] = []
     
     init(vege_id: String) {
         self.vege_id = vege_id
+        self.img_class = ImgClass(vege_id: vege_id)
         self.imgfileurl_list = get_imgurl_list()
     }
     
     func get_imgurl_list() -> [URL] {
-        guard let document_directry = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else {
+        var img_file_list : [URL] = []
+        guard let document_directry = FileManager.default.urls(for: .documentDirectory,
+                                                               in: .userDomainMask).first else {
             return []
         }
         
         do {
-            let fileurl_list = try FileManager.default.contentsOfDirectory(at: document_directry, includingPropertiesForKeys: nil)
-            let imgfile_list = fileurl_list.filter { $0.pathExtension.lowercased() == "png" || $0.pathExtension.lowercased() == "jpg" }
-            return imgfile_list
+            
+            let fileurl_list = try FileManager.default.contentsOfDirectory(at: document_directry,
+                                                                           includingPropertiesForKeys: nil)
+
+            for file_name in img_class.get_vege_text_list(vege_id: vege_id) {
+                if let fileimg_url = fileurl_list.first(where: { $0.lastPathComponent == file_name }) {
+                    img_file_list.append(fileimg_url)
+                }
+            }
+            return img_file_list
         } catch {
             return []
         }
@@ -35,11 +46,10 @@ class SlideshowClass {
     
     
     func get_showimg() -> UIImage? {
-        
         guard current_index >= 0 && current_index < imgfileurl_list.count else {
             return nil
         }
-                
+        
         let file_url = imgfileurl_list[current_index]
         do {
             let img_data = try Data(contentsOf: file_url)
@@ -51,7 +61,7 @@ class SlideshowClass {
     }
     
     func show_next_img() {
-        if (current_index == imgfileurl_list.count) {
+        if (current_index == imgfileurl_list.count - 1) {
             current_index = 0
         } else {
             current_index += 1

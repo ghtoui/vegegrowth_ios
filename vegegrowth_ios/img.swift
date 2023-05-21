@@ -40,22 +40,21 @@ class ImgClass {
         return img
     }
     
+    // 保存されている画像のファイル名を取得
     func get_vege_text_list(vege_id: String) -> [String]{
         if UserDefaults.standard.object(forKey: vege_id) != nil {
             vege_text_list = UserDefaults.standard.object(forKey: vege_id) as! [String]
+        } else {
+            vege_text_list = []
         }
         return vege_text_list
     }
     
+    // 画像のファイル名からURLを生成
     func get_url(file_name: String) -> URL {
         let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
         let file_url = documentsDirectory.appendingPathComponent(file_name)
         return file_url
-    }
-    
-    func encode_text(text: String) -> String{
-        let encoded_text = text.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
-        return encoded_text!
     }
     
     // 画像を保存
