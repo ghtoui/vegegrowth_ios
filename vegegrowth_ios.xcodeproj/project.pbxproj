@@ -11,13 +11,13 @@
 		866C10BC2A12081400AE1D47 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 866C10BB2A12081400AE1D47 /* SceneDelegate.swift */; };
 		866C10C42A12081400AE1D47 /* vegegrowth_ios.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 866C10C22A12081400AE1D47 /* vegegrowth_ios.xcdatamodeld */; };
 		866C10C62A12081500AE1D47 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 866C10C52A12081500AE1D47 /* Assets.xcassets */; };
+		867D520C2A16565C00807A70 /* slideshow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 867D520B2A16565C00807A70 /* slideshow.swift */; };
+		867D520E2A16566100807A70 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 867D520D2A16566100807A70 /* MainViewController.swift */; };
 		86E2A6D22A15DC6C00D3D64C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 86E2A6D12A15DC6C00D3D64C /* Main.storyboard */; };
 		86E2A6D42A15DCF300D3D64C /* vegemanager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86E2A6D32A15DCF300D3D64C /* vegemanager.swift */; };
-		86E2A6D62A15DD0600D3D64C /* slideshow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86E2A6D52A15DD0600D3D64C /* slideshow.swift */; };
 		86E2A6D82A15E26D00D3D64C /* tablemanager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86E2A6D72A15E26D00D3D64C /* tablemanager.swift */; };
-		86E2A6DC2A15E65300D3D64C /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86E2A6DB2A15E65300D3D64C /* MainViewController.swift */; };
 		86E523FA2A120FC80012D10C /* GrowthController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86E523F92A120FC80012D10C /* GrowthController.swift */; };
-		86E523FC2A1212630012D10C /* imgclass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86E523FB2A1212630012D10C /* imgclass.swift */; };
+		86E523FC2A1212630012D10C /* img.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86E523FB2A1212630012D10C /* img.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,13 +27,13 @@
 		866C10C32A12081400AE1D47 /* vegegrowth_ios.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = vegegrowth_ios.xcdatamodel; sourceTree = "<group>"; };
 		866C10C52A12081500AE1D47 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		866C10CA2A12081500AE1D47 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		867D520B2A16565C00807A70 /* slideshow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = slideshow.swift; sourceTree = "<group>"; };
+		867D520D2A16566100807A70 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		86E2A6D12A15DC6C00D3D64C /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		86E2A6D32A15DCF300D3D64C /* vegemanager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = vegemanager.swift; sourceTree = "<group>"; };
-		86E2A6D52A15DD0600D3D64C /* slideshow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = slideshow.swift; sourceTree = SOURCE_ROOT; };
 		86E2A6D72A15E26D00D3D64C /* tablemanager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tablemanager.swift; sourceTree = "<group>"; };
-		86E2A6DB2A15E65300D3D64C /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MainViewController.swift; path = ../MainViewController.swift; sourceTree = "<group>"; };
 		86E523F92A120FC80012D10C /* GrowthController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrowthController.swift; sourceTree = "<group>"; };
-		86E523FB2A1212630012D10C /* imgclass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = imgclass.swift; sourceTree = "<group>"; };
+		86E523FB2A1212630012D10C /* img.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = img.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,9 +66,7 @@
 		866C10B82A12081400AE1D47 /* vegegrowth_ios */ = {
 			isa = PBXGroup;
 			children = (
-				86E2A6DB2A15E65300D3D64C /* MainViewController.swift */,
 				86E2A6D32A15DCF300D3D64C /* vegemanager.swift */,
-				86E2A6D52A15DD0600D3D64C /* slideshow.swift */,
 				866C10B92A12081400AE1D47 /* AppDelegate.swift */,
 				86E2A6D72A15E26D00D3D64C /* tablemanager.swift */,
 				86E2A6D12A15DC6C00D3D64C /* Main.storyboard */,
@@ -77,7 +75,9 @@
 				866C10CA2A12081500AE1D47 /* Info.plist */,
 				866C10C22A12081400AE1D47 /* vegegrowth_ios.xcdatamodeld */,
 				86E523F92A120FC80012D10C /* GrowthController.swift */,
-				86E523FB2A1212630012D10C /* imgclass.swift */,
+				86E523FB2A1212630012D10C /* img.swift */,
+				867D520B2A16565C00807A70 /* slideshow.swift */,
+				867D520D2A16566100807A70 /* MainViewController.swift */,
 			);
 			path = vegegrowth_ios;
 			sourceTree = "<group>";
@@ -153,12 +153,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				866C10BA2A12081400AE1D47 /* AppDelegate.swift in Sources */,
-				86E523FC2A1212630012D10C /* imgclass.swift in Sources */,
+				867D520E2A16566100807A70 /* MainViewController.swift in Sources */,
+				86E523FC2A1212630012D10C /* img.swift in Sources */,
 				86E2A6D42A15DCF300D3D64C /* vegemanager.swift in Sources */,
 				866C10BC2A12081400AE1D47 /* SceneDelegate.swift in Sources */,
-				86E2A6D62A15DD0600D3D64C /* slideshow.swift in Sources */,
 				86E523FA2A120FC80012D10C /* GrowthController.swift in Sources */,
-				86E2A6DC2A15E65300D3D64C /* MainViewController.swift in Sources */,
+				867D520C2A16565C00807A70 /* slideshow.swift in Sources */,
 				86E2A6D82A15E26D00D3D64C /* tablemanager.swift in Sources */,
 				866C10C42A12081400AE1D47 /* vegegrowth_ios.xcdatamodeld in Sources */,
 			);
