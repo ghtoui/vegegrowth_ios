@@ -55,7 +55,6 @@ class GrowthController: UIViewController,
         let left_swipe = UISwipeGestureRecognizer(target: self, action: #selector(swipe_gesture(_:)))
         left_swipe.direction = .left
         slideimg.addGestureRecognizer(left_swipe)
-        
     }
 
     // 撮影ボタンが押された時の処理
@@ -76,6 +75,7 @@ class GrowthController: UIViewController,
                              didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
         let img_data = img_class.take_img(picker, didFinishPickingMediaWithInfo: info)
         imgview.image = img_data
+        slide_show.set_imgurl_list()
     }
     
     // スワイプされた時の処理

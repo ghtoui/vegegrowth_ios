@@ -12,6 +12,7 @@ var vege_text_list: [String] = []
 
 class ImgClass {
     private var vege_id: String = ""
+    private var cv: CvClass = CvClass()
     
     init(vege_id: String) {
         self.vege_id = vege_id
@@ -31,13 +32,16 @@ class ImgClass {
         let num = vege_text_list.count
         let file_name = self.vege_id + "_" + String(num)
         print(file_name)
-        save_img(file_name: file_name, img: img)
+        let fix_rotateimg = fix_rotate(img: img)!
+        save_img(file_name: file_name, img: fix_rotateimg)
         vege_text_list.append(file_name)
         UserDefaults.standard.set(vege_text_list, forKey: vege_id)
         vege_text_list = get_vege_text_list(vege_id: vege_id)
         print(vege_text_list)
         
-        return img
+        let conv_img = cv.convertColor(source: fix_rotateimg)
+        
+        return conv_img
     }
     
     // 保存されている画像のファイル名を取得
@@ -84,5 +88,19 @@ class ImgClass {
             return nil
         }
         return nil
+    }
+    
+    // 回転を直すメソッド
+    func fix_rotate(img: UIImage) -> UIImage? {
+        guard img.imageOrientation != .up else {
+            return img
+        }
+        
+        UIGraphicsBeginImageContextWithOptions(img.size, false, img.scale)
+        img.draw(in: CGRect(origin: .zero, size: img.size))
+        let fixedImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        
+        return fixedImage
     }
 }
