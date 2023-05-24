@@ -18,6 +18,10 @@ class SlideshowClass {
     init(vege_id: String) {
         self.vege_id = vege_id
         self.img_class = ImgClass(vege_id: vege_id)
+        set_imgurl_list()
+    }
+    
+    func set_imgurl_list() {
         self.imgfileurl_list = get_imgurl_list()
     }
     
@@ -29,10 +33,7 @@ class SlideshowClass {
         }
         
         do {
-            
-            let fileurl_list = try FileManager.default.contentsOfDirectory(at: document_directry,
-                                                                           includingPropertiesForKeys: nil)
-
+            let fileurl_list = try FileManager.default.contentsOfDirectory(at: document_directry,includingPropertiesForKeys: nil)
             for file_name in img_class.get_vege_text_list(vege_id: vege_id) {
                 if let fileimg_url = fileurl_list.first(where: { $0.lastPathComponent == file_name }) {
                     img_file_list.append(fileimg_url)
@@ -53,7 +54,7 @@ class SlideshowClass {
         let file_url = imgfileurl_list[current_index]
         do {
             let img_data = try Data(contentsOf: file_url)
-            let img = UIImage(data: img_data)
+            let img = img_class.fix_rotate(img: UIImage(data: img_data)!)
             return img
         } catch {
             return nil
@@ -74,6 +75,5 @@ class SlideshowClass {
         } else {
             current_index -= 1
         }
-        
     }
 }
