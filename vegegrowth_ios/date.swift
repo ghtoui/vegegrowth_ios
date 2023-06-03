@@ -14,7 +14,7 @@ class DateClass {
         let date = Date()
         let date_formatter = DateFormatter()
         
-        date_formatter.dateFormat = DateFormatter.dateFormat(fromTemplate: "yMMMdHms",
+        date_formatter.dateFormat = DateFormatter.dateFormat(fromTemplate: "y/MMM/d H",
                                                              options: 0, locale: Locale(identifier: "ja_JP"))
         
         return date_formatter.string(from: date)

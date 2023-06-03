@@ -45,6 +45,10 @@ class SlideshowClass {
         }
     }
     
+    func get_currentindex() -> Int {
+        return current_index
+    }
+    
     
     func get_showimg() -> UIImage? {
         guard current_index >= 0 && current_index < imgfileurl_list.count else {

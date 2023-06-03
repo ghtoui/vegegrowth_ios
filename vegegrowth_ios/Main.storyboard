@@ -53,10 +53,10 @@
             </objects>
             <point key="canvasLocation" x="315" y="-110"/>
         </scene>
-        <!--Growth Controller-->
+        <!--Growth Register Controller-->
         <scene sceneID="xqg-L8-Z1j">
             <objects>
-                <viewController storyboardIdentifier="GrowthControllerView" id="MUA-w9-wg1" customClass="GrowthController" customModule="vegegrowth_ios" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="GrowthControllerView" id="MUA-w9-wg1" customClass="GrowthRegisterController" customModule="vegegrowth_ios" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Ys1-7y-qv7">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -74,10 +74,15 @@
                                     <action selector="takebutton_click:" destination="MUA-w9-wg1" eventType="touchUpInside" id="KfV-9G-H9w"/>
                                 </connections>
                             </button>
-                            <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GwZ-lg-mtd">
-                                <rect key="frame" x="84" y="453" width="233" height="246"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n51-sr-ZWm">
+                                <rect key="frame" x="151" y="453" width="94" height="35"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="登録する"/>
+                                <connections>
+                                    <action selector="click_registerbutton:" destination="MUA-w9-wg1" eventType="touchUpInside" id="7cp-nl-olY"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="TmS-LH-lmb"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -91,18 +96,18 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="imgview" destination="V3Q-fk-1gu" id="MoJ-2U-oZb"/>
-                        <outlet property="slideimg" destination="GwZ-lg-mtd" id="SL0-sO-1pV"/>
+                        <outlet property="imgview" destination="V3Q-fk-1gu" id="AHd-r0-dgo"/>
+                        <outlet property="register_button" destination="n51-sr-ZWm" id="YUC-VW-BoW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SQg-Ww-ktL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1130.534351145038" y="-109.1549295774648"/>
         </scene>
-        <!--Graph Controller-->
+        <!--Growth Manage Controller-->
         <scene sceneID="aQT-MV-faf">
             <objects>
-                <viewController id="rXq-D8-JMd" customClass="GraphController" customModule="vegegrowth_ios" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="rXq-D8-JMd" customClass="GrowthManageController" customModule="vegegrowth_ios" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="3Zr-PR-fYM">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -112,13 +117,18 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </view>
+                            <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GwZ-lg-mtd">
+                                <rect key="frame" x="80" y="463" width="233" height="246"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="pDo-VH-f4s"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <navigationItem key="navigationItem" id="rjm-0T-u6I"/>
                     <connections>
-                        <outlet property="graphview" destination="xtA-Xs-csn" id="nHW-Ph-H4u"/>
+                        <outlet property="graphview" destination="xtA-Xs-csn" id="kry-i4-sfb"/>
+                        <outlet property="slideimg" destination="GwZ-lg-mtd" id="UiR-HY-HyH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cfu-v8-daD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
