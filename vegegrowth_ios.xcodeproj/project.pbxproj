@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8631F6D22A2A142000A29BF5 /* date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8631F6D12A2A142000A29BF5 /* date.swift */; };
+		8631F6D72A2A353700A29BF5 /* GrowthManageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8631F6D62A2A353700A29BF5 /* GrowthManageController.swift */; };
+		866878492A2840AD005ED0A1 /* graph.swift in Sources */ = {isa = PBXBuildFile; fileRef = 866878482A2840AD005ED0A1 /* graph.swift */; };
 		866C10BA2A12081400AE1D47 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 866C10B92A12081400AE1D47 /* AppDelegate.swift */; };
 		866C10BC2A12081400AE1D47 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 866C10BB2A12081400AE1D47 /* SceneDelegate.swift */; };
 		866C10C42A12081400AE1D47 /* vegegrowth_ios.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 866C10C22A12081400AE1D47 /* vegegrowth_ios.xcdatamodeld */; };
@@ -16,11 +19,17 @@
 		86E2A6D22A15DC6C00D3D64C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 86E2A6D12A15DC6C00D3D64C /* Main.storyboard */; };
 		86E2A6D42A15DCF300D3D64C /* vegemanager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86E2A6D32A15DCF300D3D64C /* vegemanager.swift */; };
 		86E2A6D82A15E26D00D3D64C /* tablemanager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86E2A6D72A15E26D00D3D64C /* tablemanager.swift */; };
-		86E523FA2A120FC80012D10C /* GrowthController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86E523F92A120FC80012D10C /* GrowthController.swift */; };
+		86E523FA2A120FC80012D10C /* GrowthRegisterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86E523F92A120FC80012D10C /* GrowthRegisterController.swift */; };
 		86E523FC2A1212630012D10C /* img.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86E523FB2A1212630012D10C /* img.swift */; };
+		FBFFFE399CC690F0898761E4 /* Pods_vegegrowth_ios.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC454D5F9AE96470F2426F4A /* Pods_vegegrowth_ios.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		59F8B2A32BB6B8B36DB4E3E2 /* Pods-vegegrowth_ios.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-vegegrowth_ios.debug.xcconfig"; path = "Target Support Files/Pods-vegegrowth_ios/Pods-vegegrowth_ios.debug.xcconfig"; sourceTree = "<group>"; };
+		84F34F3D870F5DB5A4A32A98 /* Pods-vegegrowth_ios.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-vegegrowth_ios.release.xcconfig"; path = "Target Support Files/Pods-vegegrowth_ios/Pods-vegegrowth_ios.release.xcconfig"; sourceTree = "<group>"; };
+		8631F6D12A2A142000A29BF5 /* date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = date.swift; sourceTree = "<group>"; };
+		8631F6D62A2A353700A29BF5 /* GrowthManageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrowthManageController.swift; sourceTree = "<group>"; };
+		866878482A2840AD005ED0A1 /* graph.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = graph.swift; sourceTree = "<group>"; };
 		866C10B62A12081400AE1D47 /* vegegrowth_ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = vegegrowth_ios.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		866C10B92A12081400AE1D47 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		866C10BB2A12081400AE1D47 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -32,8 +41,9 @@
 		86E2A6D12A15DC6C00D3D64C /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		86E2A6D32A15DCF300D3D64C /* vegemanager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = vegemanager.swift; sourceTree = "<group>"; };
 		86E2A6D72A15E26D00D3D64C /* tablemanager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tablemanager.swift; sourceTree = "<group>"; };
-		86E523F92A120FC80012D10C /* GrowthController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrowthController.swift; sourceTree = "<group>"; };
+		86E523F92A120FC80012D10C /* GrowthRegisterController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrowthRegisterController.swift; sourceTree = "<group>"; };
 		86E523FB2A1212630012D10C /* img.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = img.swift; sourceTree = "<group>"; };
+		BC454D5F9AE96470F2426F4A /* Pods_vegegrowth_ios.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_vegegrowth_ios.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -41,6 +51,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FBFFFE399CC690F0898761E4 /* Pods_vegegrowth_ios.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -52,6 +63,8 @@
 			children = (
 				866C10B82A12081400AE1D47 /* vegegrowth_ios */,
 				866C10B72A12081400AE1D47 /* Products */,
+				B88F6FEC5E910E6502305ED8 /* Pods */,
+				999B27F87C1A1187DC7D7EE1 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -69,17 +82,37 @@
 				86E2A6D32A15DCF300D3D64C /* vegemanager.swift */,
 				866C10B92A12081400AE1D47 /* AppDelegate.swift */,
 				86E2A6D72A15E26D00D3D64C /* tablemanager.swift */,
-				86E2A6D12A15DC6C00D3D64C /* Main.storyboard */,
 				866C10BB2A12081400AE1D47 /* SceneDelegate.swift */,
 				866C10C52A12081500AE1D47 /* Assets.xcassets */,
 				866C10CA2A12081500AE1D47 /* Info.plist */,
 				866C10C22A12081400AE1D47 /* vegegrowth_ios.xcdatamodeld */,
-				86E523F92A120FC80012D10C /* GrowthController.swift */,
+				86E2A6D12A15DC6C00D3D64C /* Main.storyboard */,
 				86E523FB2A1212630012D10C /* img.swift */,
 				867D520B2A16565C00807A70 /* slideshow.swift */,
 				867D520D2A16566100807A70 /* MainViewController.swift */,
+				866878482A2840AD005ED0A1 /* graph.swift */,
+				8631F6D12A2A142000A29BF5 /* date.swift */,
+				86E523F92A120FC80012D10C /* GrowthRegisterController.swift */,
+				8631F6D62A2A353700A29BF5 /* GrowthManageController.swift */,
 			);
 			path = vegegrowth_ios;
+			sourceTree = "<group>";
+		};
+		999B27F87C1A1187DC7D7EE1 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				BC454D5F9AE96470F2426F4A /* Pods_vegegrowth_ios.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B88F6FEC5E910E6502305ED8 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				59F8B2A32BB6B8B36DB4E3E2 /* Pods-vegegrowth_ios.debug.xcconfig */,
+				84F34F3D870F5DB5A4A32A98 /* Pods-vegegrowth_ios.release.xcconfig */,
+			);
+			path = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -89,9 +122,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 866C10CD2A12081500AE1D47 /* Build configuration list for PBXNativeTarget "vegegrowth_ios" */;
 			buildPhases = (
+				D38383896FAB89C26DA1BF89 /* [CP] Check Pods Manifest.lock */,
 				866C10B22A12081400AE1D47 /* Sources */,
 				866C10B32A12081400AE1D47 /* Frameworks */,
 				866C10B42A12081400AE1D47 /* Resources */,
+				E338217C221F4651EA7DD484 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -147,6 +182,48 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		D38383896FAB89C26DA1BF89 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-vegegrowth_ios-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E338217C221F4651EA7DD484 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-vegegrowth_ios/Pods-vegegrowth_ios-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-vegegrowth_ios/Pods-vegegrowth_ios-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-vegegrowth_ios/Pods-vegegrowth_ios-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		866C10B22A12081400AE1D47 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -155,9 +232,12 @@
 				866C10BA2A12081400AE1D47 /* AppDelegate.swift in Sources */,
 				867D520E2A16566100807A70 /* MainViewController.swift in Sources */,
 				86E523FC2A1212630012D10C /* img.swift in Sources */,
+				8631F6D72A2A353700A29BF5 /* GrowthManageController.swift in Sources */,
 				86E2A6D42A15DCF300D3D64C /* vegemanager.swift in Sources */,
+				866878492A2840AD005ED0A1 /* graph.swift in Sources */,
 				866C10BC2A12081400AE1D47 /* SceneDelegate.swift in Sources */,
-				86E523FA2A120FC80012D10C /* GrowthController.swift in Sources */,
+				86E523FA2A120FC80012D10C /* GrowthRegisterController.swift in Sources */,
+				8631F6D22A2A142000A29BF5 /* date.swift in Sources */,
 				867D520C2A16565C00807A70 /* slideshow.swift in Sources */,
 				86E2A6D82A15E26D00D3D64C /* tablemanager.swift in Sources */,
 				866C10C42A12081400AE1D47 /* vegegrowth_ios.xcdatamodeld in Sources */,
@@ -283,6 +363,7 @@
 		};
 		866C10CE2A12081500AE1D47 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 59F8B2A32BB6B8B36DB4E3E2 /* Pods-vegegrowth_ios.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -311,6 +392,7 @@
 		};
 		866C10CF2A12081500AE1D47 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 84F34F3D870F5DB5A4A32A98 /* Pods-vegegrowth_ios.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;

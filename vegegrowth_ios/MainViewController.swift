@@ -9,7 +9,9 @@ import UIKit
 
 class MainViewController: UIViewController,
                           UITableViewDelegate,
-                          UITableViewDataSource{
+                          UITableViewDataSource {
+    
+    @IBOutlet weak var vegetable: UITableView!
     
     var table_manager : TablemanagerClass = TablemanagerClass()
     
@@ -20,25 +22,29 @@ class MainViewController: UIViewController,
         vegetable.dataSource = self
     }
     
-    @IBOutlet weak var vegetable: UITableView!
     @IBAction func vegeadd_click(_ sender: Any) {
         var textfield = UITextField()
         let alert = UIAlertController(title: "管理する野菜の名前を入力してください",
                                       message: "",
                                       preferredStyle: .alert)
-        let action = UIAlertAction(title: "追加",style: .default) { (action) in
+        // 追加処理
+        let add_action = UIAlertAction(title: "追加",style: .default) { (action) in
             self.table_manager.add_vege(vege_text: textfield.text!)
             self.vegetable.reloadData()
         }
+        // キャンセル処理, 何もしない
+        let cancel_action = UIAlertAction(title: "キャンセル", style: .cancel) { (action) in
+        }
+    
         alert.addTextField { (alertTextField) in
             alertTextField.placeholder = "野菜の名前を入力"
             textfield = alertTextField
             
         }
-        alert.addAction(action)
+        alert.addAction(add_action)
+        alert.addAction(cancel_action)
         present(alert, animated: true, completion: nil)
     }
-    
     
     // 要素数を数える
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -65,7 +71,7 @@ class MainViewController: UIViewController,
         if segue.identifier == "vegemanager_segue" {
             if let index_path = vegetable.indexPathForSelectedRow {
                 let selected_text = vege_list[index_path.row]
-                if let destinationVC = segue.destination as? GrowthController {
+                if let destinationVC = segue.destination as? GrowthRegisterController {
                     destinationVC.vege_text = selected_text
                 }
             }

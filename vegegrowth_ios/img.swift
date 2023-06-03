@@ -11,15 +11,20 @@ import UIKit
 var vege_text_list: [String] = []
 
 class ImgClass {
-    private var vege_id: String = ""
-    private var cv: CvClass = CvClass()
+    
+    private var vege_id: String!
+    private var fix_rotateimg: UIImage!
+    private var file_name: String!
+    
+    // OpenCVがビルドできないので、後から実装
+    //private var cv: CvClass = CvClass()
     
     init(vege_id: String) {
         self.vege_id = vege_id
     }
     
     func take_img(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo
-                               info: [UIImagePickerController.InfoKey : Any]) -> UIImage? {
+                               info: [UIImagePickerController.InfoKey : Any]) -> UIImage?{
         
         picker.dismiss(animated: true)
 
@@ -30,18 +35,25 @@ class ImgClass {
         // 撮った写真を保存する
         vege_text_list = get_vege_text_list(vege_id: vege_id)
         let num = vege_text_list.count
-        let file_name = self.vege_id + "_" + String(num)
+        file_name = self.vege_id + "_" + String(num)
         print(file_name)
-        let fix_rotateimg = fix_rotate(img: img)!
-        save_img(file_name: file_name, img: fix_rotateimg)
-        vege_text_list.append(file_name)
-        UserDefaults.standard.set(vege_text_list, forKey: vege_id)
+        // 画像の回転を直す
+        fix_rotateimg = fix_rotate(img: img)!
         vege_text_list = get_vege_text_list(vege_id: vege_id)
         print(vege_text_list)
         
-        let conv_img = cv.convertColor(source: fix_rotateimg)
+        // OpenCVがビルドできないので、後から実装
+        //let conv_img = cv.convertColor(source: fix_rotateimg)
         
-        return conv_img
+        return fix_rotateimg
+    }
+    
+    func get_takeimg() -> UIImage {
+        return fix_rotateimg
+    }
+    
+    func get_filename() -> String {
+        return file_name
     }
     
     // 保存されている画像のファイル名を取得
@@ -72,6 +84,9 @@ class ImgClass {
                 print("保存できませんでした")
             }
         }
+        // ユーザーデフォルトに保存する処理
+        vege_text_list.append(file_name)
+        UserDefaults.standard.set(vege_text_list, forKey: vege_id)
     }
     
     // 画像を読み込む
@@ -90,7 +105,7 @@ class ImgClass {
         return nil
     }
     
-    // 回転を直すメソッド
+    // 回転を直す
     func fix_rotate(img: UIImage) -> UIImage? {
         guard img.imageOrientation != .up else {
             return img
