@@ -11,7 +11,7 @@ import Charts
 class GrowthManageController: UIViewController,
                               UIScrollViewDelegate{
     
-    let y_datas: [Int] = [10,20,30,40,50,60]
+    let y_datas: [Int] = [10]
     
     @IBOutlet weak var slideimg: UIImageView!
     @IBOutlet weak var graphview: LineChartView!
@@ -52,6 +52,7 @@ class GrowthManageController: UIViewController,
     // グラフの描画メソッド
     func set_linegraph() {
         let datas = graph_class.get_usergraph_list()
+        
         // グラフに描画するデータに変換
         var entries: [ChartDataEntry] = []
         var date_list: [String] = []
@@ -61,7 +62,6 @@ class GrowthManageController: UIViewController,
         }
         
         // グラフ描画
-        
         let dataset = LineChartDataSet(entries: entries)
         dataset.lineWidth = 5
         dataset.drawCirclesEnabled = true
@@ -79,14 +79,19 @@ class GrowthManageController: UIViewController,
         xaxis.drawAxisLineEnabled = false
         
         // x軸ラベルを日付にする
-    
+        
+        // X軸のラベルの数を設定
+        xaxis.labelCount = datas.count/2
+        print(datas.count / 2)
+        if datas.count / 2 == 0 {
+            xaxis.labelCount = 1
+        }
+        // 1.0で固定
+        xaxis.granularity = 1.0
         // X軸のラベルに日付を表示するためのFormatterを設定
         let formatter = ChartFormatter(date_list: date_list)
         xaxis.valueFormatter = formatter
-        // X軸のラベルの数を設定, データと同じ数にする必要あり
-        xaxis.labelCount = datas.count/2
-        // 1.0で固定
-        xaxis.granularity = 1.0
+    
         
         // y軸を0始まりに
         graphview.leftAxis.axisMinimum = 0.0
@@ -97,11 +102,11 @@ class GrowthManageController: UIViewController,
         let index = slideshow_class.get_currentindex()
         let limitLine_x = ChartLimitLine(limit: datas[index].vege_length)
         let limitLine_y = ChartLimitLine(limit: Double(index))
-        
+
         // 境界線を全て削除しないと、一生追加される
         graphview.leftAxis.removeAllLimitLines()
         graphview.xAxis.removeAllLimitLines()
-        
+
         graphview.leftAxis.addLimitLine(limitLine_x)
         graphview.xAxis.addLimitLine(limitLine_y)
     }
@@ -122,8 +127,8 @@ class GrowthManageController: UIViewController,
         // グラフ更新
         set_linegraph()
     }
-    
 }
+
 private class ChartFormatter: NSObject, IAxisValueFormatter {
     private let xAxisValues: [String]
     init (date_list: [String]) {
@@ -131,6 +136,10 @@ private class ChartFormatter: NSObject, IAxisValueFormatter {
     }
     func stringForValue(_ value: Double, axis: AxisBase?) -> String {
         let index = Int(value)
-        return xAxisValues[index]
+        if index >= 0 && index < xAxisValues.count {
+            return xAxisValues[index]
+        }
+        
+        return ""
     }
 }
