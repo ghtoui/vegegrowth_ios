@@ -82,7 +82,14 @@
                         <viewLayoutGuide key="safeArea" id="TmS-LH-lmb"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <navigationItem key="navigationItem" id="kh8-JX-xii"/>
+                    <navigationItem key="navigationItem" id="kh8-JX-xii">
+                        <barButtonItem key="rightBarButtonItem" title="成長状況" id="DW3-ay-hPx">
+                            <connections>
+                                <action selector="click_growthbutton:" destination="MUA-w9-wg1" id="xjD-4P-CtR"/>
+                                <segue destination="rXq-D8-JMd" kind="show" identifier="graphviewsegue" id="HFe-g7-yLx"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="imgview" destination="V3Q-fk-1gu" id="MoJ-2U-oZb"/>
                         <outlet property="slideimg" destination="GwZ-lg-mtd" id="SL0-sO-1pV"/>
@@ -91,6 +98,32 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SQg-Ww-ktL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1130.534351145038" y="-109.1549295774648"/>
+        </scene>
+        <!--Graph Controller-->
+        <scene sceneID="aQT-MV-faf">
+            <objects>
+                <viewController id="rXq-D8-JMd" customClass="GraphController" customModule="vegegrowth_ios" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="3Zr-PR-fYM">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xtA-Xs-csn" customClass="LineChartView" customModule="Charts">
+                                <rect key="frame" x="0.0" y="103" width="393" height="254"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="pDo-VH-f4s"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="rjm-0T-u6I"/>
+                    <connections>
+                        <outlet property="graphview" destination="xtA-Xs-csn" id="nHW-Ph-H4u"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cfu-v8-daD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1970" y="-111"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="jNp-Uh-s1t">

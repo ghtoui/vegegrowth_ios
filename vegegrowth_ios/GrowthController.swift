@@ -15,12 +15,16 @@ class GrowthController: UIViewController,
     @IBOutlet weak var imgview: UIImageView!
     @IBOutlet weak var slideimg: UIImageView!
     
-    var vege_text :String = ""
-    private var index :Int = 0
-    private var vege_id = ""
-    private var img_class: ImgClass = ImgClass(vege_id: "")
-    private var slide_show: SlideshowClass = SlideshowClass(vege_id: "")
-    private var vege_manager = VegemanagerClass()
+    public var vege_text :String!
+    private var index :Int!
+    private var vege_id: String!
+    private var graph_items: [VegeLengthObject]!
+    
+    // クラス
+    private var img_class: ImgClass!
+    private var slide_show: SlideshowClass!
+    private var vege_manager: VegemanagerClass!
+    private var graph_class: GraphClass!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,6 +37,7 @@ class GrowthController: UIViewController,
         
         img_class = ImgClass(vege_id: vege_id)
         slide_show = SlideshowClass(vege_id: vege_id)
+        graph_class = GraphClass(vege_id: vege_id)
         
         if slide_show.get_imgurl_list() != [] {
             slideimg.image = slide_show.get_showimg()
@@ -55,6 +60,7 @@ class GrowthController: UIViewController,
         let left_swipe = UISwipeGestureRecognizer(target: self, action: #selector(swipe_gesture(_:)))
         left_swipe.direction = .left
         slideimg.addGestureRecognizer(left_swipe)
+        graph_items = graph_class.get_usergraph_list(vege_id: vege_id)
     }
 
     // 撮影ボタンが押された時の処理
@@ -92,7 +98,14 @@ class GrowthController: UIViewController,
             slideimg.image = slide_show.get_showimg()
         }
     }
-
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "graphviewsegue" {
+            if let destinationVC = segue.destination as? GraphController {
+                destinationVC.vege_text = vege_text
+            }
+        }
+    }
     /*
     // MARK: - Navigation
 

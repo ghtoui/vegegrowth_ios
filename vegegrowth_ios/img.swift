@@ -11,8 +11,10 @@ import UIKit
 var vege_text_list: [String] = []
 
 class ImgClass {
-    private var vege_id: String = ""
-    private var cv: CvClass = CvClass()
+    private var vege_id: String
+    
+    // OpenCVがビルドできないので、後から実装
+    //private var cv: CvClass = CvClass()
     
     init(vege_id: String) {
         self.vege_id = vege_id
@@ -39,9 +41,10 @@ class ImgClass {
         vege_text_list = get_vege_text_list(vege_id: vege_id)
         print(vege_text_list)
         
-        let conv_img = cv.convertColor(source: fix_rotateimg)
+        // OpenCVがビルドできないので、後から実装
+        //let conv_img = cv.convertColor(source: fix_rotateimg)
         
-        return conv_img
+        return fix_rotateimg
     }
     
     // 保存されている画像のファイル名を取得
