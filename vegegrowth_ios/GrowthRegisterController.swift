@@ -99,7 +99,7 @@ class GrowthRegisterController: UIViewController,
         alert.addTextField { (alertTextField) in
             alertTextField.placeholder = "野菜の大きさを登録"
             textfield = alertTextField
-            textfield.keyboardType = .numberPad
+            textfield.keyboardType = .decimalPad
         }
         alert.addAction(register_action)
         alert.addAction(cancel_action)
