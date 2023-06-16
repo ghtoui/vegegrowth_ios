@@ -8,7 +8,7 @@
 import UIKit
 import Charts
 
-class GrowthManageController: UIViewController,
+class GrowthManageViewController: UIViewController,
                               UIScrollViewDelegate{
     
     let y_datas: [Int] = [10]

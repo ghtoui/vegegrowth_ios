@@ -6,12 +6,11 @@
 //
 
 import Foundation
-var vege_list :[String] = []
 
 class TablemanagerClass {
+    private var vege_list :[String]!
     private var vegemanager = VegemanagerClass()
     init() {
-        get_vege_list()
     }
     
     func add_vege(vege_text: String) {
@@ -20,13 +19,16 @@ class TablemanagerClass {
         set_uservegelist()
     }
     
-    func get_vege_list() {
+    func get_vege_list() -> [String] {
+        var vege_list: [String] = []
         if UserDefaults.standard.object(forKey: "vege_list") != nil {
             vege_list = UserDefaults.standard.object(forKey: "vege_list") as! [String]
         }
+        return vege_list
     }
     
     func set_uservegelist() {
         UserDefaults.standard.set(vege_list, forKey: "vege_list")
     }
+    
 }

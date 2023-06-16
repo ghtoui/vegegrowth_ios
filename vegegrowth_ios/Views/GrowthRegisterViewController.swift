@@ -7,7 +7,8 @@
 
 import UIKit
 
-class GrowthRegisterController: UIViewController,
+
+class GrowthRegisterViewController: UIViewController,
                                 UIImagePickerControllerDelegate,
                                 UINavigationControllerDelegate {
 
@@ -51,8 +52,6 @@ class GrowthRegisterController: UIViewController,
             image_picker.sourceType = .camera
             image_picker.delegate = self
             self.present(image_picker, animated: true, completion: nil)
-        } else {
-            print("カメラが無いです")
         }
     }
     
