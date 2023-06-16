@@ -6,7 +6,7 @@
 //
 
 import Foundation
-import UIKit
+import class UIKit.UIImage
 
 // スライドショーを行うクラス
 class SlideshowClass {

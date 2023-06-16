@@ -11,10 +11,10 @@ import Charts
 class GrowthManageViewController: UIViewController,
                               UIScrollViewDelegate{
     
-    let y_datas: [Int] = [10]
-    
     @IBOutlet weak var slideimg: UIImageView!
     @IBOutlet weak var graphview: LineChartView!
+    
+    public var viewModel: GrowthManageViewModel!
     
     public var vege_text: String!
     public var vege_id: String!

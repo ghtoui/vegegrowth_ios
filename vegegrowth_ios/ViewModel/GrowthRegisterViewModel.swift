@@ -6,3 +6,24 @@
 //
 
 import Foundation
+
+protocol GrowthRegisterViewModelInputs {
+    
+}
+
+protocol GrowthRegisterViewModelOutputs {
+}
+
+protocol GrowthRegisterViewModelType {
+    var inputs: GrowthRegisterViewModelInputs { get }
+    var outputs: GrowthRegisterViewModelOutputs { get }
+}
+
+class GrowthRegisterViewModel: GrowthRegisterViewModelType, GrowthRegisterViewModelInputs, GrowthRegisterViewModelOutputs {
+    var inputs: GrowthRegisterViewModelInputs { return self }
+    var outputs: GrowthRegisterViewModelOutputs { return self }
+    
+    init() {
+        
+    }
+}

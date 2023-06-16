@@ -15,8 +15,9 @@ class GrowthRegisterViewController: UIViewController,
     @IBOutlet weak var imgview: UIImageView!
     @IBOutlet weak var register_button: UIButton!
     
-    public var vege_text :String!
+    private var vegeText :String!
     private var vege_id: String!
+    private let viewModel: GrowthRegisterViewModelType = GrowthRegisterViewModel()
     
     // クラス
     private var img_class: ImgClass!
@@ -29,7 +30,7 @@ class GrowthRegisterViewController: UIViewController,
         
         // クラスの生成
         // 野菜の名前に紐づけられたユニークIDを取得する
-        vege_id = vege_id_dict[vege_text]!
+        vege_id = vege_id_dict[vegeText]!
         
         img_class = ImgClass(vege_id: vege_id)
         graph_class = GraphClass(vege_id: vege_id)
@@ -41,8 +42,12 @@ class GrowthRegisterViewController: UIViewController,
 
         // タイトル変更(タップしたラベルを反映する)
         // navigationcontrollerを使っている
-        navigationItem.title = vege_text
+        navigationItem.title = vegeText
         register_button.isHidden = true
+    }
+    
+    public func setVegeText(vegeText: String) {
+        self.vegeText = vegeText
     }
 
     // 撮影ボタンが押された時の処理
@@ -66,8 +71,8 @@ class GrowthRegisterViewController: UIViewController,
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "graphviewsegue" {
-            if let destinationVC = segue.destination as? GrowthManageController {
-                destinationVC.vege_text = vege_text
+            if let destinationVC = segue.destination as? GrowthManageViewController {
+                destinationVC.vege_text = vegeText
             }
         }
     }
