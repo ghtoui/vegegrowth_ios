@@ -8,27 +8,39 @@
 import Foundation
 
 class TablemanagerClass {
-    private var vege_list :[String]!
+    private var vegeList :[String]!
     private var vegemanager = VegemanagerClass()
+    
     init() {
+        vegeList = getVegeList()
+    }
+    public func addVege(vegeText: String) {
+        vegeList.append(vegeText)
+        vegemanager.addVegeIdDict(vegeText: vegeText)
+        setUserVegeList()
     }
     
-    func add_vege(vege_text: String) {
-        vege_list.append(vege_text)
-        vegemanager.add_vege_id(vege_text: vege_text)
-        set_uservegelist()
-    }
-    
-    func get_vege_list() -> [String] {
-        var vege_list: [String] = []
+    public func getVegeList() -> [String] {
+        var vegeList: [String] = []
         if UserDefaults.standard.object(forKey: "vege_list") != nil {
-            vege_list = UserDefaults.standard.object(forKey: "vege_list") as! [String]
+            vegeList = UserDefaults.standard.object(forKey: "vege_list") as! [String]
         }
-        return vege_list
+        
+        if UserDefaults.standard.object(forKey: "vegeList") != nil {
+            vegeList = UserDefaults.standard.object(forKey: "vegeList") as! [String]
+        }
+        return vegeList
     }
     
-    func set_uservegelist() {
-        UserDefaults.standard.set(vege_list, forKey: "vege_list")
+    public func setUserVegeList() {
+        UserDefaults.standard.set(vegeList, forKey: "vegeList")
+        UserDefaults.standard.set(vegeList, forKey: "vege_list")
     }
     
+    public func deleteItem(index: Int) {
+        let vegeText: String = vegeList[index]
+        vegeList.remove(at: index)
+        vegemanager.deleteItem(vegeText: vegeText)
+        setUserVegeList()
+    }
 }

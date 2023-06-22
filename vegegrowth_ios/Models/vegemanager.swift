@@ -7,33 +7,45 @@
 
 import Foundation
 
-var vege_id_dict: [String: String] = [:]
-
 class VegemanagerClass {
+    private var VegeIdDict: [String: String]!
     
     init() {
-        get_vegeid_dict()
+        VegeIdDict = getVegeIdDict()
     }
-    
-    func unique_id() -> String {
+    public func uniqueId() -> String {
         let uuid = UUID().uuidString
         return uuid
     }
     
     // 追加する名前とユニークIDを紐付ける
-    func add_vege_id(vege_text: String) {
-        let uuid = unique_id()
-        vege_id_dict[vege_text] = uuid
-        set_uservegeid_dict()
+    public func addVegeIdDict(vegeText: String) {
+        VegeIdDict = getVegeIdDict()
+        let uuid = uniqueId()
+        VegeIdDict[vegeText] = uuid
+        SetUserVegeIdDict()
     }
     
-    func get_vegeid_dict() {
+    public func getVegeIdDict() -> [String: String] {
+        VegeIdDict = [: ]
         if UserDefaults.standard.object(forKey: "vegeid_dict") != nil {
-            vege_id_dict = UserDefaults.standard.object(forKey: "vegeid_dict") as! [String: String]
+            VegeIdDict = (UserDefaults.standard.object(forKey: "vegeid_dict") as! [String: String])
         }
+        
+        if UserDefaults.standard.object(forKey: "vegeIdDict") != nil {
+            VegeIdDict = (UserDefaults.standard.object(forKey: "vegeIdDict") as! [String: String])
+        }
+        
+        return VegeIdDict
     }
     
-    func set_uservegeid_dict() {
-        UserDefaults.standard.set(vege_id_dict, forKey: "vegeid_dict")
+    public func SetUserVegeIdDict() {
+        UserDefaults.standard.set(VegeIdDict, forKey: "vegeIdDict")
+        UserDefaults.standard.set(VegeIdDict, forKey: "vegeid_dict")
+    }
+    
+    public func deleteItem(vegeText: String) {
+        VegeIdDict = getVegeIdDict()
+        VegeIdDict.removeValue(forKey: vegeText)
     }
 }
