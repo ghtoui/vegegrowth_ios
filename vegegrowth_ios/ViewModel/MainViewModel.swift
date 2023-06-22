@@ -60,7 +60,7 @@ final class MainViewModel: MainViewModelType,
     private let labelTextRelay = PublishRelay<String>()
     
     init() {
-        tableDataRelay.accept(tableManager.get_vege_list())
+        getData()
         
         addButtonTapped
             .subscribe(onNext: { [weak self] _ in
@@ -96,15 +96,14 @@ final class MainViewModel: MainViewModelType,
     
     // 削除処理
     private func deleteItem(index: Int) {
-        let data = getData()
-        tableDataRelay.accept(data)
+        tableManager.deleteItem(index: index)
+        getData()
     }
     
     // テキスト追加処理
     private func addTextButtonTapped(text: String) {
-        var data = getData()
-        data.append(text)
-        tableDataRelay.accept(data)
+        tableManager.addVege(vegeText: text)
+        getData()
     }
     
     // テーブルの各要素のデータを取得
@@ -113,7 +112,7 @@ final class MainViewModel: MainViewModelType,
     }
     
     // データの取得
-    private func getData() -> [String] {
-        return tableManager.get_vege_list()
+    private func getData() {
+        tableDataRelay.accept(tableManager.getVegeList())
     }
 }
