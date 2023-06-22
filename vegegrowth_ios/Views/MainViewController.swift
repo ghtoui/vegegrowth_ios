@@ -12,11 +12,9 @@ final class MainViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var addButton: UIBarButtonItem!
-    @IBOutlet weak var labelText: UILabel!
     
     private let disposeBag = DisposeBag()
     private var viewModel: MainViewModelType
-    
     
     required init?(coder: NSCoder) {
         self.viewModel = MainViewModel()

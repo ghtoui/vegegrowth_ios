@@ -20,13 +20,6 @@
                                 <rect key="frame" x="0.0" y="92" width="414" height="804"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <label key="tableFooterView" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="XX3-L2-H0F">
-                                    <rect key="frame" x="0.0" y="121.66666793823242" width="414" height="44"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                    <nil key="textColor"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="vegeCell" id="48y-rX-Brf">
                                         <rect key="frame" x="0.0" y="50" width="414" height="43.666667938232422"/>
@@ -47,9 +40,8 @@
                     </navigationItem>
                     <connections>
                         <outlet property="addButton" destination="gbV-5R-J9Y" id="Uxu-4r-jBF"/>
-                        <outlet property="labelText" destination="XX3-L2-H0F" id="dKU-Vb-Syu"/>
                         <outlet property="tableView" destination="ZMN-vS-Blq" id="ZWD-lQ-FEy"/>
-                        <segue destination="MUA-w9-wg1" kind="show" identifier="toGrowthRegister" id="DOt-04-ntI"/>
+                        <segue destination="MUA-w9-wg1" kind="show" id="9cf-Na-5gg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8AR-e6-sx7" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -73,34 +65,26 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="撮影する"/>
-                                <connections>
-                                    <action selector="takebutton_click:" destination="MUA-w9-wg1" eventType="touchUpInside" id="KfV-9G-H9w"/>
-                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n51-sr-ZWm">
                                 <rect key="frame" x="151" y="453" width="94" height="35"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="登録する"/>
-                                <connections>
-                                    <action selector="click_registerbutton:" destination="MUA-w9-wg1" eventType="touchUpInside" id="7cp-nl-olY"/>
-                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="TmS-LH-lmb"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <navigationItem key="navigationItem" id="kh8-JX-xii">
-                        <barButtonItem key="rightBarButtonItem" title="成長状況" id="DW3-ay-hPx">
-                            <connections>
-                                <action selector="click_growthbutton:" destination="MUA-w9-wg1" id="xjD-4P-CtR"/>
-                                <segue destination="rXq-D8-JMd" kind="show" identifier="graphviewsegue" id="HFe-g7-yLx"/>
-                            </connections>
-                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="成長状況" id="DW3-ay-hPx"/>
                     </navigationItem>
                     <connections>
-                        <outlet property="imgview" destination="V3Q-fk-1gu" id="AHd-r0-dgo"/>
-                        <outlet property="register_button" destination="n51-sr-ZWm" id="YUC-VW-BoW"/>
+                        <outlet property="imgView" destination="V3Q-fk-1gu" id="mFJ-cr-bRJ"/>
+                        <outlet property="moveToManagerButton" destination="DW3-ay-hPx" id="2sd-yE-xS6"/>
+                        <outlet property="registerButton" destination="n51-sr-ZWm" id="pux-vb-QpL"/>
+                        <outlet property="takePicButton" destination="BPK-N4-3bF" id="SCl-ol-Sk3"/>
+                        <segue destination="rXq-D8-JMd" kind="show" id="327-3x-lPm"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SQg-Ww-ktL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
