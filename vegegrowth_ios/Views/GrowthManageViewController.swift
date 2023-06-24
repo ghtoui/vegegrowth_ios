@@ -7,17 +7,21 @@
 
 import UIKit
 import Charts
+import RxSwift
+import RxCocoa
 
-class GrowthManageViewController: UIViewController,
-                              UIScrollViewDelegate{
+class GrowthManageViewController: UIViewController {
     
-    @IBOutlet weak var slideimg: UIImageView!
-    @IBOutlet weak var graphview: LineChartView!
+    @IBOutlet weak var slideImg: UIImageView!
+    @IBOutlet weak var graphView: LineChartView!
     
-    public var viewModel: GrowthManageViewModel!
+    private var rightSwipe: UISwipeGestureRecognizer!
+    private var leftSwipe: UISwipeGestureRecognizer!
     
-    public var vege_text: String!
-    public var vege_id: String!
+    private var viewModel: GrowthManageViewModelType = GrowthManageViewModel()
+    private let disposeBag = DisposeBag()
+    
+    private var vege_id: String!
 
     private var graph_class: GraphClass!
     private var slideshow_class: SlideshowClass!
@@ -26,38 +30,73 @@ class GrowthManageViewController: UIViewController,
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
-        // クラスの生成
-        vege_id = vege_id_dict[vege_text]!
-        
-        graph_class = GraphClass(vege_id: vege_id)
-        
-        slideshow_class = SlideshowClass(vege_id: vege_id)
-        if slideshow_class.get_imgurl_list() != [] {
-            slideimg.image = slideshow_class.get_showimg()
-        }
         
         // swipe処理を行う準備
         // 右スワイプを準備
-        let right_swipe = UISwipeGestureRecognizer(target: self, action: #selector(swipe_gesture(_:)))
-        right_swipe.direction = .right
-        slideimg.addGestureRecognizer(right_swipe)
-        // 左スワイプを準備
-        let left_swipe = UISwipeGestureRecognizer(target: self, action: #selector(swipe_gesture(_:)))
-        left_swipe.direction = .left
-        slideimg.addGestureRecognizer(left_swipe)
+        rightSwipe = UISwipeGestureRecognizer()
+        rightSwipe.direction = .right
+        slideImg.addGestureRecognizer(rightSwipe)
         
-        set_linegraph()
+        // 左スワイプを準備
+        leftSwipe = UISwipeGestureRecognizer()
+        leftSwipe.direction = .left
+        slideImg.addGestureRecognizer(leftSwipe)
+        
+        updateLineChart()
+        bind()
     }
     
+    
+    // 画面遷移してくる時用
+    // 本当はinitでできると良いが...
+    public func setVegeText(vegeText: String) {
+        print(vegeText)
+        // タイトル変更(タップしたラベルを反映する)
+        // navigationcontrollerを使っている
+        navigationItem.title = vegeText
+        viewModel.inputs.vegeText.accept(vegeText)
+    }
+    
+    private func bind() {
+        viewModel.outputs.slideImg
+            .drive(slideImg.rx.image)
+            .disposed(by: disposeBag)
+        
+        rightSwipe.rx.event
+            .subscribe(onNext : { [weak self] gesture in
+                let direction = gesture.direction
+                if (direction == .left) {
+                    // 左方向
+                    self?.viewModel.inputs.leftSwipe.accept(())
+                } else if (direction == .right) {
+                    // 右方向
+                    self?.viewModel.inputs.rightSwipe.accept(())
+                }
+                // グラフ更新
+                self?.updateLineChart()
+            })
+            .disposed(by: disposeBag)
+    }
     // グラフの描画メソッド
-    func set_linegraph() {
-        let datas = graph_class.get_usergraph_list()
+    // データの取得はViewModelがやるべき
+    func updateLineChart() {
+        var datas = viewModel.outputs.getDatas()
+//        datas = [VegeLengthObject(date: "2000-01-01",
+//            vegeLength: 3,
+//            x:0
+//        ),VegeLengthObject(date: "2000-01-02",
+//            vegeLength: 3,
+//            x:1
+//        ),VegeLengthObject(date: "2000-01-01",
+//            vegeLength: 3,
+//            x:2
+//        )]
         
         // グラフに描画するデータに変換
         var entries: [ChartDataEntry] = []
         var date_list: [String] = []
         for item in datas {
-            entries.append(ChartDataEntry(x: Double(item.x), y: Double(item.vege_length)))
+            entries.append(ChartDataEntry(x: Double(item.x), y: Double(item.vegeLength)))
             date_list.append(item.date)
         }
         
@@ -67,11 +106,11 @@ class GrowthManageViewController: UIViewController,
         dataset.drawCirclesEnabled = true
         dataset.circleRadius = 4
         dataset.circleColors = [UIColor.lightGray]
-        graphview.data = LineChartData(dataSet: dataset)
+        graphView.data = LineChartData(dataSet: dataset)
         
         // グラフの設定
         // x軸オブジェクトを取得
-        let xaxis = graphview.xAxis
+        let xaxis = graphView.xAxis
         // x軸のラベルを下に設定
         xaxis.labelPosition = .bottom
         // x軸のグリッド線非表示
@@ -94,21 +133,22 @@ class GrowthManageViewController: UIViewController,
     
         
         // y軸を0始まりに
-        graphview.leftAxis.axisMinimum = 0.0
+        graphView.leftAxis.axisMinimum = 0.0
         // 右側のy軸を非表示
-        graphview.rightAxis.enabled = false
+        graphView.rightAxis.enabled = false
         
         // 境界線を利用して、スライドショーに表示されている画像と関連させる
-        let index = slideshow_class.get_currentindex()
-        let limitLine_x = ChartLimitLine(limit: datas[index].vege_length)
+//        let index = slideshow_class.getCurrentIndex()
+        let index = 0
+        let limitLine_x = ChartLimitLine(limit: datas[index].vegeLength)
         let limitLine_y = ChartLimitLine(limit: Double(index))
 
         // 境界線を全て削除しないと、一生追加される
-        graphview.leftAxis.removeAllLimitLines()
-        graphview.xAxis.removeAllLimitLines()
+        graphView.leftAxis.removeAllLimitLines()
+        graphView.xAxis.removeAllLimitLines()
 
-        graphview.leftAxis.addLimitLine(limitLine_x)
-        graphview.xAxis.addLimitLine(limitLine_y)
+        graphView.leftAxis.addLimitLine(limitLine_x)
+        graphView.xAxis.addLimitLine(limitLine_y)
     }
     
     // スワイプされた時の処理
@@ -117,15 +157,15 @@ class GrowthManageViewController: UIViewController,
         let direction = gesture.direction
         if (direction == .left) {
             // 左方向
-            slideshow_class.show_next_img()
-            slideimg.image = slideshow_class.get_showimg()
+            slideshow_class.showNextImg()
+            slideImg.image = slideshow_class.getShowImg()
         } else if (direction == .right) {
             // 右方向
-            slideshow_class.show_prev_img()
-            slideimg.image = slideshow_class.get_showimg()
+            slideshow_class.showPrevImg()
+            slideImg.image = slideshow_class.getShowImg()
         }
         // グラフ更新
-        set_linegraph()
+        updateLineChart()
     }
 }
 

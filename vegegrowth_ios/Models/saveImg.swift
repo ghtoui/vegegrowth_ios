@@ -6,21 +6,20 @@
 //
 
 import Foundation
-import UIKit
+import UIKit.UIImage
 
-var vege_text_list: [String] = []
 
 class ImgClass {
-    
-    private var vege_id: String!
-    private var fix_rotateimg: UIImage!
-    private var file_name: String!
+    private var vegeId: String!
+    private var fixRotateImg: UIImage!
+    private var fileName: String!
+    private var vegeTextList: [String]!
     
     // OpenCVがビルドできないので、後から実装
     //private var cv: CvClass = CvClass()
     
-    init(vege_id: String) {
-        self.vege_id = vege_id
+    init(vegeId: String) {
+        self.vegeId = vegeId
     }
     
     func take_img(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo
@@ -33,49 +32,49 @@ class ImgClass {
             return nil
         }
         // 撮った写真を保存する
-        vege_text_list = get_vege_text_list(vege_id: vege_id)
-        let num = vege_text_list.count
-        file_name = self.vege_id + "_" + String(num)
-        print(file_name)
+        vegeTextList = getVegeTextList(vegeId: vegeId)
+        let num = vegeTextList.count
+        fileName = self.vegeId + "_" + String(num)
+        print(fileName)
         // 画像の回転を直す
-        fix_rotateimg = fix_rotate(img: img)!
-        vege_text_list = get_vege_text_list(vege_id: vege_id)
-        print(vege_text_list)
+        fixRotateImg = fix_rotate(img: img)!
+        vegeTextList = getVegeTextList(vegeId: vegeId)
+        print(vegeTextList)
         
         // OpenCVがビルドできないので、後から実装
         //let conv_img = cv.convertColor(source: fix_rotateimg)
         
-        return fix_rotateimg
+        return fixRotateImg
     }
     
-    func get_takeimg() -> UIImage {
-        return fix_rotateimg
+    func getTakeImg() -> UIImage {
+        return fixRotateImg
     }
     
-    func get_filename() -> String {
-        return file_name
+    func getFileName() -> String {
+        return fileName
     }
     
     // 保存されている画像のファイル名を取得
-    func get_vege_text_list(vege_id: String) -> [String]{
-        if UserDefaults.standard.object(forKey: vege_id) != nil {
-            vege_text_list = UserDefaults.standard.object(forKey: vege_id) as! [String]
+    func getVegeTextList(vegeId: String) -> [String]{
+        if UserDefaults.standard.object(forKey: vegeId) != nil {
+            vegeTextList = UserDefaults.standard.object(forKey: vegeId) as! [String]
         } else {
-            vege_text_list = []
+            vegeTextList = []
         }
-        return vege_text_list
+        return vegeTextList
     }
     
     // 画像のファイル名からURLを生成
-    func get_url(file_name: String) -> URL {
+    func getImgURL(fileName: String) -> URL {
         let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
-        let file_url = documentsDirectory.appendingPathComponent(file_name)
-        return file_url
+        let fileURL = documentsDirectory.appendingPathComponent(fileName)
+        return fileURL
     }
     
     // 画像を保存
-    func save_img(file_name: String, img: UIImage) {
-        let file_url = get_url(file_name: file_name)
+    func saveImg(file_name: String, img: UIImage) {
+        let file_url = getImgURL(fileName: file_name)
         if let img_data = img.pngData() {
             do {
                 try img_data.write(to: file_url)
@@ -85,13 +84,13 @@ class ImgClass {
             }
         }
         // ユーザーデフォルトに保存する処理
-        vege_text_list.append(file_name)
-        UserDefaults.standard.set(vege_text_list, forKey: vege_id)
+        vegeTextList.append(file_name)
+        UserDefaults.standard.set(vegeTextList, forKey: vegeId)
     }
     
     // 画像を読み込む
     func load_img(file_name: String) -> UIImage? {
-        let file_url = get_url(file_name: file_name).path
+        let file_url = getImgURL(fileName: file_name).path
         
         if FileManager.default.fileExists(atPath: file_url) {
             if let img = UIImage(contentsOfFile: file_url) {
