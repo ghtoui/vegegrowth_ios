@@ -16,7 +16,7 @@ class GrowthRegisterViewController: UIViewController {
     @IBOutlet weak var takePicButton: UIButton!
     @IBOutlet weak var registerButton: UIButton!
     
-    private var vegeText :String!
+    private var vegeText: String!
     private let viewModel: GrowthRegisterViewModelType = GrowthRegisterViewModel()
     private let disposeBag = DisposeBag()
     
@@ -26,7 +26,12 @@ class GrowthRegisterViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        
+    
+        registerButton.isHidden = true
+        bind()
+    }
+
+    private func bind() {
         viewModel.inputs.isRegisterButton.accept(false)
         
         takePicButton.rx.tap
@@ -43,12 +48,15 @@ class GrowthRegisterViewController: UIViewController {
             }
             .bind(to: imgView.rx.image)
             .disposed(by: disposeBag)
-    
-        registerButton.isHidden = true
-        bind()
-    }
-
-    private func bind() {
+        
+        moveToManagerButton.rx.tap
+            .subscribe(onNext: {[weak self] _ in
+                if let vegeText = self?.vegeText, !vegeText.isEmpty {
+                    print(vegeText)
+                    self?.goTo(vegeText: vegeText)
+                }
+            })
+            .disposed(by: disposeBag)
         
         takePicButton.isEnabled = UIImagePickerController.isSourceTypeAvailable(.camera)
 
@@ -93,6 +101,7 @@ class GrowthRegisterViewController: UIViewController {
     // 本当はinitでできると良いが...
     public func setVegeText(vegeText: String) {
         print(vegeText)
+        self.vegeText = vegeText
         // タイトル変更(タップしたラベルを反映する)
         // navigationcontrollerを使っている
         navigationItem.title = vegeText
@@ -164,6 +173,13 @@ class GrowthRegisterViewController: UIViewController {
         alert.addAction(register_action)
         alert.addAction(cancel_action)
         present(alert, animated: true, completion: nil)
+    }
+    
+    private func goTo(vegeText: String) {
+        if let destVC = storyboard?.instantiateViewController(withIdentifier: "GrowthManagerView") as? GrowthManageViewController {
+            destVC.setVegeText(vegeText: vegeText)
+            navigationController?.pushViewController(destVC, animated: true)
+        }
     }
     
     /*

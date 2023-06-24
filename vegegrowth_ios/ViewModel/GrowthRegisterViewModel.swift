@@ -48,7 +48,7 @@ class GrowthRegisterViewModel: GrowthRegisterViewModelType, GrowthRegisterViewMo
     var showAlert = PublishRelay<Void>()
     var cameraAlert = PublishRelay<Void>()
     
-    private let vegeManager = VegemanagerClass()
+    private let vegeManager = VegeManagerClass()
     private let disposeBag = DisposeBag()
     private var imgClass: ImgClass!
     private var graphClass: GraphClass!
@@ -73,8 +73,8 @@ class GrowthRegisterViewModel: GrowthRegisterViewModelType, GrowthRegisterViewMo
         // vegeIdに対応したvegeTextListも持ってくる
         vegeId
             .subscribe(onNext: { [weak self] vegeId in
-                self?.imgClass = ImgClass(vege_id: vegeId)
-                self?.graphClass = GraphClass(vege_id: vegeId)
+                self?.imgClass = ImgClass(vegeId: vegeId)
+                self?.graphClass = GraphClass(vegeId: vegeId)
             })
             .disposed(by: disposeBag)
         
