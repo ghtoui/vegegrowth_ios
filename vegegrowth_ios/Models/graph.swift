@@ -9,68 +9,69 @@ import Foundation
 import Charts
 
 class GraphClass {
-    private var vege_id : String
-    private var vege_length_list : [VegeLengthObject]!
-    private var date_class : DateClass = DateClass()
+    private var vegeId : String
+    private var vegeLengthList : [VegeLengthObject]!
+    private var dateClass : DateClass = DateClass()
     
-    init(vege_id: String) {
-        self.vege_id = vege_id
-        vege_length_list = []
+    init(vegeId: String) {
+        self.vegeId = vegeId
+        vegeLengthList = []
     }
     
     // 野菜の大きさ管理のリストに追加する
-    func add_vege_length(length: Double) {
-        let date = date_class.get_date()
-        vege_length_list = get_usergraph_list()
-        vege_length_list.append(VegeLengthObject(date: date,
-                                                 vege_length: length,
-                                                 x: Double(vege_length_list.count)))
-        set_usergraph_list()
+    func addVegeLength(length: Double) {
+        let date = dateClass.get_date()
+        vegeLengthList = getUserGraphList()
+        vegeLengthList.append(VegeLengthObject(date: date,
+                                                 vegeLength: length,
+                                                 x: Double(vegeLengthList.count)))
+        setUserGraphList()
     }
     
     // 野菜の長さのリストをユーザーデフォルトに保存
-    func set_usergraph_list() {
-        var vegelengthobject_list: [[String: Any]] = []
-        for item in vege_length_list {
-            let vegelengthobject: [String: Any] = [
+    func setUserGraphList() {
+        var vegeLengthObjectList: [[String: Any]] = []
+        for item in vegeLengthList {
+            let vegeLengthObject: [String: Any] = [
                 "date": item.date,
-                "vege_length": item.vege_length,
+                "vegeLength": item.vegeLength,
                 "x": item.x
             ]
-            vegelengthobject_list.append(vegelengthobject)
+            vegeLengthObjectList.append(vegeLengthObject)
         }
-        let vege_length_id = get_vegelength_id()
-        UserDefaults.standard.set(vegelengthobject_list, forKey: vege_length_id)
+        let vegeLengthId = getVegeLengthList()
+        UserDefaults.standard.set(vegeLengthObjectList, forKey: vegeLengthId)
     }
     
     // ユーザーデフォルトから野菜の長さのリストを取得
-    func get_usergraph_list() -> [VegeLengthObject] {
-        var vegelengthobject_list: [[String: Any]]!
-        var vege_length_list: [VegeLengthObject] = []
-        let vege_length_id = get_vegelength_id()
-        if UserDefaults.standard.object(forKey: vege_length_id) != nil {
-            vegelengthobject_list = UserDefaults.standard.object(forKey: vege_length_id) as? [[String: Any]]
+    func getUserGraphList() -> [VegeLengthObject] {
+        var vegeLengthObjectList: [[String: Any]]!
+        var vegeLengthList: [VegeLengthObject] = []
+        let vegeLengthId = getVegeLengthList()
+        if UserDefaults.standard.object(forKey: vegeLengthId) != nil {
+            vegeLengthObjectList = UserDefaults.standard.object(forKey: vegeLengthId) as? [[String: Any]]
         } else {
             return []
         }
-        for item in vegelengthobject_list {
+        for item in vegeLengthObjectList {
             guard let date = item["date"] as? String,
-                  let vege_length = item["vege_length"] as? Double,
+                  let vegeLength = item["vegeLength"] as? Double,
                   let x = item["x"] as? Double else {
                 continue
             }
-            let vegelengthobject = VegeLengthObject(date: date,
-                                                    vege_length: vege_length,
+            let vegeLengthObject = VegeLengthObject(date: date,
+                                                    vegeLength: vegeLength,
                                                     x: x)
-            vege_length_list.append(vegelengthobject)
+            vegeLengthList.append(vegeLengthObject)
         }
-        return vege_length_list
+        return vegeLengthList
     }
     
     // 野菜の大きさにアクセスするためのIDを生成
-    private func get_vegelength_id() -> String {
-        let vege_length_id = vege_id + "_lengthlist"
-        return vege_length_id
+    private func getVegeLengthList() -> String {
+//        let vegeLengthId = vegeId + "_LengthList"
+        let vegeLengthId = vegeId + "_lengthlist"
+        return vegeLengthId
     }
 }
 
@@ -80,6 +81,6 @@ class GraphClass {
 // x: 何個目か
 struct VegeLengthObject {
     var date: String
-    var vege_length: Double
+    var vegeLength: Double
     var x: Double
 }

@@ -27,7 +27,7 @@
 		86E2A6D42A15DCF300D3D64C /* vegemanager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86E2A6D32A15DCF300D3D64C /* vegemanager.swift */; };
 		86E2A6D82A15E26D00D3D64C /* tablemanager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86E2A6D72A15E26D00D3D64C /* tablemanager.swift */; };
 		86E523FA2A120FC80012D10C /* GrowthRegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86E523F92A120FC80012D10C /* GrowthRegisterViewController.swift */; };
-		86E523FC2A1212630012D10C /* img.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86E523FB2A1212630012D10C /* img.swift */; };
+		86E523FC2A1212630012D10C /* saveImg.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86E523FB2A1212630012D10C /* saveImg.swift */; };
 		FBFFFE399CC690F0898761E4 /* Pods_vegegrowth_ios.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC454D5F9AE96470F2426F4A /* Pods_vegegrowth_ios.framework */; };
 /* End PBXBuildFile section */
 
@@ -52,7 +52,7 @@
 		86E2A6D32A15DCF300D3D64C /* vegemanager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = vegemanager.swift; sourceTree = "<group>"; };
 		86E2A6D72A15E26D00D3D64C /* tablemanager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tablemanager.swift; sourceTree = "<group>"; };
 		86E523F92A120FC80012D10C /* GrowthRegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrowthRegisterViewController.swift; sourceTree = "<group>"; };
-		86E523FB2A1212630012D10C /* img.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = img.swift; sourceTree = "<group>"; };
+		86E523FB2A1212630012D10C /* saveImg.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = saveImg.swift; sourceTree = "<group>"; };
 		BC454D5F9AE96470F2426F4A /* Pods_vegegrowth_ios.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_vegegrowth_ios.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -77,7 +77,7 @@
 			children = (
 				86E2A6D32A15DCF300D3D64C /* vegemanager.swift */,
 				86E2A6D72A15E26D00D3D64C /* tablemanager.swift */,
-				86E523FB2A1212630012D10C /* img.swift */,
+				86E523FB2A1212630012D10C /* saveImg.swift */,
 				867D520B2A16565C00807A70 /* slideshow.swift */,
 				866878482A2840AD005ED0A1 /* graph.swift */,
 				8631F6D12A2A142000A29BF5 /* date.swift */,
@@ -282,7 +282,7 @@
 			files = (
 				866C10BA2A12081400AE1D47 /* AppDelegate.swift in Sources */,
 				867D520E2A16566100807A70 /* MainViewController.swift in Sources */,
-				86E523FC2A1212630012D10C /* img.swift in Sources */,
+				86E523FC2A1212630012D10C /* saveImg.swift in Sources */,
 				8631F6D72A2A353700A29BF5 /* GrowthManageViewController.swift in Sources */,
 				86E2A6D42A15DCF300D3D64C /* vegemanager.swift in Sources */,
 				864443002A35EECC00556BD9 /* GrowthRegisterViewModel.swift in Sources */,

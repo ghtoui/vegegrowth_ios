@@ -7,7 +7,7 @@
 
 import Foundation
 
-class VegemanagerClass {
+class VegeManagerClass {
     private var VegeIdDict: [String: String]!
     
     init() {

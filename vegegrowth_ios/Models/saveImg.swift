@@ -35,11 +35,9 @@ class ImgClass {
         vegeTextList = getVegeTextList(vegeId: vegeId)
         let num = vegeTextList.count
         fileName = self.vegeId + "_" + String(num)
-        print(fileName)
         // 画像の回転を直す
-        fixRotateImg = fix_rotate(img: img)!
+        fixRotateImg = fixRotate(img: img)!
         vegeTextList = getVegeTextList(vegeId: vegeId)
-        print(vegeTextList)
         
         // OpenCVがビルドできないので、後から実装
         //let conv_img = cv.convertColor(source: fix_rotateimg)
@@ -58,7 +56,7 @@ class ImgClass {
     // 保存されている画像のファイル名を取得
     func getVegeTextList(vegeId: String) -> [String]{
         if UserDefaults.standard.object(forKey: vegeId) != nil {
-            vegeTextList = UserDefaults.standard.object(forKey: vegeId) as! [String]
+            vegeTextList = UserDefaults.standard.object(forKey: vegeId) as? [String]
         } else {
             vegeTextList = []
         }
@@ -73,8 +71,8 @@ class ImgClass {
     }
     
     // 画像を保存
-    func saveImg(file_name: String, img: UIImage) {
-        let file_url = getImgURL(fileName: file_name)
+    func saveImg(fileName: String, img: UIImage) {
+        let file_url = getImgURL(fileName: fileName)
         if let img_data = img.pngData() {
             do {
                 try img_data.write(to: file_url)
@@ -84,28 +82,28 @@ class ImgClass {
             }
         }
         // ユーザーデフォルトに保存する処理
-        vegeTextList.append(file_name)
+        vegeTextList.append(fileName)
         UserDefaults.standard.set(vegeTextList, forKey: vegeId)
     }
     
     // 画像を読み込む
-    func load_img(file_name: String) -> UIImage? {
-        let file_url = getImgURL(fileName: file_name).path
+    func loadImg(fileName: String) -> UIImage? {
+        let imgFileURL = getImgURL(fileName: fileName).path
         
-        if FileManager.default.fileExists(atPath: file_url) {
-            if let img = UIImage(contentsOfFile: file_url) {
-                print("\(file_url)は読み込めました")
+        if FileManager.default.fileExists(atPath: imgFileURL) {
+            if let img = UIImage(contentsOfFile: imgFileURL) {
+                print("\(imgFileURL)は読み込めました")
                 return img
             }
         } else {
-            print("\(file_url)は読み込めませんでした")
+            print("\(imgFileURL)は読み込めませんでした")
             return nil
         }
         return nil
     }
     
     // 回転を直す
-    func fix_rotate(img: UIImage) -> UIImage? {
+    func fixRotate(img: UIImage) -> UIImage? {
         guard img.imageOrientation != .up else {
             return img
         }

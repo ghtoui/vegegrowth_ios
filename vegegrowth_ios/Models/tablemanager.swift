@@ -9,7 +9,7 @@ import Foundation
 
 class TablemanagerClass {
     private var vegeList :[String]!
-    private var vegemanager = VegemanagerClass()
+    private var vegemanager = VegeManagerClass()
     
     init() {
         vegeList = getVegeList()

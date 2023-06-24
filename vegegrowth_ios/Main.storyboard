@@ -94,7 +94,7 @@
         <!--Growth Manage View Controller-->
         <scene sceneID="aQT-MV-faf">
             <objects>
-                <viewController id="rXq-D8-JMd" customClass="GrowthManageViewController" customModule="vegegrowth_ios" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="GrowthManagerView" id="rXq-D8-JMd" customClass="GrowthManageViewController" customModule="vegegrowth_ios" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="3Zr-PR-fYM">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -114,8 +114,8 @@
                     </view>
                     <navigationItem key="navigationItem" id="rjm-0T-u6I"/>
                     <connections>
-                        <outlet property="graphview" destination="xtA-Xs-csn" id="kry-i4-sfb"/>
-                        <outlet property="slideimg" destination="GwZ-lg-mtd" id="UiR-HY-HyH"/>
+                        <outlet property="graphView" destination="xtA-Xs-csn" id="usq-IH-IdF"/>
+                        <outlet property="slideImg" destination="GwZ-lg-mtd" id="1U9-BI-OJf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cfu-v8-daD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

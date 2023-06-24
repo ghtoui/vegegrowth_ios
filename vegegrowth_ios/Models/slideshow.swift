@@ -10,74 +10,73 @@ import class UIKit.UIImage
 
 // スライドショーを行うクラス
 class SlideshowClass {
-    private var vege_id: String
-    private var current_index : Int = 0
-    private var img_class : ImgClass
-    private var imgfileurl_list : [URL] = []
+    private var vegeId: String
+    private var currentIndex : Int = 0
+    private var img: ImgClass!
+    private var imgFileURLList : [URL] = []
     
-    init(vege_id: String) {
-        self.vege_id = vege_id
-        self.img_class = ImgClass(vege_id: vege_id)
-        set_imgurl_list()
+    init(vegeId: String) {
+        self.vegeId = vegeId
+        self.img = ImgClass(vegeId: vegeId)
+        setImgURLList()
     }
     
-    func set_imgurl_list() {
-        self.imgfileurl_list = get_imgurl_list()
+    func setImgURLList() {
+        self.imgFileURLList = getImgURLList()
     }
     
-    func get_imgurl_list() -> [URL] {
-        var img_file_list : [URL] = []
-        guard let document_directry = FileManager.default.urls(for: .documentDirectory,
-                                                               in: .userDomainMask).first else {
+    func getImgURLList() -> [URL] {
+        var imgFileList : [URL] = []
+        guard let documentDirectory = FileManager.default.urls(for: .documentDirectory,                           in: .userDomainMask).first else {
             return []
         }
         
         do {
-            let fileurl_list = try FileManager.default.contentsOfDirectory(at: document_directry,includingPropertiesForKeys: nil)
-            for file_name in img_class.get_vege_text_list(vege_id: vege_id) {
-                if let fileimg_url = fileurl_list.first(where: { $0.lastPathComponent == file_name }) {
-                    img_file_list.append(fileimg_url)
+            let fileURLList = try FileManager.default.contentsOfDirectory(at: documentDirectory,includingPropertiesForKeys: nil)
+            for fileName in img.getVegeTextList(vegeId: vegeId) {
+                if let fileImgURL = fileURLList.first(where: { $0.lastPathComponent == fileName }) {
+                    imgFileList.append(fileImgURL)
                 }
             }
-            return img_file_list
+            return imgFileList
         } catch {
             return []
         }
     }
     
-    func get_currentindex() -> Int {
-        return current_index
+    func getCurrentIndex() -> Int {
+        return currentIndex
     }
     
     
-    func get_showimg() -> UIImage? {
-        guard current_index >= 0 && current_index < imgfileurl_list.count else {
+    func getShowImg() -> UIImage? {
+        guard currentIndex >= 0 && currentIndex < imgFileURLList.count else {
             return nil
         }
         
-        let file_url = imgfileurl_list[current_index]
+        let fileURL = imgFileURLList[currentIndex]
         do {
-            let img_data = try Data(contentsOf: file_url)
-            let img = img_class.fix_rotate(img: UIImage(data: img_data)!)
+            let imgData = try Data(contentsOf: fileURL)
+            let img = img.fixRotate(img: UIImage(data: imgData)!)
             return img
         } catch {
             return nil
         }
     }
     
-    func show_next_img() {
-        if (current_index == imgfileurl_list.count - 1) {
-            current_index = 0
+    func showNextImg() {
+        if (currentIndex == imgFileURLList.count - 1) {
+            currentIndex = 0
         } else {
-            current_index += 1
+            currentIndex += 1
         }
     }
     
-    func show_prev_img() {
-        if (current_index == 0) {
-            current_index = imgfileurl_list.count - 1
+    func showPrevImg() {
+        if (currentIndex == 0) {
+            currentIndex = imgFileURLList.count - 1
         } else {
-            current_index -= 1
+            currentIndex -= 1
         }
     }
 }
