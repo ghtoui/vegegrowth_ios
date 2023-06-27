@@ -9,7 +9,7 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-class GrowthRegisterViewController: UIViewController {
+class GrowthRegisterViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
     @IBOutlet weak var imgView: UIImageView!
     @IBOutlet weak var moveToManagerButton: UIBarButtonItem!
@@ -34,20 +34,22 @@ class GrowthRegisterViewController: UIViewController {
     private func bind() {
         viewModel.inputs.isRegisterButton.accept(false)
         
-        takePicButton.rx.tap
-            .flatMapLatest { [weak self] _ in
-                return UIImagePickerController.rx.createWithParent(self) { picker in
-                    picker.sourceType = .camera
-                    picker.allowsEditing = false
-                }
-                .flatMap { $0.rx.didFinishPickingMediaWithInfo }
-                .take(1)
-            }
-            .map { info in
-                return info[.originalImage] as? UIImage
-            }
-            .bind(to: imgView.rx.image)
-            .disposed(by: disposeBag)
+//        takePicButton.rx.tap
+//            .flatMapLatest { [weak self] _ in
+//                return UIImagePickerController.rx.createWithParent(self) { picker in
+//                    picker.sourceType = .camera
+//                    picker.allowsEditing = false
+//                }
+//                .flatMap { $0.rx.didFinishPickingMediaWithInfo }
+//                .take(1)
+//            }
+//            .map { info in
+//                return info[.originalImage] as? UIImage
+//            }
+//            .bind(to: imgView.rx.image)
+//            .disposed(by: disposeBag)
+        
+        //        takePicButton.isEnabled = UIImagePickerController.isSourceTypeAvailable(.camera)
         
         moveToManagerButton.rx.tap
             .subscribe(onNext: {[weak self] _ in
@@ -58,7 +60,6 @@ class GrowthRegisterViewController: UIViewController {
             })
             .disposed(by: disposeBag)
         
-        takePicButton.isEnabled = UIImagePickerController.isSourceTypeAvailable(.camera)
 
         // 登録ボタンの表示切り替え
         viewModel.outputs.isPicTake
@@ -78,11 +79,11 @@ class GrowthRegisterViewController: UIViewController {
             .bind(to: viewModel.inputs.takePicButtonTapped)
             .disposed(by: disposeBag)
         
-//        viewModel.outputs.cameraAlert
-//            .subscribe(onNext: { [weak self] in
-//                self?.takeButtonTapped()
-//            })
-//            .disposed(by: disposeBag)
+        viewModel.outputs.cameraAlert
+            .subscribe(onNext: { [weak self] in
+                self?.takeButtonTapped()
+            })
+            .disposed(by: disposeBag)
         
         // 登録ボタンを押した時の処理
         registerButton.rx.tap
@@ -109,27 +110,29 @@ class GrowthRegisterViewController: UIViewController {
     }
 
     // 撮影処理
-//    private func takeButtonTapped() {
-//        if UIImagePickerController.isSourceTypeAvailable(.camera) {
-//            let image_picker = UIImagePickerController()
-//            image_picker.sourceType = .camera
-//            image_picker.delegate = self
-//            self.present(image_picker, animated: true, completion: nil)
-//        }
-//    }
+    private func takeButtonTapped() {
+        if UIImagePickerController.isSourceTypeAvailable(.camera) {
+            let image_picker = UIImagePickerController()
+            image_picker.sourceType = .camera
+            image_picker.delegate = self
+            self.present(image_picker, animated: true, completion: nil)
+        }
+    }
     
     // 写真撮影処理
     // takebutton_clickが押されたら処理する
     func imagePickerController(_ picker: UIImagePickerController,
                              didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
-//        let take_img = img_class.take_img(picker, didFinishPickingMediaWithInfo: info)
-//        imgview.image = take_img
+        
         picker.dismiss(animated: true)
-
-        guard let img = info[.originalImage] as? UIImage else {
+        guard let takeImg = info[.originalImage] as? UIImage else {
             print("画像が見つかりませんでした")
             return
         }
+        
+        imgView.image = takeImg
+        registerButton.isHidden = false
+
         // 撮った写真を保存する
 //        vege_text_list = get_vege_text_list(vege_id: vege_id)
 //        let num = vege_text_list.count
@@ -139,39 +142,47 @@ class GrowthRegisterViewController: UIViewController {
 //        fix_rotateimg = fix_rotate(img: img)!
 //        vege_text_list = get_vege_text_list(vege_id: vege_id)
 //        print(vege_text_list)
-//        registerButton.isHidden = false
     }
     
     // 野菜の大きさを入力する
     // 数字のみ受け付けるように
     private func registerVegeMeasure() {
-        var textfield = UITextField()
+        var textField = UITextField()
         
         let alert = UIAlertController(title: "撮影した野菜の大きさを入力してください",
                                       message: "",
                                       preferredStyle: .alert)
 
         // 登録処理
-        let register_action = UIAlertAction(title: "登録",style: .default) { (action) in
+        let registerAction = UIAlertAction(title: "登録",style: .default) { (action) in
 //            self.graph_class.add_vege_length(length: Double(textfield.text!)!)
 //            let take_img: UIImage = self.img_class.get_takeimg()
 //            let file_name = self.img_class.get_filename()
             // 撮影した画像を保存
 //            self.img_class.save_img(file_name: file_name, img: take_img)
+            guard let vegeLength: Double = Double(textField.text!) else {
+                return
+            }
+            
+            guard let img: UIImage = self.imgView.image else {
+                return
+            }
+            
+            self.viewModel.inputs.saveVegeData(length: vegeLength, img: img)
             // 登録したら、ボタンを消す
             self.registerButton.isHidden = true
         }
         // キャンセル処理, 何もしない
-        let cancel_action = UIAlertAction(title: "キャンセル", style: .cancel) { (action) in
+        let cancelAction = UIAlertAction(title: "キャンセル", style: .cancel) { (action) in
         }
     
         alert.addTextField { (alertTextField) in
             alertTextField.placeholder = "野菜の大きさを登録"
-            textfield = alertTextField
-            textfield.keyboardType = .decimalPad
+            textField = alertTextField
+            textField.keyboardType = .decimalPad
         }
-        alert.addAction(register_action)
-        alert.addAction(cancel_action)
+        alert.addAction(registerAction)
+        alert.addAction(cancelAction)
         present(alert, animated: true, completion: nil)
     }
     

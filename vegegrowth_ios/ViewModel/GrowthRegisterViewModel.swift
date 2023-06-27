@@ -16,6 +16,7 @@ protocol GrowthRegisterViewModelInputs {
     var registerButtonTapped: PublishRelay<Void> { get }
     var vegeText: BehaviorRelay<String> { get }
     var isRegisterButton: PublishRelay<Bool> { get }
+    func saveVegeData(length: Double, img: UIImage)
 }
 
 protocol GrowthRegisterViewModelOutputs {
@@ -91,7 +92,11 @@ class GrowthRegisterViewModel: GrowthRegisterViewModelType, GrowthRegisterViewMo
                 self?.cameraAlert.accept(())
             })
             .disposed(by: disposeBag)
-        
-        
+    }
+    
+    public func saveVegeData(length: Double, img: UIImage) {
+        graphClass.addVegeLength(length: length)
+        let fileName = imgClass.getFileName()
+        imgClass.saveImg(fileName: fileName, img: img)
     }
 }

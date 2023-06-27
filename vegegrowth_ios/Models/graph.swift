@@ -39,15 +39,15 @@ class GraphClass {
             ]
             vegeLengthObjectList.append(vegeLengthObject)
         }
-        let vegeLengthId = getVegeLengthList()
+        let vegeLengthId = getVegeLengthListId()
         UserDefaults.standard.set(vegeLengthObjectList, forKey: vegeLengthId)
     }
     
     // ユーザーデフォルトから野菜の長さのリストを取得
     func getUserGraphList() -> [VegeLengthObject] {
+        vegeLengthList = []
         var vegeLengthObjectList: [[String: Any]]!
-        var vegeLengthList: [VegeLengthObject] = []
-        let vegeLengthId = getVegeLengthList()
+        let vegeLengthId = getVegeLengthListId()
         if UserDefaults.standard.object(forKey: vegeLengthId) != nil {
             vegeLengthObjectList = UserDefaults.standard.object(forKey: vegeLengthId) as? [[String: Any]]
         } else {
@@ -64,15 +64,17 @@ class GraphClass {
                                                     x: x)
             vegeLengthList.append(vegeLengthObject)
         }
+        
         return vegeLengthList
     }
     
     // 野菜の大きさにアクセスするためのIDを生成
-    private func getVegeLengthList() -> String {
+    private func getVegeLengthListId() -> String {
 //        let vegeLengthId = vegeId + "_LengthList"
         let vegeLengthId = vegeId + "_lengthlist"
         return vegeLengthId
     }
+    
 }
 
 // 記録日付と野菜の大きさをセットで保持する

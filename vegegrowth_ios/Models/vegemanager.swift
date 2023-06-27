@@ -41,7 +41,7 @@ class VegeManagerClass {
     
     public func SetUserVegeIdDict() {
         UserDefaults.standard.set(VegeIdDict, forKey: "vegeIdDict")
-        UserDefaults.standard.set(VegeIdDict, forKey: "vegeid_dict")
+//        UserDefaults.standard.set(VegeIdDict, forKey: "vegeid_dict")
     }
     
     public func deleteItem(vegeText: String) {

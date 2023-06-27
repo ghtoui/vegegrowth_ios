@@ -34,7 +34,7 @@ class TablemanagerClass {
     
     public func setUserVegeList() {
         UserDefaults.standard.set(vegeList, forKey: "vegeList")
-        UserDefaults.standard.set(vegeList, forKey: "vege_list")
+//        UserDefaults.standard.set(vegeList, forKey: "vege_list")
     }
     
     public func deleteItem(index: Int) {

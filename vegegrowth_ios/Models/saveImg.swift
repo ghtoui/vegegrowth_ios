@@ -23,7 +23,7 @@ class ImgClass {
     }
     
     func take_img(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo
-                               info: [UIImagePickerController.InfoKey : Any]) -> UIImage?{
+                               info: [UIImagePickerController.InfoKey : Any]) -> UIImage? {
         
         picker.dismiss(animated: true)
 
@@ -50,6 +50,11 @@ class ImgClass {
     }
     
     func getFileName() -> String {
+        vegeTextList = getVegeTextList(vegeId: vegeId)
+        let num = vegeTextList.count
+        fileName = self.vegeId + "_" + String(num)
+        // 画像の回転を直す
+        vegeTextList = getVegeTextList(vegeId: vegeId)
         return fileName
     }
     
@@ -72,10 +77,12 @@ class ImgClass {
     
     // 画像を保存
     func saveImg(fileName: String, img: UIImage) {
+        
         let file_url = getImgURL(fileName: fileName)
-        if let img_data = img.pngData() {
+        let fixImg = fixRotate(img: img)!
+        if let imgData = fixImg.pngData() {
             do {
-                try img_data.write(to: file_url)
+                try imgData.write(to: file_url)
                 print("\(file_url):に画像を保存しました")
             } catch {
                 print("保存できませんでした")
