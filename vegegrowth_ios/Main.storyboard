@@ -21,16 +21,13 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="vegecell_Identifier" id="48y-rX-Brf">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="vegeCell" id="48y-rX-Brf">
                                         <rect key="frame" x="0.0" y="50" width="414" height="43.666667938232422"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="48y-rX-Brf" id="pSS-ud-hra">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="43.666667938232422"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
-                                        <connections>
-                                            <segue destination="MUA-w9-wg1" kind="show" identifier="vegemanager_segue" id="uEq-kB-WIb"/>
-                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -39,24 +36,22 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <navigationItem key="navigationItem" id="s6b-9g-jX8">
-                        <barButtonItem key="rightBarButtonItem" title="追加" id="gbV-5R-J9Y">
-                            <connections>
-                                <action selector="vegeadd_click:" destination="WyY-rR-X32" id="872-aS-OgT"/>
-                            </connections>
-                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="追加" id="gbV-5R-J9Y"/>
                     </navigationItem>
                     <connections>
-                        <outlet property="vegetable" destination="ZMN-vS-Blq" id="THo-ZV-9ke"/>
+                        <outlet property="addButton" destination="gbV-5R-J9Y" id="Uxu-4r-jBF"/>
+                        <outlet property="tableView" destination="ZMN-vS-Blq" id="ZWD-lQ-FEy"/>
+                        <segue destination="MUA-w9-wg1" kind="show" id="9cf-Na-5gg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8AR-e6-sx7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="315" y="-110"/>
         </scene>
-        <!--Growth Register Controller-->
+        <!--Growth Register View Controller-->
         <scene sceneID="xqg-L8-Z1j">
             <objects>
-                <viewController storyboardIdentifier="GrowthControllerView" id="MUA-w9-wg1" customClass="GrowthRegisterController" customModule="vegegrowth_ios" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="GrowthRegisterView" id="MUA-w9-wg1" customClass="GrowthRegisterViewController" customModule="vegegrowth_ios" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Ys1-7y-qv7">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -70,44 +65,36 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="撮影する"/>
-                                <connections>
-                                    <action selector="takebutton_click:" destination="MUA-w9-wg1" eventType="touchUpInside" id="KfV-9G-H9w"/>
-                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n51-sr-ZWm">
                                 <rect key="frame" x="151" y="453" width="94" height="35"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="登録する"/>
-                                <connections>
-                                    <action selector="click_registerbutton:" destination="MUA-w9-wg1" eventType="touchUpInside" id="7cp-nl-olY"/>
-                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="TmS-LH-lmb"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <navigationItem key="navigationItem" id="kh8-JX-xii">
-                        <barButtonItem key="rightBarButtonItem" title="成長状況" id="DW3-ay-hPx">
-                            <connections>
-                                <action selector="click_growthbutton:" destination="MUA-w9-wg1" id="xjD-4P-CtR"/>
-                                <segue destination="rXq-D8-JMd" kind="show" identifier="graphviewsegue" id="HFe-g7-yLx"/>
-                            </connections>
-                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="成長状況" id="DW3-ay-hPx"/>
                     </navigationItem>
                     <connections>
-                        <outlet property="imgview" destination="V3Q-fk-1gu" id="AHd-r0-dgo"/>
-                        <outlet property="register_button" destination="n51-sr-ZWm" id="YUC-VW-BoW"/>
+                        <outlet property="imgView" destination="V3Q-fk-1gu" id="mFJ-cr-bRJ"/>
+                        <outlet property="moveToManagerButton" destination="DW3-ay-hPx" id="2sd-yE-xS6"/>
+                        <outlet property="registerButton" destination="n51-sr-ZWm" id="pux-vb-QpL"/>
+                        <outlet property="takePicButton" destination="BPK-N4-3bF" id="SCl-ol-Sk3"/>
+                        <segue destination="rXq-D8-JMd" kind="show" id="327-3x-lPm"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SQg-Ww-ktL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1130.534351145038" y="-109.1549295774648"/>
         </scene>
-        <!--Growth Manage Controller-->
+        <!--Growth Manage View Controller-->
         <scene sceneID="aQT-MV-faf">
             <objects>
-                <viewController id="rXq-D8-JMd" customClass="GrowthManageController" customModule="vegegrowth_ios" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="GrowthManagerView" id="rXq-D8-JMd" customClass="GrowthManageViewController" customModule="vegegrowth_ios" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="3Zr-PR-fYM">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -115,6 +102,16 @@
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xtA-Xs-csn" customClass="LineChartView" customModule="Charts">
                                 <rect key="frame" x="0.0" y="103" width="393" height="254"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="データがありません" textAlignment="center" lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Lc-vM-ii6">
+                                        <rect key="frame" x="0.0" y="91" width="393" height="81"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </view>
                             <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GwZ-lg-mtd">
@@ -127,13 +124,14 @@
                     </view>
                     <navigationItem key="navigationItem" id="rjm-0T-u6I"/>
                     <connections>
-                        <outlet property="graphview" destination="xtA-Xs-csn" id="kry-i4-sfb"/>
-                        <outlet property="slideimg" destination="GwZ-lg-mtd" id="UiR-HY-HyH"/>
+                        <outlet property="graphLabel" destination="3Lc-vM-ii6" id="f3p-ck-sMS"/>
+                        <outlet property="graphView" destination="xtA-Xs-csn" id="usq-IH-IdF"/>
+                        <outlet property="slideImg" destination="GwZ-lg-mtd" id="1U9-BI-OJf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cfu-v8-daD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1970" y="-111"/>
+            <point key="canvasLocation" x="1968.7022900763359" y="-111.26760563380282"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="jNp-Uh-s1t">
