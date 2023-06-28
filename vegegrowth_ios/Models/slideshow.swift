@@ -18,11 +18,7 @@ class SlideshowClass {
     init(vegeId: String) {
         self.vegeId = vegeId
         self.img = ImgClass(vegeId: vegeId)
-        setImgURLList()
-    }
-    
-    func setImgURLList() {
-        self.imgFileURLList = getImgURLList()
+        imgFileURLList = getImgURLList()
     }
     
     func getImgURLList() -> [URL] {
@@ -65,14 +61,24 @@ class SlideshowClass {
     }
     
     func showNextImg() {
+        guard !imgFileURLList.isEmpty else {
+            return
+        }
         if (currentIndex == imgFileURLList.count - 1) {
             currentIndex = 0
         } else {
             currentIndex += 1
         }
+        
+        if (imgFileURLList.count == 0) {
+            currentIndex = 0
+        }
     }
     
     func showPrevImg() {
+        guard !imgFileURLList.isEmpty else {
+            return
+        }
         if (currentIndex == 0) {
             currentIndex = imgFileURLList.count - 1
         } else {

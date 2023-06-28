@@ -19,6 +19,8 @@ protocol GrowthManageViewModelInputs {
 protocol GrowthManageViewModelOutputs {
     var vegeId: PublishRelay<String> { get }
     var slideImg: Driver<UIImage?> { get }
+    var currentIndex: PublishRelay<Int> { get }
+    var hiddenLabel: Driver<Bool> { get }
     func getDatas() -> [VegeLengthObject]
 //    var showLineChart: PublishRelay<Void> { get }
 }
@@ -45,6 +47,8 @@ class GrowthManageViewModel: GrowthManageViewModelType,
     var slideImg: Driver<UIImage?> {
         return slideImgRelay.asDriver()
     }
+    var currentIndex = PublishRelay<Int>()
+    var hiddenLabel: Driver<Bool>
 //    var showLineChart = PublishRelay<ChartDataEntry>()
     
     private let vegeManager = VegeManagerClass()
@@ -52,12 +56,14 @@ class GrowthManageViewModel: GrowthManageViewModelType,
     private var slideShow: SlideshowClass!
     
     private let slideImgRelay = BehaviorRelay<UIImage?>(value: nil)
+    private let hiddenLabelRelay = PublishRelay<Bool>()
     
     private var disposeBag = DisposeBag()
     
     
-    
     init() {
+        hiddenLabel = hiddenLabelRelay.asDriver(onErrorDriveWith: .empty())
+        
         vegeText
             .compactMap { [weak self] vegeText in
                 guard let vegeIdDict = self?.vegeManager.getVegeIdDict() else {
@@ -68,14 +74,27 @@ class GrowthManageViewModel: GrowthManageViewModelType,
             .bind(to: vegeId)
             .disposed(by: disposeBag)
 
-        
         // vegeIdが更新されたら、imgclassとgraphclassを生成する
         // vegeIdに対応したvegeTextListも持ってくる
         vegeId
             .subscribe(onNext: { [weak self] vegeId in
                 self?.graph = GraphClass(vegeId: vegeId)
                 self?.slideShow = SlideshowClass(vegeId: vegeId)
-                self?.slideImgRelay.accept(self?.slideShow.getShowImg())
+                self?.reloadManageData()
+            })
+            .disposed(by: disposeBag)
+        
+        rightSwipe
+            .subscribe(onNext: { [weak self] _ in
+                self?.slideShow.showPrevImg()
+                self?.reloadManageData()
+            })
+            .disposed(by: disposeBag)
+        
+        leftSwipe
+            .subscribe(onNext: { [weak self] _ in
+                self?.slideShow.showNextImg()
+                self?.reloadManageData()
             })
             .disposed(by: disposeBag)
     }
@@ -92,7 +111,18 @@ class GrowthManageViewModel: GrowthManageViewModelType,
             entries.append(ChartDataEntry(x: Double(item.x), y: Double(item.vegeLength)))
             date_list.append(item.date)
         }
-        
     }
     
+    private func reloadManageData() {
+        let datas = getDatas()
+        guard !datas.isEmpty else {
+            hiddenLabelRelay.accept(false)
+            return
+        }
+        hiddenLabelRelay.accept(true)
+        slideImgRelay.accept(slideShow.getShowImg())
+        
+        currentIndex.accept(slideShow.getCurrentIndex())
+        
+    }
 }

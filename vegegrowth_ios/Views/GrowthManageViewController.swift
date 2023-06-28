@@ -13,6 +13,7 @@ import RxCocoa
 class GrowthManageViewController: UIViewController {
     
     @IBOutlet weak var slideImg: UIImageView!
+    @IBOutlet weak var graphLabel: UILabel!
     @IBOutlet weak var graphView: LineChartView!
     
     private var rightSwipe: UISwipeGestureRecognizer!
@@ -21,10 +22,13 @@ class GrowthManageViewController: UIViewController {
     private var viewModel: GrowthManageViewModelType = GrowthManageViewModel()
     private let disposeBag = DisposeBag()
     
-    private var vege_id: String!
+    private var currentIndex: Int!
+    private var vegeText: String
 
     private var graph_class: GraphClass!
     private var slideshow_class: SlideshowClass!
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,19 +46,22 @@ class GrowthManageViewController: UIViewController {
         leftSwipe.direction = .left
         slideImg.addGestureRecognizer(leftSwipe)
         
-        updateLineChart()
         bind()
+        viewModel.inputs.vegeText.accept(vegeText)
     }
     
-    
-    // 画面遷移してくる時用
-    // 本当はinitでできると良いが...
-    public func setVegeText(vegeText: String) {
+    init?(coder: NSCoder, vegeText: String) {
+        self.vegeText = vegeText
+        super.init(coder: coder)
         print(vegeText)
         // タイトル変更(タップしたラベルを反映する)
         // navigationcontrollerを使っている
         navigationItem.title = vegeText
-        viewModel.inputs.vegeText.accept(vegeText)
+        self.vegeText = vegeText
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
     private func bind() {
@@ -63,24 +70,44 @@ class GrowthManageViewController: UIViewController {
             .disposed(by: disposeBag)
         
         rightSwipe.rx.event
-            .subscribe(onNext : { [weak self] gesture in
+            .subscribe(onNext: { [weak self] gesture in
+                let direction = gesture.direction
+                if (direction == .right) {
+                    // 右方向
+                    self?.viewModel.inputs.rightSwipe.accept(())
+                }
+            })
+            .disposed(by: disposeBag)
+        leftSwipe.rx.event
+            .subscribe(onNext: { [weak self] gesture in
                 let direction = gesture.direction
                 if (direction == .left) {
                     // 左方向
                     self?.viewModel.inputs.leftSwipe.accept(())
-                } else if (direction == .right) {
-                    // 右方向
-                    self?.viewModel.inputs.rightSwipe.accept(())
                 }
-                // グラフ更新
+            })
+            .disposed(by: disposeBag)
+        
+        viewModel.outputs.slideImg
+            .drive(slideImg.rx.image)
+            .disposed(by: disposeBag)
+        
+        viewModel.outputs.currentIndex
+            .subscribe(onNext: { [weak self] index in
+                self?.currentIndex = index
                 self?.updateLineChart()
             })
             .disposed(by: disposeBag)
+        
+        viewModel.outputs.hiddenLabel
+            .drive(graphLabel.rx.isHidden)
+            .disposed(by: disposeBag)
+        
     }
     // グラフの描画メソッド
     // データの取得はViewModelがやるべき
     func updateLineChart() {
-        var datas = viewModel.outputs.getDatas()
+        let datas = viewModel.outputs.getDatas()
 //        datas = [VegeLengthObject(date: "2000-01-01",
 //            vegeLength: 3,
 //            x:0
@@ -121,7 +148,6 @@ class GrowthManageViewController: UIViewController {
         
         // X軸のラベルの数を設定
         xaxis.labelCount = datas.count/2
-        print(datas.count / 2)
         if datas.count / 2 == 0 {
             xaxis.labelCount = 1
         }
@@ -131,17 +157,18 @@ class GrowthManageViewController: UIViewController {
         let formatter = ChartFormatter(date_list: date_list)
         xaxis.valueFormatter = formatter
     
+        graphView.highlightPerTapEnabled = false
         
         // y軸を0始まりに
         graphView.leftAxis.axisMinimum = 0.0
         // 右側のy軸を非表示
         graphView.rightAxis.enabled = false
         
+        
         // 境界線を利用して、スライドショーに表示されている画像と関連させる
 //        let index = slideshow_class.getCurrentIndex()
-        let index = 0
-        let limitLine_x = ChartLimitLine(limit: datas[index].vegeLength)
-        let limitLine_y = ChartLimitLine(limit: Double(index))
+        let limitLine_x = ChartLimitLine(limit: datas[currentIndex].vegeLength)
+        let limitLine_y = ChartLimitLine(limit: Double(currentIndex))
 
         // 境界線を全て削除しないと、一生追加される
         graphView.leftAxis.removeAllLimitLines()
@@ -151,22 +178,6 @@ class GrowthManageViewController: UIViewController {
         graphView.xAxis.addLimitLine(limitLine_y)
     }
     
-    // スワイプされた時の処理
-    @objc func swipe_gesture(_ gesture: UISwipeGestureRecognizer) {
-        // フリックが終わった時の処理
-        let direction = gesture.direction
-        if (direction == .left) {
-            // 左方向
-            slideshow_class.showNextImg()
-            slideImg.image = slideshow_class.getShowImg()
-        } else if (direction == .right) {
-            // 右方向
-            slideshow_class.showPrevImg()
-            slideImg.image = slideshow_class.getShowImg()
-        }
-        // グラフ更新
-        updateLineChart()
-    }
 }
 
 private class ChartFormatter: NSObject, IAxisValueFormatter {

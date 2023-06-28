@@ -102,6 +102,16 @@
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xtA-Xs-csn" customClass="LineChartView" customModule="Charts">
                                 <rect key="frame" x="0.0" y="103" width="393" height="254"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="データがありません" textAlignment="center" lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Lc-vM-ii6">
+                                        <rect key="frame" x="0.0" y="91" width="393" height="81"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </view>
                             <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GwZ-lg-mtd">
@@ -114,13 +124,14 @@
                     </view>
                     <navigationItem key="navigationItem" id="rjm-0T-u6I"/>
                     <connections>
+                        <outlet property="graphLabel" destination="3Lc-vM-ii6" id="f3p-ck-sMS"/>
                         <outlet property="graphView" destination="xtA-Xs-csn" id="usq-IH-IdF"/>
                         <outlet property="slideImg" destination="GwZ-lg-mtd" id="1U9-BI-OJf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cfu-v8-daD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1970" y="-111"/>
+            <point key="canvasLocation" x="1968.7022900763359" y="-111.26760563380282"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="jNp-Uh-s1t">
