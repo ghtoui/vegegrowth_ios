@@ -28,9 +28,6 @@ class VegeManagerClass {
     
     public func getVegeIdDict() -> [String: String] {
         VegeIdDict = [: ]
-        if UserDefaults.standard.object(forKey: "vegeid_dict") != nil {
-            VegeIdDict = (UserDefaults.standard.object(forKey: "vegeid_dict") as! [String: String])
-        }
         
         if UserDefaults.standard.object(forKey: "vegeIdDict") != nil {
             VegeIdDict = (UserDefaults.standard.object(forKey: "vegeIdDict") as! [String: String])

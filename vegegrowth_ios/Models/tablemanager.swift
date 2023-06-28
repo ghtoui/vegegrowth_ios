@@ -22,9 +22,6 @@ class TablemanagerClass {
     
     public func getVegeList() -> [String] {
         var vegeList: [String] = []
-        if UserDefaults.standard.object(forKey: "vege_list") != nil {
-            vegeList = UserDefaults.standard.object(forKey: "vege_list") as! [String]
-        }
         
         if UserDefaults.standard.object(forKey: "vegeList") != nil {
             vegeList = UserDefaults.standard.object(forKey: "vegeList") as! [String]
