@@ -54,7 +54,6 @@ final class MainViewController: UIViewController {
         viewModel.outputs.labelText
             .drive(onNext: { [weak self] labelText in
                 self?.goTo(labelText: labelText)
-                print("hakka")
             })
             .disposed(by: disposeBag)
         
@@ -98,10 +97,11 @@ final class MainViewController: UIViewController {
     
     // 画面遷移
     private func goTo(labelText: String) {
-        if let destVC = storyboard?.instantiateViewController(withIdentifier: "GrowthRegisterView") as? GrowthRegisterViewController {
-            destVC.setVegeText(vegeText: labelText)
-            navigationController?.pushViewController(destVC, animated: true)
+        let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+        let VC = storyBoard.instantiateViewController(identifier: "GrowthRegisterView") { coder in
+            return GrowthRegisterViewController(coder: coder, vegeText: labelText)
         }
+        navigationController?.pushViewController(VC, animated: true)
     }
     
     /*

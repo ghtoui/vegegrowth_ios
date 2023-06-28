@@ -26,9 +26,22 @@ class GrowthRegisterViewController: UIViewController, UIImagePickerControllerDel
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-    
         registerButton.isHidden = true
+    
         bind()
+        viewModel.inputs.vegeText.accept(vegeText)
+    }
+    
+    init?(coder: NSCoder, vegeText: String) {
+        super.init(coder: coder)
+        self.vegeText = vegeText
+        // タイトル変更(タップしたラベルを反映する)
+        // navigationcontrollerを使っている
+        navigationItem.title = vegeText
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
 
     private func bind() {
@@ -54,7 +67,6 @@ class GrowthRegisterViewController: UIViewController, UIImagePickerControllerDel
         moveToManagerButton.rx.tap
             .subscribe(onNext: {[weak self] _ in
                 if let vegeText = self?.vegeText, !vegeText.isEmpty {
-                    print(vegeText)
                     self?.goTo(vegeText: vegeText)
                 }
             })
@@ -66,10 +78,8 @@ class GrowthRegisterViewController: UIViewController, UIImagePickerControllerDel
             .drive(onNext: { [weak self] isPic in
                 if isPic {
                     self?.registerButton.isHidden = false
-                    print(false)
                 } else {
                     self?.registerButton.isHidden = true
-                    print(true)
                 }
             })
             .disposed(by: disposeBag)
@@ -98,16 +108,6 @@ class GrowthRegisterViewController: UIViewController, UIImagePickerControllerDel
             .disposed(by: disposeBag)
     }
     
-    // 画面遷移してくる時用
-    // 本当はinitでできると良いが...
-    public func setVegeText(vegeText: String) {
-        print(vegeText)
-        self.vegeText = vegeText
-        // タイトル変更(タップしたラベルを反映する)
-        // navigationcontrollerを使っている
-        navigationItem.title = vegeText
-        viewModel.inputs.vegeText.accept(vegeText)
-    }
 
     // 撮影処理
     private func takeButtonTapped() {
@@ -187,10 +187,11 @@ class GrowthRegisterViewController: UIViewController, UIImagePickerControllerDel
     }
     
     private func goTo(vegeText: String) {
-        if let destVC = storyboard?.instantiateViewController(withIdentifier: "GrowthManagerView") as? GrowthManageViewController {
-            destVC.setVegeText(vegeText: vegeText)
-            navigationController?.pushViewController(destVC, animated: true)
+        let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+        let VC = storyBoard.instantiateViewController(identifier: "GrowthManagerView") { coder in
+            return GrowthManageViewController(coder: coder, vegeText: vegeText)
         }
+        navigationController?.pushViewController(VC, animated: true)
     }
     
     /*
