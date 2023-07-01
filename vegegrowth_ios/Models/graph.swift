@@ -20,11 +20,9 @@ class GraphClass {
     
     // 野菜の大きさ管理のリストに追加する
     func addVegeLength(length: Double) {
-        let date = dateClass.get_date()
+        let date = dateClass.getDate()
         vegeLengthList = getUserGraphList()
-        vegeLengthList.append(VegeLengthObject(date: date,
-                                                 vegeLength: length,
-                                                 x: Double(vegeLengthList.count)))
+        vegeLengthList.append(VegeLengthObject(date: date, vegeLength: length, x: Double(vegeLengthList.count), explainText: ""))
         setUserGraphList()
     }
     
@@ -59,9 +57,7 @@ class GraphClass {
                   let x = item["x"] as? Double else {
                 continue
             }
-            let vegeLengthObject = VegeLengthObject(date: date,
-                                                    vegeLength: vegeLength,
-                                                    x: x)
+            let vegeLengthObject = VegeLengthObject(date: date, vegeLength: vegeLength, x: x, explainText: "")
             vegeLengthList.append(vegeLengthObject)
         }
         
@@ -85,4 +81,5 @@ struct VegeLengthObject {
     var date: String
     var vegeLength: Double
     var x: Double
+    var explainText: String
 }
