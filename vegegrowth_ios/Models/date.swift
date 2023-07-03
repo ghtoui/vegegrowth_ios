@@ -8,15 +8,37 @@
 import Foundation
 
 class DateClass {
+    private let dateFormatter = DateFormatter()
+    private let calendar = Calendar.current
+    
+    init() {
+        dateFormatter.dateFormat = DateFormatter.dateFormat(fromTemplate: "y/MMM/d H", options: 0, locale: Locale(identifier: "ja_JP"))
+    }
     // 呼び出した時点の日本時間を返す
-    func get_date() -> String {
+    func getDate() -> String {
         // 日付の取得(UTC)
         let date = Date()
-        let date_formatter = DateFormatter()
         
-        date_formatter.dateFormat = DateFormatter.dateFormat(fromTemplate: "y/MMM/d H",
-                                                             options: 0, locale: Locale(identifier: "ja_JP"))
         
-        return date_formatter.string(from: date)
+        return dateFormatter.string(from: date)
+    }
+    
+    // 日付の差分を求める
+    func diffDate(firstDateText: String, secondDateText: String) -> Int {
+        guard let firstDate = dateFormatter.date(from: firstDateText), let secondDate = dateFormatter.date(from: secondDateText) else {
+            return 0
+        }
+        
+        let firstDateComponents = calendar.dateComponents([.year, .month, .day], from: firstDate)
+        let secondDateComponents = calendar.dateComponents([.year, .month, .day], from: secondDate)
+        
+        guard var diffDays: Int = calendar.dateComponents([.day], from: firstDateComponents, to: secondDateComponents).day else {
+            return 0
+        }
+        
+        // 絶対値に変更して1始まりにする
+        diffDays = abs(diffDays) + 1
+        
+        return diffDays
     }
 }
