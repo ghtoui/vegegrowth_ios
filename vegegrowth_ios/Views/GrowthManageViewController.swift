@@ -16,7 +16,6 @@ class GrowthManageViewController: UIViewController {
     @IBOutlet weak var graphLabel: UILabel!
     @IBOutlet weak var graphView: LineChartView!
     @IBOutlet weak var detailLabel: UILabel!
-    @IBOutlet weak var clearBackground: UILabel!
     
     private var rightSwipe: UISwipeGestureRecognizer!
     private var leftSwipe: UISwipeGestureRecognizer!
@@ -27,8 +26,9 @@ class GrowthManageViewController: UIViewController {
     
     private var currentIndex: Int!
     private var vegeText: String
-
-    private var graph_class: GraphClass!
+    private var overlayView: UIView!
+    
+    private var graph_class: DetailVegeClass!
     private var slideshow_class: SlideshowClass!
     
     override func viewDidLoad() {
@@ -54,7 +54,7 @@ class GrowthManageViewController: UIViewController {
         
         bind()
         viewModel.inputs.vegeText.accept(vegeText)
-//        popupImgView()
+        //        popupImgView()
     }
     
     init?(coder: NSCoder, vegeText: String) {
@@ -119,15 +119,9 @@ class GrowthManageViewController: UIViewController {
         
         viewModel.outputs.isPopupImg
             .subscribe(onNext: { [weak self] isPopup in
-                if (isPopup) {
-                    self?.popupImgView()
-                    self?.detailLabel.isHidden = isPopup
-                    self?.clearBackground.isHidden = !isPopup
-                } else {
-                    self?.defaultImgView()
-                    self?.detailLabel.isHidden = isPopup
-                    self?.clearBackground.isHidden = !isPopup
-                }
+                self?.popupImgView(isPopup: isPopup)
+                self?.overlayView.isHidden = !isPopup
+                self?.detailLabel.isHidden = isPopup
             })
             .disposed(by: disposeBag)
         
@@ -173,7 +167,7 @@ class GrowthManageViewController: UIViewController {
         // X軸のラベルに日付を表示するためのFormatterを設定
         let formatter = ChartFormatter(dateList: dateList)
         xaxis.valueFormatter = formatter
-    
+        
         // グラフにタッチ不可能にする
         graphView.highlightPerTapEnabled = false
         graphView.highlightPerDragEnabled = false
@@ -185,36 +179,42 @@ class GrowthManageViewController: UIViewController {
         
         
         // 境界線を利用して、スライドショーに表示されている画像と関連させる
-//        let index = slideshow_class.getCurrentIndex()
+        //        let index = slideshow_class.getCurrentIndex()
         let limitLine_x = ChartLimitLine(limit: datas[currentIndex].vegeLength)
         let limitLine_y = ChartLimitLine(limit: Double(currentIndex))
-
+        
         // 境界線を全て削除しないと、一生追加される
         graphView.leftAxis.removeAllLimitLines()
         graphView.xAxis.removeAllLimitLines()
-
+        
         graphView.leftAxis.addLimitLine(limitLine_x)
         graphView.xAxis.addLimitLine(limitLine_y)
         
         // ラベルの左右の余白(端が見切れないようにするため)
-//        xaxis.spaceMin = 0.7
-//        xaxis.spaceMax = 0.7
+        //        xaxis.spaceMin = 0.7
+        //        xaxis.spaceMax = 0.7
     }
     
-    private func popupImgView() {
-        let popupRect: CGRect = CGRect(x: 27, y: 239, width: 361, height: 393)
-        slideImg.frame = popupRect
+    private func popupImgView(isPopup: Bool) {
+        if (isPopup) {
+            let popupRect: CGRect = CGRect(x: 27, y: 239, width: 361, height: 393)
+            slideImg.frame = popupRect
+        } else {
+            let defaultRect: CGRect = CGRect(x: 91, y: 580, width: 233, height: 246)
+            slideImg.frame = defaultRect
+        }
     }
     
-    private func defaultImgView() {
-        let defaultRect: CGRect = CGRect(x: 91, y: 580, width: 233, height: 246)
-        slideImg.frame = defaultRect
+    // 画像拡大時に背景を黒くする
+    private func setBackground() {
+        overlayView = UIView(frame: self.view.bounds)
+        overlayView.backgroundColor = UIColor.black.withAlphaComponent(0.7)
+        self.view.addSubview(overlayView)
+        self.view.bringSubviewToFront(slideImg)
     }
     
     private func initialUISetting() {
-        detailLabel.layer.cornerRadius = 10
-        detailLabel.clipsToBounds = true
-        clearBackground.isHidden = true
+        setBackground()
     }
     
 }

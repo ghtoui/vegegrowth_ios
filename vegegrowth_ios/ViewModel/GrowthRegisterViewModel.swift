@@ -52,7 +52,7 @@ class GrowthRegisterViewModel: GrowthRegisterViewModelType, GrowthRegisterViewMo
     private let vegeManager = VegeManagerClass()
     private let disposeBag = DisposeBag()
     private var imgClass: ImgClass!
-    private var graphClass: GraphClass!
+    private var detailVege: DetailVegeClass!
     private var vegeTextList: [String]!
     
     init() {
@@ -75,7 +75,7 @@ class GrowthRegisterViewModel: GrowthRegisterViewModelType, GrowthRegisterViewMo
         vegeId
             .subscribe(onNext: { [weak self] vegeId in
                 self?.imgClass = ImgClass(vegeId: vegeId)
-                self?.graphClass = GraphClass(vegeId: vegeId)
+                self?.detailVege = DetailVegeClass(vegeId: vegeId)
             })
             .disposed(by: disposeBag)
         
@@ -95,7 +95,7 @@ class GrowthRegisterViewModel: GrowthRegisterViewModelType, GrowthRegisterViewMo
     }
     
     public func saveVegeData(length: Double, img: UIImage) {
-        graphClass.addVegeLength(length: length)
+        detailVege.addVegeLength(length: length)
         let fileName = imgClass.getFileName()
         imgClass.saveImg(fileName: fileName, img: img)
     }

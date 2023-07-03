@@ -65,7 +65,7 @@ class GrowthManageViewModel: GrowthManageViewModelType,
     
     private let vegeManager = VegeManagerClass()
     private let date = DateClass()
-    private var graph: GraphClass!
+    private var detailVege: DetailVegeClass!
     private var slideShow: SlideshowClass!
     
     private var disposeBag = DisposeBag()
@@ -91,7 +91,7 @@ class GrowthManageViewModel: GrowthManageViewModelType,
         // vegeIdに対応したvegeTextListも持ってくる
         vegeId
             .subscribe(onNext: { [weak self] vegeId in
-                self?.graph = GraphClass(vegeId: vegeId)
+                self?.detailVege = DetailVegeClass(vegeId: vegeId)
                 self?.slideShow = SlideshowClass(vegeId: vegeId)
                 self?.reloadManageData()
             })
@@ -123,11 +123,11 @@ class GrowthManageViewModel: GrowthManageViewModelType,
     }
     
     public func getDatas() -> [VegeLengthObject] {
-        return graph.getUserGraphList()
+        return detailVege.getUserDetailVegeList()
     }
     
     private func getGraphData() {
-        let datas = graph.getUserGraphList()
+        let datas = detailVege.getUserDetailVegeList()
         var entries: [ChartDataEntry] = []
         var date_list: [String] = []
         for item in datas {
