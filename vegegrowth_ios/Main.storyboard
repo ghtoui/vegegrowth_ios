@@ -129,7 +129,7 @@
                                                         <color key="value" systemColor="systemGreenColor"/>
                                                     </userDefinedRuntimeAttribute>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                                        <real key="value" value="1"/>
+                                                        <real key="value" value="3"/>
                                                     </userDefinedRuntimeAttribute>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                                         <real key="value" value="10"/>
@@ -412,10 +412,10 @@
             </objects>
             <point key="canvasLocation" x="2009.2307692307691" y="-111.61137440758293"/>
         </scene>
-        <!--View Controller-->
+        <!--Add Memo View Controller-->
         <scene sceneID="qDu-7U-6eg">
             <objects>
-                <viewController storyboardIdentifier="AddMemoView" id="FdM-6U-iNo" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AddMemoView" id="FdM-6U-iNo" customClass="addMemoViewController" customModule="vegegrowth_ios" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="F6g-Ep-u03">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -436,7 +436,7 @@
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jfb-CM-F4I" customClass="CustomButton" customModule="vegegrowth_ios" customModuleProvider="target">
                                                 <rect key="frame" x="48" y="269" width="224.5" height="44"/>
                                                 <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="plain" image="text.book.closed.fill" catalog="system" title="メモを終了する">
+                                                <buttonConfiguration key="configuration" style="plain" image="text.book.closed.fill" catalog="system" title="メモを保存する">
                                                     <fontDescription key="titleFontDescription" type="system" pointSize="25"/>
                                                     <color key="baseForegroundColor" systemColor="systemGreenColor"/>
                                                 </buttonConfiguration>
@@ -445,21 +445,56 @@
                                                         <color key="value" systemColor="systemGreenColor"/>
                                                     </userDefinedRuntimeAttribute>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                                        <real key="value" value="1"/>
+                                                        <real key="value" value="3"/>
                                                     </userDefinedRuntimeAttribute>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                                         <real key="value" value="10"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                             </button>
+                                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zSA-Jm-A9O">
+                                                <rect key="frame" x="80" y="80" width="160" height="153"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="保存完了!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Mi-A1-Owg">
+                                                        <rect key="frame" x="0.0" y="107" width="160" height="46"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="checkmark.icloud.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="Crb-na-dcD">
+                                                        <rect key="frame" x="0.0" y="1" width="160" height="103.5"/>
+                                                        <color key="tintColor" systemColor="systemGray6Color"/>
+                                                    </imageView>
+                                                </subviews>
+                                                <color key="backgroundColor" white="0.0" alpha="0.4210512329931973" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="trailing" secondItem="8Mi-A1-Owg" secondAttribute="trailing" id="DfE-C1-2mu"/>
+                                                    <constraint firstItem="8Mi-A1-Owg" firstAttribute="top" secondItem="Crb-na-dcD" secondAttribute="bottom" id="EY7-mB-dGI"/>
+                                                    <constraint firstItem="Crb-na-dcD" firstAttribute="leading" secondItem="zSA-Jm-A9O" secondAttribute="leading" id="TEB-FK-ddE"/>
+                                                    <constraint firstItem="8Mi-A1-Owg" firstAttribute="leading" secondItem="zSA-Jm-A9O" secondAttribute="leading" id="Xyt-Md-o7Q"/>
+                                                    <constraint firstAttribute="trailing" secondItem="Crb-na-dcD" secondAttribute="trailing" id="h3q-MC-WRn"/>
+                                                    <constraint firstAttribute="bottom" secondItem="8Mi-A1-Owg" secondAttribute="bottom" id="oyb-TH-f17"/>
+                                                    <constraint firstItem="8Mi-A1-Owg" firstAttribute="height" secondItem="Crb-na-dcD" secondAttribute="height" multiplier="3:7" id="pSC-ih-GCx"/>
+                                                    <constraint firstItem="Crb-na-dcD" firstAttribute="top" secondItem="zSA-Jm-A9O" secondAttribute="top" id="qmU-D7-SV4"/>
+                                                </constraints>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                        <integer key="value" value="10"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </view>
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstItem="jfb-CM-F4I" firstAttribute="centerX" secondItem="dlW-fr-0Nv" secondAttribute="centerX" id="DD8-qm-bKf"/>
+                                            <constraint firstItem="zSA-Jm-A9O" firstAttribute="centerY" secondItem="dlW-fr-0Nv" secondAttribute="centerY" id="SWE-6L-Wjq"/>
                                             <constraint firstItem="jfb-CM-F4I" firstAttribute="top" secondItem="uT0-hC-A8m" secondAttribute="bottom" constant="30" id="U6j-40-BhL"/>
+                                            <constraint firstItem="zSA-Jm-A9O" firstAttribute="centerX" secondItem="dlW-fr-0Nv" secondAttribute="centerX" id="VMv-u3-20X"/>
                                             <constraint firstAttribute="trailing" secondItem="uT0-hC-A8m" secondAttribute="trailing" constant="10" id="f8a-RI-6Ey"/>
                                             <constraint firstItem="uT0-hC-A8m" firstAttribute="leading" secondItem="dlW-fr-0Nv" secondAttribute="leading" constant="10" id="p10-F6-0tw"/>
                                             <constraint firstItem="uT0-hC-A8m" firstAttribute="top" secondItem="dlW-fr-0Nv" secondAttribute="top" constant="10" id="rHs-1a-nsO"/>
+                                            <constraint firstAttribute="trailing" secondItem="zSA-Jm-A9O" secondAttribute="trailing" constant="80" id="tIb-eQ-P8x"/>
+                                            <constraint firstItem="zSA-Jm-A9O" firstAttribute="top" secondItem="dlW-fr-0Nv" secondAttribute="top" constant="80" id="u5A-sL-xUI"/>
                                             <constraint firstAttribute="bottom" secondItem="jfb-CM-F4I" secondAttribute="bottom" id="vCq-1k-QWx"/>
                                         </constraints>
                                     </view>
@@ -486,11 +521,12 @@
                     <connections>
                         <outlet property="endMemoButton" destination="jfb-CM-F4I" id="Uc4-94-vR7"/>
                         <outlet property="memoView" destination="uT0-hC-A8m" id="8F8-Ao-dEe"/>
+                        <outlet property="saveCompleteView" destination="zSA-Jm-A9O" id="qHE-pp-aqX"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZWy-BN-KPV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2879.7101449275365" y="-109.15178571428571"/>
+            <point key="canvasLocation" x="2878.125" y="-109.85915492957747"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="jNp-Uh-s1t">
@@ -518,6 +554,7 @@
     <color key="tintColor" systemColor="systemGreenColor"/>
     <resources>
         <image name="camera.fill" catalog="system" width="128" height="93"/>
+        <image name="checkmark.icloud.fill" catalog="system" width="128" height="90"/>
         <image name="leaf.fill" catalog="system" width="128" height="109"/>
         <image name="pencil" catalog="system" width="128" height="113"/>
         <image name="text.book.closed.fill" catalog="system" width="115" height="128"/>
