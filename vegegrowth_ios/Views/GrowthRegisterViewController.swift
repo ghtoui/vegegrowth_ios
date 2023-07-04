@@ -29,6 +29,7 @@ class GrowthRegisterViewController: UIViewController, UIImagePickerControllerDel
         registerButton.isHidden = true
     
         bind()
+        navigationItemSettings()
         viewModel.inputs.vegeText.accept(vegeText)
     }
     
@@ -36,8 +37,6 @@ class GrowthRegisterViewController: UIViewController, UIImagePickerControllerDel
         super.init(coder: coder)
         self.vegeText = vegeText
         // タイトル変更(タップしたラベルを反映する)
-        // navigationcontrollerを使っている
-        navigationItem.title = vegeText
     }
     
     required init?(coder: NSCoder) {
@@ -194,6 +193,25 @@ class GrowthRegisterViewController: UIViewController, UIImagePickerControllerDel
         navigationController?.pushViewController(VC, animated: true)
     }
     
+    private func navigationItemSettings() {
+        // ボタンのサイズ
+        let buttonFontSize: CGFloat = 20
+        
+        // titleの設定
+        navigationItem.title = vegeText
+        
+        // 右ボタンの設定
+        if let rightButton = navigationItem.rightBarButtonItem {
+            let attributes: [NSAttributedString.Key: Any] = [
+                // フォントサイズを設定
+                NSAttributedString.Key.font: UIFont.systemFont(ofSize: buttonFontSize)             ]
+            rightButton.setTitleTextAttributes(attributes, for: .normal)
+        }
+        
+        // バックボタンを矢印だけにする
+        navigationItem.backButtonDisplayMode = .minimal
+    }
+    
     /*
     // MARK: - Navigation
 
@@ -253,6 +271,7 @@ extension Reactive where Base: UIImagePickerController {
                 })
         }
     }
+    
 }
 
 extension Reactive where Base: UIImagePickerController {

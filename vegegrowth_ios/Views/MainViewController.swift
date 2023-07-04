@@ -20,11 +20,13 @@ final class MainViewController: UIViewController {
         self.viewModel = MainViewModel()
         super.init(coder: coder)
     }
-   
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
+        navigationItemSettings()
+
         bind()
     }
     
@@ -32,7 +34,9 @@ final class MainViewController: UIViewController {
         // テーブルの作成
         viewModel.outputs.tableData
             .drive(tableView.rx.items(cellIdentifier: "vegeCell")) {
-                index, model, cell in cell.textLabel?.text = model
+                index, model, cell in
+                    cell.textLabel?.text = model
+                    cell.imageView?.image = UIImage(named: "nae")
             }
             .disposed(by: disposeBag)
         
@@ -104,6 +108,19 @@ final class MainViewController: UIViewController {
         navigationController?.pushViewController(VC, animated: true)
     }
     
+    private func navigationItemSettings() {
+        let buttonFontSize: CGFloat = 20
+        if let rightButton = navigationItem.rightBarButtonItem {
+            let attributes: [NSAttributedString.Key: Any] = [
+                // フォントサイズを設定
+                NSAttributedString.Key.font: UIFont.systemFont(ofSize: buttonFontSize)             ]
+            rightButton.setTitleTextAttributes(attributes, for: .normal)
+        }
+        
+        // バックボタンを矢印だけにする
+        navigationItem.backButtonDisplayMode = .minimal
+    }
+   
     /*
      // MARK: - Navigation
      

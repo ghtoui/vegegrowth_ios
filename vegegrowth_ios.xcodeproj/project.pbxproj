@@ -12,7 +12,10 @@
 		864442FE2A35EEBE00556BD9 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 864442FD2A35EEBE00556BD9 /* MainViewModel.swift */; };
 		864443002A35EECC00556BD9 /* GrowthRegisterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 864442FF2A35EECC00556BD9 /* GrowthRegisterViewModel.swift */; };
 		864443022A35EEDF00556BD9 /* GrowthManageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 864443012A35EEDF00556BD9 /* GrowthManageViewModel.swift */; };
-		866878492A2840AD005ED0A1 /* graph.swift in Sources */ = {isa = PBXBuildFile; fileRef = 866878482A2840AD005ED0A1 /* graph.swift */; };
+		8657FEDD2A4FFD780011124A /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8657FEDC2A4FFD780011124A /* CustomButton.swift */; };
+		8657FEE12A5004C70011124A /* AddMemoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8657FEE02A5004C70011124A /* AddMemoViewModel.swift */; };
+		8657FEE62A501B610011124A /* addMemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8657FEE52A501B610011124A /* addMemoViewController.swift */; };
+		866878492A2840AD005ED0A1 /* detailVege.swift in Sources */ = {isa = PBXBuildFile; fileRef = 866878482A2840AD005ED0A1 /* detailVege.swift */; };
 		866C10BA2A12081400AE1D47 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 866C10B92A12081400AE1D47 /* AppDelegate.swift */; };
 		866C10BC2A12081400AE1D47 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 866C10BB2A12081400AE1D47 /* SceneDelegate.swift */; };
 		866C10C42A12081400AE1D47 /* vegegrowth_ios.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 866C10C22A12081400AE1D47 /* vegegrowth_ios.xcdatamodeld */; };
@@ -39,7 +42,10 @@
 		864442FD2A35EEBE00556BD9 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		864442FF2A35EECC00556BD9 /* GrowthRegisterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrowthRegisterViewModel.swift; sourceTree = "<group>"; };
 		864443012A35EEDF00556BD9 /* GrowthManageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrowthManageViewModel.swift; sourceTree = "<group>"; };
-		866878482A2840AD005ED0A1 /* graph.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = graph.swift; sourceTree = "<group>"; };
+		8657FEDC2A4FFD780011124A /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
+		8657FEE02A5004C70011124A /* AddMemoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMemoViewModel.swift; sourceTree = "<group>"; };
+		8657FEE52A501B610011124A /* addMemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = addMemoViewController.swift; sourceTree = "<group>"; };
+		866878482A2840AD005ED0A1 /* detailVege.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = detailVege.swift; sourceTree = "<group>"; };
 		866C10B62A12081400AE1D47 /* vegegrowth_ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = vegegrowth_ios.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		866C10B92A12081400AE1D47 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		866C10BB2A12081400AE1D47 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -79,7 +85,7 @@
 				86E2A6D72A15E26D00D3D64C /* tablemanager.swift */,
 				86E523FB2A1212630012D10C /* saveImg.swift */,
 				867D520B2A16565C00807A70 /* slideshow.swift */,
-				866878482A2840AD005ED0A1 /* graph.swift */,
+				866878482A2840AD005ED0A1 /* detailVege.swift */,
 				8631F6D12A2A142000A29BF5 /* date.swift */,
 			);
 			path = Models;
@@ -91,6 +97,7 @@
 				867D520D2A16566100807A70 /* MainViewController.swift */,
 				86E523F92A120FC80012D10C /* GrowthRegisterViewController.swift */,
 				8631F6D62A2A353700A29BF5 /* GrowthManageViewController.swift */,
+				8657FEE52A501B610011124A /* addMemoViewController.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -101,8 +108,17 @@
 				864442FD2A35EEBE00556BD9 /* MainViewModel.swift */,
 				864442FF2A35EECC00556BD9 /* GrowthRegisterViewModel.swift */,
 				864443012A35EEDF00556BD9 /* GrowthManageViewModel.swift */,
+				8657FEE02A5004C70011124A /* AddMemoViewModel.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		8657FEE22A5004D60011124A /* UISettings */ = {
+			isa = PBXGroup;
+			children = (
+				8657FEDC2A4FFD780011124A /* CustomButton.swift */,
+			);
+			path = UISettings;
 			sourceTree = "<group>";
 		};
 		866C10AD2A12081400AE1D47 = {
@@ -135,6 +151,7 @@
 				864442FC2A35EA3B00556BD9 /* Views */,
 				86E2A6D12A15DC6C00D3D64C /* Main.storyboard */,
 				864443032A35EF0700556BD9 /* ViewModel */,
+				8657FEE22A5004D60011124A /* UISettings */,
 			);
 			path = vegegrowth_ios;
 			sourceTree = "<group>";
@@ -284,14 +301,17 @@
 				867D520E2A16566100807A70 /* MainViewController.swift in Sources */,
 				86E523FC2A1212630012D10C /* saveImg.swift in Sources */,
 				8631F6D72A2A353700A29BF5 /* GrowthManageViewController.swift in Sources */,
+				8657FEDD2A4FFD780011124A /* CustomButton.swift in Sources */,
 				86E2A6D42A15DCF300D3D64C /* vegemanager.swift in Sources */,
 				864443002A35EECC00556BD9 /* GrowthRegisterViewModel.swift in Sources */,
 				864443022A35EEDF00556BD9 /* GrowthManageViewModel.swift in Sources */,
+				8657FEE12A5004C70011124A /* AddMemoViewModel.swift in Sources */,
 				864442FE2A35EEBE00556BD9 /* MainViewModel.swift in Sources */,
-				866878492A2840AD005ED0A1 /* graph.swift in Sources */,
+				866878492A2840AD005ED0A1 /* detailVege.swift in Sources */,
 				866C10BC2A12081400AE1D47 /* SceneDelegate.swift in Sources */,
 				86E523FA2A120FC80012D10C /* GrowthRegisterViewController.swift in Sources */,
 				8631F6D22A2A142000A29BF5 /* date.swift in Sources */,
+				8657FEE62A501B610011124A /* addMemoViewController.swift in Sources */,
 				867D520C2A16565C00807A70 /* slideshow.swift in Sources */,
 				86E2A6D82A15E26D00D3D64C /* tablemanager.swift in Sources */,
 				866C10C42A12081400AE1D47 /* vegegrowth_ios.xcdatamodeld in Sources */,
