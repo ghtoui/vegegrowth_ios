@@ -32,7 +32,9 @@ final class MainViewController: UIViewController {
         // テーブルの作成
         viewModel.outputs.tableData
             .drive(tableView.rx.items(cellIdentifier: "vegeCell")) {
-                index, model, cell in cell.textLabel?.text = model
+                index, model, cell in
+                    cell.textLabel?.text = model
+                    cell.imageView?.image = UIImage(named: "nae")
             }
             .disposed(by: disposeBag)
         
