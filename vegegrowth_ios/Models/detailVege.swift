@@ -23,11 +23,16 @@ class DetailVegeClass {
         let date = dateClass.getDate()
         detailVegeList = getUserDetailVegeList()
         detailVegeList.append(VegeLengthObject(date: date, vegeLength: length, x: Double(detailVegeList.count), memoText: ""))
-        serUserDetailVegeList()
+        setUserDetailList()
+    }
+    
+    public func editDetailMemo(index: Int, memoText: String) {
+        detailVegeList[index].memoText = memoText
+        setUserDetailList()
     }
     
     // 野菜の長さのリストをユーザーデフォルトに保存
-    func serUserDetailVegeList() {
+    func setUserDetailList() {
         var vegeLengthObjectList: [[String: Any]] = []
         for item in detailVegeList {
             let vegeLengthObject: [String: Any] = [
@@ -54,12 +59,10 @@ class DetailVegeClass {
         }
         for item in vegeLengthObjectList {
             guard let date = item["date"] as? String,
-                  let vegeLength = item["vegeLength"] as? Double,
-                  let x = item["x"] as? Double,
-                  let memoText = item["memoText"] as? String else {
+                  let vegeLength = item["vegeLength"] as? Double, let x = item["x"] as? Double, let memoText = item["memoText"] as? String else {
                 continue
             }
-            let vegeLengthObject = VegeLengthObject(date: date, vegeLength: vegeLength, x: x, memoText: "")
+            let vegeLengthObject = VegeLengthObject(date: date, vegeLength: vegeLength, x: x, memoText: memoText)
             detailVegeList.append(vegeLengthObject)
         }
         

@@ -15,6 +15,7 @@ protocol GrowthManageViewModelInputs {
     var rightSwipe: PublishRelay<Void> { get }
     var leftSwipe: PublishRelay<Void> { get }
     var tapGesture: PublishRelay<Void> { get }
+    var editMemoButtonTapped: PublishRelay<Void> { get }
 }
 
 protocol GrowthManageViewModelOutputs {
@@ -24,8 +25,9 @@ protocol GrowthManageViewModelOutputs {
     var isHiddenLabel: Driver<Bool> { get }
     var isPopupImg: BehaviorRelay<Bool> { get }
     var detailLabelText: Driver<String> { get }
+    var memoLabelText: Driver<String> { get }
+    var moveEditMemoView: PublishRelay<Void> { get }
     func getDatas() -> [VegeLengthObject]
-//    var showLineChart: PublishRelay<Void> { get }
 }
 
 protocol GrowthManageViewModelType {
@@ -45,6 +47,7 @@ class GrowthManageViewModel: GrowthManageViewModelType,
     var rightSwipe = PublishRelay<Void>()
     var leftSwipe = PublishRelay<Void>()
     var tapGesture = PublishRelay<Void>()
+    var editMemoButtonTapped = PublishRelay<Void>()
     
     // MARK: - outputs
     var vegeId = PublishRelay<String>()
@@ -55,13 +58,13 @@ class GrowthManageViewModel: GrowthManageViewModelType,
     var isHiddenLabel: Driver<Bool>
     var isPopupImg = BehaviorRelay<Bool>(value: false)
     var detailLabelText: Driver<String>
-    
-//    var showLineChart = PublishRelay<ChartDataEntry>()
-    
+    var memoLabelText: Driver<String>
+    var moveEditMemoView = PublishRelay<Void>()
     
     private let slideImgRelay = BehaviorRelay<UIImage?>(value: nil)
     private let isHiddenLabelRelay = PublishRelay<Bool>()
     private let detailLabelTextRelay = BehaviorRelay<String>(value: "")
+    private let memoLabelTextRelay = BehaviorRelay<String>(value: "")
     
     private let vegeManager = VegeManagerClass()
     private let date = DateClass()
@@ -75,6 +78,8 @@ class GrowthManageViewModel: GrowthManageViewModelType,
         isHiddenLabel = isHiddenLabelRelay.asDriver(onErrorDriveWith: .empty())
         
         detailLabelText = detailLabelTextRelay.asDriver(onErrorDriveWith: .empty())
+        
+        memoLabelText = memoLabelTextRelay.asDriver().asDriver(onErrorDriveWith: .empty())
         
         vegeText
             .compactMap { [weak self] vegeText in
@@ -116,14 +121,25 @@ class GrowthManageViewModel: GrowthManageViewModelType,
                 guard let isPopup: Bool = self?.isPopupImg.value else {
                     return
                 }
-                
                 self?.isPopupImg.accept(!isPopup)
             })
             .disposed(by: disposeBag)
+        
+        editMemoButtonTapped
+            .subscribe(onNext: { [weak self] in
+                self?.moveEditMemoView.accept(())
+            })
+            .disposed(by: disposeBag)
+        
     }
     
     public func getDatas() -> [VegeLengthObject] {
-        return detailVege.getUserDetailVegeList()
+        let datas = detailVege.getUserDetailVegeList()
+        guard !datas.isEmpty else {
+            isHiddenLabelRelay.accept(false)
+            return []
+        }
+        return datas
     }
     
     private func getGraphData() {
@@ -136,14 +152,20 @@ class GrowthManageViewModel: GrowthManageViewModelType,
         }
     }
     
+    private func getMemo(index: Int) {
+        let datas = getDatas()
+        var memoLabelText = datas[index].memoText
+        if memoLabelText == "" {
+            memoLabelText = "メモされていません"
+        }
+        memoLabelTextRelay.accept(memoLabelText)
+    }
+    
     // 画面のデータを更新する処理
     private func reloadManageData() {
         var detailText = ""
         let datas = getDatas()
-        guard !datas.isEmpty else {
-            isHiddenLabelRelay.accept(false)
-            return
-        }
+        
         let index = slideShow.getCurrentIndex()
         let data = datas[index]
         let firstData = datas[0]
@@ -160,6 +182,6 @@ class GrowthManageViewModel: GrowthManageViewModelType,
         
         currentIndex.accept(index)
         detailLabelTextRelay.accept(detailText)
+        getMemo(index: index)
     }
-    
 }

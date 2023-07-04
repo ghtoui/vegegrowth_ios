@@ -10,11 +10,12 @@ import RxCocoa
 import RxSwift
 
 protocol AddMemoViewModelInputs {
-    var endMemoButtonTapped: PublishRelay<String> { get }
+    var endMemoButtonTapped: PublishRelay<Void> { get }
+    var memoText: PublishRelay<String> { get }
 }
 
 protocol AddMemoViewModelOutputs {
-    var memoText: BehaviorRelay<String> { get }
+    var initialMemoText: Driver<String> { get }
     var endMemo: PublishRelay<Void> { get }
 }
 
@@ -29,30 +30,60 @@ final class AddMemoViewModel: AddMemoViewModelType, AddMemoViewModelInputs, AddM
     var outputs: AddMemoViewModelOutputs { return self }
     
     // MARK: - inputs
-    var endMemoButtonTapped =  PublishRelay<String>()
+    var endMemoButtonTapped =  PublishRelay<Void>()
+    var memoText = PublishRelay<String>()
 
     // MARK: - outsputs
-    var memoText = BehaviorRelay<String>(value: "")
+    var initialMemoText: Driver<String>
     var endMemo = PublishRelay<Void>()
+    
+    private var index: Int
+    private var memoTextRelay = BehaviorRelay(value: "")
     
     private var detailVege: DetailVegeClass
     private var vegeManager = VegeManagerClass()
     
+    private let disposeBag = DisposeBag()
+    
     init(vegeText: String, index: Int) {
+        self.index = index
+        
         let vegeIdDict = vegeManager.getVegeIdDict()
         guard let vegeId = vegeIdDict[vegeText] else {
             fatalError("vegeIdが見つかりません")
         }
         detailVege = DetailVegeClass(vegeId: vegeId)
-        getMemoText(index: index)
+        
+        initialMemoText = memoTextRelay.asDriver(onErrorDriveWith: .empty())
+        
+        getMemoText()
+        
+        endMemoButtonTapped
+            .withLatestFrom(memoText)
+            .subscribe(onNext: {[weak self] text in
+                self?.saveMemo(memoText: text)
+            })
+            .disposed(by: disposeBag)
     }
-    private func getMemoText(index: Int) {
+    
+    private func saveMemo(memoText: String) {
+        var datas = detailVege.getUserDetailVegeList()
+        guard !datas.isEmpty else {
+            return
+        }
+        detailVege.editDetailMemo(index: index, memoText: memoText)
+        
+        endMemo.accept(())
+    }
+    
+    private func getMemoText() {
         let datas = detailVege.getUserDetailVegeList()
         guard !datas.isEmpty else {
             return
         }
+        print(datas)
         let data = datas[index]
-        var memoText = data.memoText
-        self.memoText.accept(memoText)
+        let memoText = data.memoText
+        self.memoTextRelay.accept(memoText)
     }
 }

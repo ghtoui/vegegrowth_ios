@@ -96,6 +96,23 @@ class GrowthManageViewController: UIViewController {
         viewModel.outputs.detailLabelText
             .drive(detailLabel.rx.text)
             .disposed(by: disposeBag)
+        
+        viewModel.outputs.memoLabelText
+            .drive(memoLabel.rx.text)
+            .disposed(by: disposeBag)
+        
+        editMemoButton.rx.tap
+            .bind(to: viewModel.inputs.editMemoButtonTapped)
+            .disposed(by: disposeBag)
+        
+        viewModel.outputs.moveEditMemoView
+            .subscribe(onNext: { [weak self] in
+                guard let vegeText: String = self?.vegeText, let index: Int = self?.currentIndex else {
+                    return
+                }
+                self?.moveEditMemoView(vegeText: vegeText, index: index)
+            })
+            .disposed(by: disposeBag)
     }
     
     private func gestureBind() {
@@ -275,6 +292,14 @@ class GrowthManageViewController: UIViewController {
         // バックボタンを矢印だけにする
         navigationItem.backButtonDisplayMode = .minimal
         
+    }
+    
+    private func moveEditMemoView(vegeText: String, index: Int) {
+        let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+        let VC = storyBoard.instantiateViewController(identifier: "AddMemoView") { coder in
+            return addMemoViewController(coder: coder, vegeText: vegeText, index: index)
+        }
+        navigationController?.pushViewController(VC, animated: true)
     }
 }
 

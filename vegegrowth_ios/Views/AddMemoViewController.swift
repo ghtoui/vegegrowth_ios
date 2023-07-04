@@ -11,10 +11,12 @@ import RxSwift
 
 class addMemoViewController: UIViewController {
 
+    @IBOutlet weak var saveCompleteView: UIView!
     @IBOutlet weak var memoView: UITextView!
     @IBOutlet weak var endMemoButton: UIButton!
     
     private var vegeText: String
+    private var index: Int
     private var viewModel: AddMemoViewModelType
     private let disposeBag = DisposeBag()
     
@@ -22,13 +24,17 @@ class addMemoViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        memoView.text = "\(index)"
         bind()
+        navigationItemSettings()
     }
     
     init?(coder: NSCoder, vegeText: String, index: Int) {
         viewModel = AddMemoViewModel(vegeText: vegeText, index: index)
         self.vegeText = vegeText
+        self.index = index
         super.init(coder: coder)
+        
         
         print(vegeText)
     }
@@ -38,13 +44,34 @@ class addMemoViewController: UIViewController {
     }
     
     private func bind() {
-//        endMemoButton.rx.tap
-//            .bind(to: viewModel.inputs.endMemoButtonTapped)
-//            .disposed(by: disposeBag)
-//
-//        viewModel.outputs.memoText
-//            .bind(to: memoView.rx.text)
-//            .disposed(by: disposeBag)
+        endMemoButton.rx.tap
+            .bind(to: viewModel.inputs.endMemoButtonTapped)
+            .disposed(by: disposeBag)
+        
+        memoView.rx.text
+            .subscribe(onNext: { [weak self] memoText in
+                self?.viewModel.inputs.memoText.accept(memoText ?? "")
+            })
+            .disposed(by: disposeBag)
+
+        viewModel.outputs.initialMemoText
+            .drive(memoView.rx.text)
+            .disposed(by: disposeBag)
+        
+        viewModel.outputs.endMemo
+            .subscribe(onNext: {[weak self] in
+                self?.saveComplete()
+            })
+            .disposed(by: disposeBag)
+    }
+    
+    // 表示して、n秒後に消す処理
+    private func saveComplete() {
+        let TIME: Double = 2
+        saveCompleteView.isHidden = false
+        Timer.scheduledTimer(withTimeInterval: TIME, repeats: false) { timer in
+            self.saveCompleteView.isHidden = true
+        }
     }
     
     private func navigationItemSettings() {
@@ -63,7 +90,6 @@ class addMemoViewController: UIViewController {
         
         // バックボタンを矢印だけにする
         navigationItem.backButtonDisplayMode = .minimal
-
     }
     
     /*
