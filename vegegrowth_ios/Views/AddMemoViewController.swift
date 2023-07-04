@@ -14,6 +14,7 @@ class addMemoViewController: UIViewController {
     @IBOutlet weak var memoView: UITextView!
     @IBOutlet weak var endMemoButton: UIButton!
     
+    private var vegeText: String
     private var viewModel: AddMemoViewModelType
     private let disposeBag = DisposeBag()
     
@@ -26,10 +27,10 @@ class addMemoViewController: UIViewController {
     
     init?(coder: NSCoder, vegeText: String, index: Int) {
         viewModel = AddMemoViewModel(vegeText: vegeText, index: index)
+        self.vegeText = vegeText
         super.init(coder: coder)
         
         print(vegeText)
-        navigationItem.title = vegeText + " - メモ登録"
     }
     
     required init?(coder: NSCoder) {
@@ -44,6 +45,25 @@ class addMemoViewController: UIViewController {
 //        viewModel.outputs.memoText
 //            .bind(to: memoView.rx.text)
 //            .disposed(by: disposeBag)
+    }
+    
+    private func navigationItemSettings() {
+        // ボタンのサイズ
+        let buttonFontSize: CGFloat = 20
+        // titleの設定
+        navigationItem.title = vegeText + " - メモ登録"
+        
+        // 右ボタンの設定
+        if let rightButton = navigationItem.rightBarButtonItem {
+            let attributes: [NSAttributedString.Key: Any] = [
+                // フォントサイズを設定
+                NSAttributedString.Key.font: UIFont.systemFont(ofSize: buttonFontSize)             ]
+            rightButton.setTitleTextAttributes(attributes, for: .normal)
+        }
+        
+        // バックボタンを矢印だけにする
+        navigationItem.backButtonDisplayMode = .minimal
+
     }
     
     /*
