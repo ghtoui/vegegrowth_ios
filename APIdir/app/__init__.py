@@ -15,3 +15,4 @@ app.config.from_object('app.config')
 def hello():
     return 'Hello World'
 
+from app import route

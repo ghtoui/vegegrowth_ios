@@ -1,13 +1,18 @@
 from flask import jsonify, request
 from app import app
+import time
 
 # GETリクエストに対応するエンドポイント
 @app.route('/api/data', methods = ['GET'])
 def get_data():
-    data = {'message': 'hello~~'}
+    data = []
+    time.sleep(3)
+    for i in range(10):
+        data.append({'name': 'test{}'.format(i)})
+
     return jsonify(data)
 
-@app.route('/api/data', methods = ['POST'])
+@app.route('/api/send_data', methods = ['POST'])
 def post_data():
     req_data = request.get_json()
     # keyで取得できる
