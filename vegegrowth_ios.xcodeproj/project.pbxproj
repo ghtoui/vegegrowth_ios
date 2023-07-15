@@ -26,6 +26,9 @@
 		8674D7122A3948AA00D2F25B /* RxDataSources in Frameworks */ = {isa = PBXBuildFile; productRef = 8674D7112A3948AA00D2F25B /* RxDataSources */; };
 		867D520C2A16565C00807A70 /* slideshow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 867D520B2A16565C00807A70 /* slideshow.swift */; };
 		867D520E2A16566100807A70 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 867D520D2A16566100807A70 /* MainViewController.swift */; };
+		86D56B3A2A619170001EA96E /* BrowseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86D56B392A619170001EA96E /* BrowseViewController.swift */; };
+		86D56B3C2A619BA4001EA96E /* BrowseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86D56B3B2A619BA4001EA96E /* BrowseViewModel.swift */; };
+		86D56B402A622A5B001EA96E /* browseData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86D56B3F2A622A5B001EA96E /* browseData.swift */; };
 		86E2A6D22A15DC6C00D3D64C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 86E2A6D12A15DC6C00D3D64C /* Main.storyboard */; };
 		86E2A6D42A15DCF300D3D64C /* vegemanager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86E2A6D32A15DCF300D3D64C /* vegemanager.swift */; };
 		86E2A6D82A15E26D00D3D64C /* tablemanager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86E2A6D72A15E26D00D3D64C /* tablemanager.swift */; };
@@ -54,6 +57,9 @@
 		866C10CA2A12081500AE1D47 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		867D520B2A16565C00807A70 /* slideshow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = slideshow.swift; sourceTree = "<group>"; };
 		867D520D2A16566100807A70 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		86D56B392A619170001EA96E /* BrowseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowseViewController.swift; sourceTree = "<group>"; };
+		86D56B3B2A619BA4001EA96E /* BrowseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowseViewModel.swift; sourceTree = "<group>"; };
+		86D56B3F2A622A5B001EA96E /* browseData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = browseData.swift; sourceTree = "<group>"; };
 		86E2A6D12A15DC6C00D3D64C /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		86E2A6D32A15DCF300D3D64C /* vegemanager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = vegemanager.swift; sourceTree = "<group>"; };
 		86E2A6D72A15E26D00D3D64C /* tablemanager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tablemanager.swift; sourceTree = "<group>"; };
@@ -87,6 +93,7 @@
 				867D520B2A16565C00807A70 /* slideshow.swift */,
 				866878482A2840AD005ED0A1 /* detailVege.swift */,
 				8631F6D12A2A142000A29BF5 /* date.swift */,
+				86D56B3F2A622A5B001EA96E /* browseData.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -98,6 +105,7 @@
 				86E523F92A120FC80012D10C /* GrowthRegisterViewController.swift */,
 				8631F6D62A2A353700A29BF5 /* GrowthManageViewController.swift */,
 				8657FEE52A501B610011124A /* addMemoViewController.swift */,
+				86D56B392A619170001EA96E /* BrowseViewController.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -109,6 +117,7 @@
 				864442FF2A35EECC00556BD9 /* GrowthRegisterViewModel.swift */,
 				864443012A35EEDF00556BD9 /* GrowthManageViewModel.swift */,
 				8657FEE02A5004C70011124A /* AddMemoViewModel.swift */,
+				86D56B3B2A619BA4001EA96E /* BrowseViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -298,6 +307,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				866C10BA2A12081400AE1D47 /* AppDelegate.swift in Sources */,
+				86D56B402A622A5B001EA96E /* browseData.swift in Sources */,
 				867D520E2A16566100807A70 /* MainViewController.swift in Sources */,
 				86E523FC2A1212630012D10C /* saveImg.swift in Sources */,
 				8631F6D72A2A353700A29BF5 /* GrowthManageViewController.swift in Sources */,
@@ -307,8 +317,10 @@
 				864443022A35EEDF00556BD9 /* GrowthManageViewModel.swift in Sources */,
 				8657FEE12A5004C70011124A /* AddMemoViewModel.swift in Sources */,
 				864442FE2A35EEBE00556BD9 /* MainViewModel.swift in Sources */,
+				86D56B3C2A619BA4001EA96E /* BrowseViewModel.swift in Sources */,
 				866878492A2840AD005ED0A1 /* detailVege.swift in Sources */,
 				866C10BC2A12081400AE1D47 /* SceneDelegate.swift in Sources */,
+				86D56B3A2A619170001EA96E /* BrowseViewController.swift in Sources */,
 				86E523FA2A120FC80012D10C /* GrowthRegisterViewController.swift in Sources */,
 				8631F6D22A2A142000A29BF5 /* date.swift in Sources */,
 				8657FEE62A501B610011124A /* addMemoViewController.swift in Sources */,
