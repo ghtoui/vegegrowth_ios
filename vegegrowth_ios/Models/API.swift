@@ -6,3 +6,15 @@
 //
 
 import Foundation
+
+class API {
+    private var task: URLSessionTask?
+    
+    enum FetchRepositoryError: Error {
+        case wrong
+        case network
+        case parse
+    }
+    
+    
+}
