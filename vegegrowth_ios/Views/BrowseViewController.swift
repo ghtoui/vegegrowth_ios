@@ -29,6 +29,7 @@ class BrowseViewController: UIViewController {
     }
     
     private func bind() {
+        // テーブル作成
         viewModel.outputs.tableData
             .drive(tableView.rx.items(cellIdentifier: "browseCell")) {
                 index, model, cell in
@@ -37,14 +38,38 @@ class BrowseViewController: UIViewController {
             }
             .disposed(by: disposeBag)
         
+        // loading処理
         viewModel.outputs.isLoading
             .drive(loadingIndicator.rx.isAnimating)
+            .disposed(by: disposeBag)
+        
+        // セルをタップした時
+        tableView.rx.itemSelected
+            .bind { [weak self] indexPath in
+                self?.viewModel.inputs.cellSelected.accept(indexPath.row)
+            }
+            .disposed(by: disposeBag)
+        
+        // タップしたmodelを取得
+        viewModel.outputs.selectedModel
+            .subscribe(onNext: { [weak self] model in
+                self?.goTo(model: model)
+            })
             .disposed(by: disposeBag)
     }
     
     private func initialLoadingIndicator() {
         loadingIndicator.center = view.center
         view.addSubview(loadingIndicator)
+    }
+    
+    // 画面遷移
+    private func goTo(model: BrowseData) {
+        let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+        let VC = storyBoard.instantiateViewController(identifier: "ViewerView") { coder in
+            return ViewerViewController(coder: coder, model: model)
+        }
+        navigationController?.pushViewController(VC, animated: true)
     }
     
 

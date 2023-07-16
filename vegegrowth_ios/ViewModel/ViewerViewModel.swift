@@ -6,3 +6,13 @@
 //
 
 import Foundation
+import Charts
+import RxSwift
+import RxCocoa
+
+class ViewerViewModel: BaseManageViewModel {
+    
+    override init() {
+        super.init()
+    }
+}

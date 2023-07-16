@@ -32,5 +32,8 @@ class browseClass {
 
 struct BrowseData: Codable {
     let name: String
-    //    let description: String
+    var date: [String]
+    var vegeLength: [Double]
+    var x: [Double]
+    var memoText: [String]
 }

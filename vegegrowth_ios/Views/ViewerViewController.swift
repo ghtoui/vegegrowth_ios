@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ViewerViewController: UIViewController {
+class ViewerViewController: BaseManageViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -15,6 +15,19 @@ class ViewerViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
+    init?(coder: NSCoder, model: BrowseData) {
+        super.init(coder: coder)
+        // タイトル変更(タップしたラベルを反映する)
+        // navigationcontrollerを使っている
+        viewModel = ViewerViewModel()
+        let vegeText = model.name
+        navigationItem.title = vegeText
+        self.vegeText = vegeText
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 
     /*
     // MARK: - Navigation
