@@ -42,7 +42,7 @@ for i in range(len(name_list)):
 # GETリクエストに対応するエンドポイント
 @app.route('/api/data', methods = ['GET'])
 def get_data():
-    time.sleep(3)
+    time.sleep(1)
 
     return jsonify(test_data)
 
