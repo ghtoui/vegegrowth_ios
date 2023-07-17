@@ -76,11 +76,9 @@ class ViewerViewModel: BaseManageViewModel {
     }
     
     override func getShowImg() -> UIImage? {
-        print(model.base64EncodedImage[index])
         guard let img = Data(base64Encoded: model.base64EncodedImage[index]) else {
             return nil
         }
-        print("image size: \(UIImage(data: img)?.size)")
         return UIImage(data: img)
     }
     
