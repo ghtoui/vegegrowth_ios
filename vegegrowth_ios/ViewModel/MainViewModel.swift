@@ -72,7 +72,6 @@ final class MainViewModel: MainViewModelType,
             .subscribe(onNext: { [weak self] index in
                 self?.cellSelected(index: index)
             })
-        
             .disposed(by: disposeBag)
         
         deleteItem
