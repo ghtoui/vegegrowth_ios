@@ -31,7 +31,7 @@ class BaseManageViewController: UIViewController {
     public var slidePopupImgLeftSwipe: UISwipeGestureRecognizer!
     public var slidePopupImgTapGesture: UITapGestureRecognizer!
     
-    public var viewModel: GrowthManageViewModelType!
+    public var viewModel: BaseManageViewModelType!
     public let disposeBag = DisposeBag()
     
     
@@ -164,7 +164,7 @@ class BaseManageViewController: UIViewController {
     
     // グラフの描画メソッド
     // データの取得はViewModelがやるべき
-    private func updateLineChart() {
+    public func updateLineChart() {
         let datas = viewModel.outputs.getDatas()
         
         // グラフに描画するデータに変換
@@ -265,14 +265,14 @@ class BaseManageViewController: UIViewController {
 
 }
 
-private class ChartFormatter: NSObject, IAxisValueFormatter {
+public class ChartFormatter: NSObject, IAxisValueFormatter {
     private let xAxisValues: [String]
     private let dateFormatter = DateFormatter()
     init (dateList: [String]) {
         xAxisValues = dateList
         dateFormatter.dateFormat = "MM/dd"
     }
-    func stringForValue(_ value: Double, axis: AxisBase?) -> String {
+    public func stringForValue(_ value: Double, axis: AxisBase?) -> String {
         let index = Int(value)
         if index >= 0 && index < xAxisValues.count {
             let date = xAxisValues[index]

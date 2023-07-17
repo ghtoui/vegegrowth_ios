@@ -10,15 +10,17 @@ import Charts
 import RxSwift
 import RxCocoa
 
-protocol GrowthManageViewModelInputs {
+protocol BaseManageViewModelInputs {
     var vegeText: BehaviorRelay<String> { get }
     var rightSwipe: PublishRelay<Void> { get }
     var leftSwipe: PublishRelay<Void> { get }
     var tapGesture: PublishRelay<Void> { get }
     var editMemoButtonTapped: PublishRelay<Void> { get }
+    func setModelData(model: BrowseData)
+    func getShowImg() -> UIImage?
 }
 
-protocol GrowthManageViewModelOutputs {
+protocol BaseManageViewModelOutputs {
     var vegeId: PublishRelay<String> { get }
     var slideImg: Driver<UIImage?> { get }
     var currentIndex: PublishRelay<Int> { get }
@@ -30,17 +32,17 @@ protocol GrowthManageViewModelOutputs {
     func getDatas() -> [VegeLengthObject]
 }
 
-protocol GrowthManageViewModelType {
-    var inputs: GrowthManageViewModelInputs { get }
-    var outputs: GrowthManageViewModelOutputs { get }
+protocol BaseManageViewModelType {
+    var inputs: BaseManageViewModelInputs { get }
+    var outputs: BaseManageViewModelOutputs { get }
 }
 
-class BaseManageViewModel: GrowthManageViewModelType,
-                             GrowthManageViewModelInputs,
-                             GrowthManageViewModelOutputs {
+class BaseManageViewModel: BaseManageViewModelType,
+                             BaseManageViewModelInputs,
+                             BaseManageViewModelOutputs {
     
-    var inputs: GrowthManageViewModelInputs { return self }
-    var outputs: GrowthManageViewModelOutputs { return self }
+    var inputs: BaseManageViewModelInputs { return self }
+    var outputs: BaseManageViewModelOutputs { return self }
     
     // MARK: - inputs
     var vegeText = BehaviorRelay<String>(value: "")
@@ -89,7 +91,6 @@ class BaseManageViewModel: GrowthManageViewModelType,
             }
             .bind(to: vegeId)
             .disposed(by: disposeBag)
-        
 
         // vegeIdが更新されたら、imgclassとgraphclassを生成する
         // vegeIdに対応したvegeTextListも持ってくる
@@ -101,6 +102,10 @@ class BaseManageViewModel: GrowthManageViewModelType,
             })
             .disposed(by: disposeBag)
         
+        gestureBind()
+    }
+    
+    public func gestureBind() {
         rightSwipe
             .subscribe(onNext: { [weak self] _ in
                 self?.slideShow.showPrevImg()
@@ -129,6 +134,10 @@ class BaseManageViewModel: GrowthManageViewModelType,
         return []
     }
     
+    public func setModelData(model: BrowseData) {
+        
+    }
+    
     private func getGraphData() {
         let datas = detailVege.getUserDetailVegeList()
         var entries: [ChartDataEntry] = []
@@ -149,7 +158,7 @@ class BaseManageViewModel: GrowthManageViewModelType,
     }
     
     // 画面のデータを更新する処理
-    private func reloadManageData() {
+    public func reloadManageData() {
         var detailText = ""
         let datas = getDatas()
         
@@ -170,9 +179,12 @@ class BaseManageViewModel: GrowthManageViewModelType,
         // 更新通知
         isHiddenLabelRelay.accept(true)
         slideImgRelay.accept(slideShow.getShowImg())
-        
         currentIndex.accept(index)
         detailLabelTextRelay.accept(detailText)
         getMemo(index: index)
+    }
+    
+    func getShowImg() -> UIImage? {
+        return nil
     }
 }

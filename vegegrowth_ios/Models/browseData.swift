@@ -8,11 +8,12 @@
 import Foundation
 import RxSwift
 import RxCocoa
+import UIKit.UIImage
 
 class browseClass {
     private let API = APIKeyClass()
     
-    public func fetchRepositories() -> Observable<[BrowseData]> {
+    public func fetchData() -> Observable<[BrowseData]> {
         // gitHubAPI
         //            let url = URL(string: "https://api.github.com/users/ghtoui/repos")!
         
@@ -36,4 +37,5 @@ struct BrowseData: Codable {
     var vegeLength: [Double]
     var x: [Double]
     var memoText: [String]
+    var base64EncodedImage: [String]
 }
