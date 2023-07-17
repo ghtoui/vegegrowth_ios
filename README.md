@@ -4,8 +4,10 @@
 
 ## DEMO
 
-*育てている野菜の写真がなかったため、ジャガイモ*  
-![demo動画](./demo/demo.gif)
+![demo動画whole](./demo/wholeDemo.gif)
+![demo動画memo](./demo/memoDemo.gif)
+![demo動画viewer](./demo/viewerDemo.gif)
+
 
 ## 使用方法
 
