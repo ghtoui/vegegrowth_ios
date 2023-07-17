@@ -4,12 +4,14 @@
 
 ## DEMO
 
-- 全体の動画
-    - ![demo動画whole](./demo/wholeDemo.gif)
-- メモ機能の動画
-    - ![demo動画memo](./demo/memoDemo.gif)
-- 閲覧機能の動画
-    - ![demo動画viewer](./demo/viewerDemo.gif)
+### 全体の動画  
+![demo動画whole](./demo/wholeDemo.gif)
+---
+### メモ機能の動画  
+![demo動画memo](./demo/memoDemo.gif)
+---
+### 閲覧機能の動画  
+![demo動画viewer](./demo/viewerDemo.gif)  
 
 
 ## 使用方法
@@ -31,3 +33,8 @@
 
 1. Charts
 2. RxSwift
+
+## 使用サーバー
+
+- pythonanywhere(Free版)
+    - データを管理する用
