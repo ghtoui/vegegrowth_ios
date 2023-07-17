@@ -1,10 +1,45 @@
-# cocoapods関連
-Pods
+privateAPIKey.swift
+
 # Macで生成されるやつ
 .DS_Store
+
+################################
+# python
+################################
+# venv
+.env
+
+# python cache
+*.pyc
+__pycache__/
+
+# ??
+instance/
+
+# test
+.pytest_cache/
+.coverage
+htmlcov/
+
+# build
+dist/
+build/
+*.egg-info/
+
+# dev
+*.swo
+*.swp
+.DS_Store
+set_env_vars.sh
+
+################################
 # Xcode
+################################
 #
 # gitignore contributors: remember to update Global/Xcode.gitignore, Objective-C.gitignore & Swift.gitignore
+
+# cocoapods関連
+Pods
 
 ## User settings
 xcuserdata/

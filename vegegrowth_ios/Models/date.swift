@@ -19,21 +19,22 @@ class DateClass {
         // 日付の取得(UTC)
         let date = Date()
         
-        
         return dateFormatter.string(from: date)
     }
     
     // 日付の差分を求める
     func diffDate(firstDateText: String, secondDateText: String) -> Int {
+        // 文字列を日付データに変換する
+        // 変換できなかったら-1を返す -> -1でいいのか？
         guard let firstDate = dateFormatter.date(from: firstDateText), let secondDate = dateFormatter.date(from: secondDateText) else {
-            return 0
+            return -1
         }
         
         let firstDateComponents = calendar.dateComponents([.year, .month, .day], from: firstDate)
         let secondDateComponents = calendar.dateComponents([.year, .month, .day], from: secondDate)
         
         guard var diffDays: Int = calendar.dateComponents([.day], from: firstDateComponents, to: secondDateComponents).day else {
-            return 0
+            return -1
         }
         
         // 絶対値に変更して1始まりにする
