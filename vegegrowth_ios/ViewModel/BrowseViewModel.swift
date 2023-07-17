@@ -11,6 +11,7 @@ import RxCocoa
 
 protocol BrowseViewModelInputs {
     var cellSelected: PublishRelay<Int> { get }
+    var reloadButtonTapped: PublishRelay<Void> { get }
 }
 
 protocol BrowseViewModelOutputs {
@@ -31,6 +32,7 @@ class BrowseViewModel: BrowseViewModelType, BrowseViewModelInputs, BrowseViewMod
     
     // MARK: -inputs
     var cellSelected = PublishRelay<Int>()
+    var reloadButtonTapped = PublishRelay<Void>()
     
     // MARK: -outputs
     var tableData: Driver<[BrowseData]>
@@ -54,9 +56,20 @@ class BrowseViewModel: BrowseViewModelType, BrowseViewModelInputs, BrowseViewMod
             })
             .disposed(by: disposeBag)
         
+        // 更新ボタンを押したら、リロードするように
+        reloadButtonTapped
+                .subscribe(onNext: { [weak self] _ in
+                    self?.getData()
+                })
+                .disposed(by: disposeBag)
+        
+        getData()
+    }
+    
+    private func getData() {
         // データの検知したら、tableDataRelayに値が挿入される
         // 最初にonsubscribeが実行され、終了時にdoが実行される
-        browse.fetchRepositories()
+        browse.fetchData()
             .asDriver(onErrorDriveWith: .empty())
             .do(onCompleted: { [weak self] in
                 // ローディングの終了

@@ -45,8 +45,11 @@
                             <constraint firstItem="8NS-eg-OY3" firstAttribute="top" secondItem="fyF-JV-zC1" secondAttribute="top" constant="10" id="xkt-Ke-s9K"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="閲覧画面" id="oUg-4W-hcp"/>
+                    <navigationItem key="navigationItem" title="閲覧画面" id="oUg-4W-hcp">
+                        <barButtonItem key="rightBarButtonItem" title="Item" image="arrow.clockwise.icloud.fill" catalog="system" id="bG7-8E-eOB"/>
+                    </navigationItem>
                     <connections>
+                        <outlet property="reloadButton" destination="bG7-8E-eOB" id="kVg-6M-pG1"/>
                         <outlet property="tableView" destination="8NS-eg-OY3" id="dO8-BM-ovG"/>
                     </connections>
                 </viewController>
@@ -859,6 +862,7 @@
     </scenes>
     <color key="tintColor" systemColor="systemGreenColor"/>
     <resources>
+        <image name="arrow.clockwise.icloud.fill" catalog="system" width="128" height="90"/>
         <image name="camera.fill" catalog="system" width="128" height="93"/>
         <image name="checkmark.icloud.fill" catalog="system" width="128" height="90"/>
         <image name="leaf.fill" catalog="system" width="128" height="109"/>

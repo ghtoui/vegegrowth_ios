@@ -11,6 +11,7 @@ import RxCocoa
 
 class BrowseViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var reloadButton: UIBarButtonItem!
     
     private let loadingIndicator = UIActivityIndicatorView(style: .gray)
 
@@ -55,6 +56,10 @@ class BrowseViewController: UIViewController {
             .subscribe(onNext: { [weak self] model in
                 self?.goTo(model: model)
             })
+            .disposed(by: disposeBag)
+        
+        reloadButton.rx.tap
+            .bind(to: viewModel.inputs.reloadButtonTapped)
             .disposed(by: disposeBag)
     }
     
