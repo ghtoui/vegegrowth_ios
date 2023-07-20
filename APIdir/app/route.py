@@ -54,8 +54,9 @@ def get_data():
 def post_data():
     req_data = request.get_json()
     # keyで取得できる
-    message = req_data.get('message')
-    print(message)
-    response = {'message': 'Receive: {}'.format(message)}
-    return jsonify(response)
+    name = req_data.get('name')
+    print(name)
+    # response = {'name': 'Receive: {}'.format(name)}
+    # return jsonify(response)
+    return jsonify({'name': 'ok'})
 
