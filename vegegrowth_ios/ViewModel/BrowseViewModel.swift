@@ -80,22 +80,19 @@ class BrowseViewModel: BrowseViewModelType, BrowseViewModelInputs, BrowseViewMod
             })
             .drive(tableDataRelay)
             .disposed(by: disposeBag)
-        sendData()
-    }
-    
-    private func sendData() {
-        browse.sendData()
-            .subscribe(onNext: { bool in
-                print("----------")
-                print(bool)
-                print("----------")
-            })
-            .disposed(by: disposeBag)
     }
     
     // 選択したセルを取得
     private func cellSelected(index: Int) {
         let model = tableDataRelay.value[index]
         selectedModel.accept(model)
+        sendData(model: model)
+    }
+    
+    private func sendData(model: BrowseData) {
+        browse.sendData(model: model)
+            .subscribe(onNext: { bool in
+            })
+            .disposed(by: disposeBag)
     }
 }

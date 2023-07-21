@@ -18,7 +18,8 @@ class browseClass {
         //            let url = URL(string: "https://api.github.com/users/ghtoui/repos")!
         
         // こういうのは、githubに公開しないほうが良いっぽいので、別に作って、とってくるようにする
-        let url = URL(string: API.getTestURL() + "api/data")!
+        let urlText: String = API.getTestURL() + "api/data"
+        let url = URL(string: urlText)!
         
         let request = URLRequest(url: url)
         return URLSession.shared.rx.data(request: request)
@@ -30,14 +31,24 @@ class browseClass {
             }
     }
     
-    public func sendData() -> Observable<Bool> {
-        let url = URL(string: API.getTestURL() + "api/send_data")!
+    // データをサーバーに送る
+    public func sendData(model: BrowseData) -> Observable<Bool> {
+        // 送るURL
+        let urlText: String = API.getTestURL() + "api/send_data"
+        let url = URL(string: urlText)!
         
-        let json = ["name": "mori"]
         var request = URLRequest(url: url)
         
+        // POSTで通信
         request.httpMethod = "POST"
-        let jsonData = try? JSONSerialization.data(withJSONObject: json)
+
+        // 送信するデータをJSONデータに変換
+        let encoder = JSONEncoder()
+        guard let jsonData = try? encoder.encode(model) else {
+            fatalError("Failed to encode to JSON.")
+        }
+        
+        // 送信するデータ
         request.httpBody = jsonData
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         
@@ -46,7 +57,7 @@ class browseClass {
                 // レスポンスのステータスコードが200番台なら成功とみなす
                 return 200...299 ~= response.statusCode
             }
-            .catchErrorJustReturn(false)
+            .catchAndReturn(false)
     }
 }
 

@@ -55,6 +55,7 @@ def post_data():
     req_data = request.get_json()
     # keyで取得できる
     name = req_data.get('name')
+    print(req_data)
     print(name)
     # response = {'name': 'Receive: {}'.format(name)}
     # return jsonify(response)

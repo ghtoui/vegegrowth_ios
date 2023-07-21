@@ -11,6 +11,9 @@ import RxSwift
 import RxCocoa
 
 class GrowthManageViewModel: BaseManageViewModel {
+    
+    private var browse = browseClass()
+    
     override init() {
         super.init()
         
@@ -29,4 +32,5 @@ class GrowthManageViewModel: BaseManageViewModel {
         }
         return datas
     }
+    
 }
