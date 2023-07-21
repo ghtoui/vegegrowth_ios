@@ -80,7 +80,8 @@ class ImgClass {
         
         let file_url = getImgURL(fileName: fileName)
         let fixImg = fixRotate(img: img)!
-        if let imgData = fixImg.pngData() {
+        let compressImg = compressImg(img: fixImg)
+        if let imgData = compressImg.pngData() {
             do {
                 try imgData.write(to: file_url)
                 print("\(file_url):に画像を保存しました")
@@ -88,9 +89,17 @@ class ImgClass {
                 print("保存できませんでした")
             }
         }
+        print(fileName)
         // ユーザーデフォルトに保存する処理
         vegeTextList.append(fileName)
         UserDefaults.standard.set(vegeTextList, forKey: vegeId)
+    }
+    
+    // 画像をjpegに圧縮して、ファイルサイズを下げる
+    private func compressImg(img: UIImage) -> UIImage {
+        let compressImg = img.jpegData(compressionQuality: 0.1)
+        
+        return UIImage(data: compressImg!)!
     }
     
     // 画像を読み込む
