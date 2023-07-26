@@ -67,6 +67,7 @@ class BaseManageViewModel: BaseManageViewModelType,
     public let memoLabelTextRelay = BehaviorRelay<String>(value: "")
     
     public let vegeManager = VegeManagerClass()
+    public var vegeName: String!
     public let date = DateClass()
     public var detailVege: DetailVegeClass!
     public var slideShow: SlideshowClass!
@@ -87,6 +88,7 @@ class BaseManageViewModel: BaseManageViewModelType,
                 guard let vegeIdDict = self?.vegeManager.getVegeIdDict() else {
                     return nil
                 }
+                self?.vegeName = vegeIdDict[vegeText]
                 return vegeIdDict[vegeText]
             }
             .bind(to: vegeId)

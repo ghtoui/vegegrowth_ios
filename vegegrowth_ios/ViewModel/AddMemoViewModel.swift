@@ -81,7 +81,6 @@ final class AddMemoViewModel: AddMemoViewModelType, AddMemoViewModelInputs, AddM
         guard !datas.isEmpty else {
             return
         }
-        print(datas)
         let data = datas[index]
         let memoText = data.memoText
         self.memoTextRelay.accept(memoText)
