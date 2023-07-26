@@ -67,5 +67,5 @@ struct BrowseData: Codable {
     var vegeLength: [Double]
     var x: [Double]
     var memoText: [String]
-    var base64EncodedImage: [String]
+    var base64EncodedImage: [String?]
 }

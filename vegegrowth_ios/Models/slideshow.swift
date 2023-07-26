@@ -44,13 +44,15 @@ class SlideshowClass {
         return currentIndex
     }
     
-    
-    func getShowImg() -> UIImage? {
-        guard currentIndex >= 0 && currentIndex < imgFileURLList.count else {
-            return nil
+    public func getImgData() -> [UIImage?] {
+        var imgList: [UIImage?] = []
+        for fileURL in imgFileURLList {
+            imgList.append(loadImgFromFileURL(fileURL: fileURL))
         }
-        
-        let fileURL = imgFileURLList[currentIndex]
+        return imgList
+    }
+    
+    private func loadImgFromFileURL(fileURL: URL) -> UIImage? {
         do {
             let imgData = try Data(contentsOf: fileURL)
             let img = img.fixRotate(img: UIImage(data: imgData)!)
@@ -58,6 +60,17 @@ class SlideshowClass {
         } catch {
             return nil
         }
+    }
+    
+    func getShowImg() -> UIImage? {
+        guard currentIndex >= 0 && currentIndex < imgFileURLList.count else {
+            return nil
+        }
+        
+        let fileURL = imgFileURLList[currentIndex]
+        
+        let img = loadImgFromFileURL(fileURL: fileURL)
+        return img
     }
     
     func showNextImg() {
