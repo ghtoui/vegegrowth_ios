@@ -55,7 +55,11 @@ def post_data():
     req_data = request.get_json()
     # keyで取得できる
     name = req_data.get('name')
-    print(req_data)
+    encoded_datas = req_data.get('base64EncodedImage')
+    # base64データを画像データに変換
+    for i, encoded_data in enumerate(encoded_datas):
+        img = base64.b64decode(encoded_data)
+
     print(name)
     # response = {'name': 'Receive: {}'.format(name)}
     # return jsonify(response)
