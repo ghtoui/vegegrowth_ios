@@ -59,6 +59,51 @@ class browseClass {
             }
             .catchAndReturn(false)
     }
+    
+    // データをサーバーに送る
+    public func _sendData(model: BrowseData, imgList: [UIImage?]) -> Observable<Bool> {
+        
+        // 送るURL
+        let urlText: String = API.getTestURL() + "api/send_data"
+        let url = URL(string: urlText)!
+        
+        var request = URLRequest(url: url)
+        
+        // POSTで通信
+        request.httpMethod = "POST"
+        
+        let boundary = "Boundary-\(UUID().uuidString)"
+        let contentType = "multipart/form-data; boundary=\(boundary)"
+        request.setValue(contentType, forHTTPHeaderField: "Content-Type")
+        
+        var httpBody = Data()
+
+        for (index, img) in imgList.enumerated() {
+            if let imgData = img?.jpegData(compressionQuality: 1) {
+                let imgFieldName = "img\(index)"
+                httpBody.append("--\(boundary)\r\n".data(using: .utf8)!)
+                httpBody.append("Content-Disposition: form-data; name=\"\(imgFieldName)\"; filename=\"\(imgFieldName).jpg\"\r\n".data(using: .utf8)!)
+                httpBody.append("Content-Type: image/jpeg\r\n\r\n".data(using: .utf8)!)
+                httpBody.append(imgData)
+                httpBody.append("\r\n".data(using: .utf8)!)
+            }
+        }
+        let usernameFieldName = "name"
+        httpBody.append("--\(boundary)\r\n".data(using: .utf8)!)
+        httpBody.append("Content-Disposition: form-data; name=\"\(usernameFieldName)\"\r\n\r\n".data(using: .utf8)!)
+        httpBody.append("\(model.name)\r\n".data(using: .utf8)!)
+
+        httpBody.append("--\(boundary)--\r\n".data(using: .utf8)!)
+        
+        request.httpBody = httpBody
+        
+        return URLSession.shared.rx.response(request: request)
+            .map { response, _ in
+                // レスポンスのステータスコードが200番台なら成功とみなす
+                return 200...299 ~= response.statusCode
+            }
+            .catchAndReturn(false)
+    }
 }
 
 struct BrowseData: Codable {

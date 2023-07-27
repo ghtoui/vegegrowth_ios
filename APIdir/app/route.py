@@ -3,6 +3,7 @@ import base64
 from app import app
 import time
 import datetime
+import os
 
 # このフォーマットは、swiftで指定したやつに合わせてる
 DATE_FORMAT = "%y年%m月%d日 %H時"
@@ -43,6 +44,8 @@ for i in range(len(name_list)):
             }
     test_data.append(data)
 
+img_savepath = './app/static/'
+
 # GETリクエストに対応するエンドポイント
 @app.route('/api/data', methods = ['GET'])
 def get_data():
@@ -52,16 +55,40 @@ def get_data():
 
 @app.route('/api/send_data', methods = ['POST'])
 def post_data():
-    req_data = request.get_json()
-    # keyで取得できる
-    name = req_data.get('name')
-    encoded_datas = req_data.get('base64EncodedImage')
-    # base64データを画像データに変換
-    for i, encoded_data in enumerate(encoded_datas):
-        img = base64.b64decode(encoded_data)
+    # テキストデータを受け取る場合は、request.formを使う
+    name = request.form.get('name')
+    for key, file in request.files.items():
+        if file.filename:
 
-    print(name)
-    # response = {'name': 'Receive: {}'.format(name)}
-    # return jsonify(response)
-    return jsonify({'name': 'ok'})
+            path = os.path.join(img_savepath, str(name), str(file.filename))
+            print(os.getcwd())
+            print(path)
+            path = os.path.join(os.getcwd(), path)
+            os.makedirs(path, exist_ok = True)
 
+            file.save(path)
+
+
+    return "OK"
+
+# base64で受け取るAPI
+# 画像を送る場合は、multipart/form-dataを使う方が適切っぽいので、使わないかも
+# @app.route('/api/send_data/base64', methods = ['POST'])
+# def post_base64_data():
+#     req_data = request.get_json()
+#     # keyで取得できる
+#     name = req_data.get('name')
+#     encoded_datas = req_data.get('base64EncodedImage')
+#     # base64データを画像データに変換
+#     for i, encoded_data in enumerate(encoded_datas):
+#         print(encoded_data)
+#         img = base64.b64decode(encoded_data)
+#         img = np.frombuffer(img, dtype = np.uint8)
+#         img = cv.imdecode(img, cv.IMREAD_COLOR)
+# 
+#         cv.imwrite('gazou{}.jpg'.format(i), img)
+# 
+#     print(name)
+#     # response = {'name': 'Receive: {}'.format(name)}
+#     # return jsonify(response)
+#     return jsonify({'name': 'ok'})
