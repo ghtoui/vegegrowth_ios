@@ -60,11 +60,9 @@ def post_data():
     for key, file in request.files.items():
         if file.filename:
 
-            path = os.path.join(img_savepath, str(name), str(file.filename))
-            print(os.getcwd())
-            print(path)
-            path = os.path.join(os.getcwd(), path)
+            path = os.path.join(img_savepath, str(name))
             os.makedirs(path, exist_ok = True)
+            path = os.path.join(path, file.filename)
 
             file.save(path)
 
